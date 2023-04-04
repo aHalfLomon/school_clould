@@ -19,6 +19,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class test {
     @GetMapping("/test1")
     public String test1(){
-        return "succeeful!!!";
+        return "index.html";
     }
 }
