@@ -11,6 +11,7 @@
     <modules>
         <module>Geteway</module>
         <module>user</module>
+        <module>study_talk</module>
     </modules>
 
     <properties>
