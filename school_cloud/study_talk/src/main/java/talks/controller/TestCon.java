@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import talks.Pojo.STk;
 import talks.Pojo.TestPojo;
-import talks.mapper.testmapper;
+import talks.mapper.Testmapper;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -25,11 +26,11 @@ import java.util.List;
 @RequestMapping("/school")
 public class TestCon {
     @Resource
-    private testmapper tests;
+    private Testmapper tests;
 
     @GetMapping("/lists")
-    public List<TestPojo> findalllist(){
-        List<TestPojo> list =tests.findalltk();
+    public List<STk> findalllist(){
+        List<STk> list =tests.findalltk();
         return list;
     }
 }

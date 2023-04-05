@@ -3,6 +3,7 @@ package talks.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+import talks.Pojo.STk;
 import talks.Pojo.TestPojo;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 @Mapper
 @Repository
-public interface testmapper {
+public interface Testmapper {
     @Select("SELECT * FROM s_tk")
-    List<TestPojo> findalltk();
+    List<STk> findalltk();
 }

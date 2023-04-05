@@ -3,6 +3,7 @@ package talks.Pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
 /**
  * @Classname TestPojo
@@ -18,6 +19,6 @@ public class TestPojo {
     private String tk_uid;
     private String tk_tid;
     private String tk_source;
-    private String tk_data;
+    private Date tk_data;
 
 }
