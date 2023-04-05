@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="talks.mapper.dao.STDao">
+
+    <resultMap id="BaseResultMap" type="talks.Pojo.School_talk">
+        <!--@Table s_t-->
+        <result property="tId" column="t_id" jdbcType="VARCHAR"/>
+        <result property="tUid" column="t_uid" jdbcType="VARCHAR"/>
+        <result property="tImg" column="t_img" jdbcType="VARCHAR"/>
+        <result property="tSource" column="t_source" jdbcType="VARCHAR"/>
+        <result property="tData" column="t_data" jdbcType="TIMESTAMP"/>
+        <result property="tUscCount" column="t_usc_count" jdbcType="TIMESTAMP"/>
+        <result property="tLikeCount" column="t_like_count" jdbcType="TIMESTAMP"/>
+        <result property="tStatus" column="t_status" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          t_id, t_uid, t_img, t_source, t_data, t_usc_count, t_like_count, t_status
+        from s_t
+        where t_id = #{tId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          t_id, t_uid, t_img, t_source, t_data, t_usc_count, t_like_count, t_status
+        from s_t
+        <where>
+            <if test="tId != null and tId != ''">
+                and t_id = #{tId}
+            </if>
+            <if test="tUid != null and tUid != ''">
+                and t_uid = #{tUid}
+            </if>
+            <if test="tImg != null and tImg != ''">
+                and t_img = #{tImg}
+            </if>
+            <if test="tSource != null and tSource != ''">
+                and t_source = #{tSource}
+            </if>
+            <if test="tData != null">
+                and t_data = #{tData}
+            </if>
+            <if test="tUscCount != null">
+                and t_usc_count = #{tUscCount}
+            </if>
+            <if test="tLikeCount != null">
+                and t_like_count = #{tLikeCount}
+            </if>
+            <if test="tStatus != null and tStatus != ''">
+                and t_status = #{tStatus}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          t_id, t_uid, t_img, t_source, t_data, t_usc_count, t_like_count, t_status
+        from schools.s_t
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from s_t
+        <where>
+            <if test="tId != null and tId != ''">
+                and t_id = #{tId}
+            </if>
+            <if test="tUid != null and tUid != ''">
+                and t_uid = #{tUid}
+            </if>
+            <if test="tImg != null and tImg != ''">
+                and t_img = #{tImg}
+            </if>
+            <if test="tSource != null and tSource != ''">
+                and t_source = #{tSource}
+            </if>
+            <if test="tData != null">
+                and t_data = #{tData}
+            </if>
+            <if test="tUscCount != null">
+                and t_usc_count = #{tUscCount}
+            </if>
+            <if test="tLikeCount != null">
+                and t_like_count = #{tLikeCount}
+            </if>
+            <if test="tStatus != null and tStatus != ''">
+                and t_status = #{tStatus}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="tId" useGeneratedKeys="true">
+        insert into s_t(t_uid, t_img, t_source, t_data, t_usc_count, t_like_count, t_status)
+        values (#{tUid}, #{tImg}, #{tSource}, #{tData}, #{tUscCount}, #{tLikeCount}, #{tStatus})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="tId" useGeneratedKeys="true">
+        insert into s_t(t_uid, t_img, t_source, t_data, t_usc_count, t_like_count, t_status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.tUid}, #{entity.tImg}, #{entity.tSource}, #{entity.tData}, #{entity.tUscCount}, #{entity.tLikeCount}, #{entity.tStatus})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="tId" useGeneratedKeys="true">
+        insert into s_t(t_uid, t_img, t_source, t_data, t_usc_count, t_like_count, t_status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tUid}, #{entity.tImg}, #{entity.tSource}, #{entity.tData}, #{entity.tUscCount}, #{entity.tLikeCount}, #{entity.tStatus})
+        </foreach>
+        on duplicate key update
+        t_uid = values(t_uid),
+        t_img = values(t_img),
+        t_source = values(t_source),
+        t_data = values(t_data),
+        t_usc_count = values(t_usc_count),
+        t_like_count = values(t_like_count),
+        t_status = values(t_status)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update s_t
+        <set>
+            <if test="tUid != null and tUid != ''">
+                t_uid = #{tUid},
+            </if>
+            <if test="tImg != null and tImg != ''">
+                t_img = #{tImg},
+            </if>
+            <if test="tSource != null and tSource != ''">
+                t_source = #{tSource},
+            </if>
+            <if test="tData != null">
+                t_data = #{tData},
+            </if>
+            <if test="tUscCount != null">
+                t_usc_count = #{tUscCount},
+            </if>
+            <if test="tLikeCount != null">
+                t_like_count = #{tLikeCount},
+            </if>
+            <if test="tStatus != null and tStatus != ''">
+                t_status = #{tStatus},
+            </if>
+        </set>
+        where t_id = #{tId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from s_t where t_id = #{tId}
+    </delete>
+
+</mapper>
+

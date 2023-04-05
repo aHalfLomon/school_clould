@@ -4,7 +4,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 import talks.Pojo.STk;
-import talks.Pojo.TestPojo;
 
 import java.util.List;
 

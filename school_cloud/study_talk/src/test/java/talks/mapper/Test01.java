@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import talks.Pojo.STk;
-import talks.Pojo.TestPojo;
-import talks.mapper.Testmapper;
 
 import java.util.List;
 
