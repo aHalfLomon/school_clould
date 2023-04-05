@@ -10,6 +10,7 @@ import talks.Server.School_talk_server;
 import talks.mapper.Testmapper;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,23 +37,25 @@ public class TestCon {
         return list;
     }
     @PostMapping("/addtalk")
-    public  List<Integer> addtalk(@RequestParam("tid") String tid
-    ,@RequestParam("uid") String uid
-    ,@RequestParam("timg")String t_img
-    ,@RequestParam("tsource") String source
-                                  ,@RequestParam("date") Date t_date)
+    public  List<Integer> addtalk(School_talk schoolTalk)
+//            @RequestParam("tid") String tid
+//    ,@RequestParam("uid") String uid
+//    ,@RequestParam("timg")String t_img
+//    ,@RequestParam("tsource") String source
+//                                  ,@RequestParam("date") Date t_date)
     {
-        List<Integer> list1 = null;
+        List<Integer> list1 = new ArrayList<>();
         list1.add(1);
-        School_talk schoolTalk = new School_talk();
-        schoolTalk.setTId(tid);
-        schoolTalk.setTUid(uid);
-        schoolTalk.setTImg(t_img);
-        schoolTalk.setTSource(source);
-        schoolTalk.setTData(t_date);
-        schoolTalk.setTUscCount(0);
-        schoolTalk.setTLikeCount(0);
-        schoolTalk.setTStatus("正常");
+//        School_talk schoolTalk = new School_talk();
+//        schoolTalk.setTId(tid);
+//        schoolTalk.setTUid(uid);
+//        schoolTalk.setTImg(t_img);
+//        schoolTalk.setTSource(source);
+//        schoolTalk.setTData(t_date);
+//        schoolTalk.setTUscCount(0);
+//        schoolTalk.setTLikeCount(0);
+//        schoolTalk.setTStatus("正常");
+//        schoolTalkServer.addtalk(schoolTalk);
         schoolTalkServer.addtalk(schoolTalk);
         return list1;
     }
