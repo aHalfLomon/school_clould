@@ -16,13 +16,17 @@ import javax.annotation.Resource;
  */
 @Service
 @Transactional
-public class Up_talk_serverImp implements Up_talk_Server {
+public class Up_talk_serverImp implements Up_talk_Server{
 
     @Resource
     private Up_talk upTalk;
     @Override
-    public int uptalk(School_talk schoolTalk) {
-        upTalk.uptalk(schoolTalk);
-        return 0;
+    public int uptalk(School_talk schoolTalk){
+        try{
+            upTalk.uptalk(schoolTalk);
+            return 1;
+        }catch (Exception e){
+            return 0;
+        }
     }
 }

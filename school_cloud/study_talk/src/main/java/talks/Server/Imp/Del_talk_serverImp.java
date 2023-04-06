@@ -21,7 +21,12 @@ public class Del_talk_serverImp implements Del_talk_server {
     private Del_talk delTalk;
     @Override
     public int deltalk(String t_id) {
-        delTalk.deltalk(t_id);
-        return 0;
+        try {
+            delTalk.deltalk(t_id);
+            return 1;
+        }catch (Exception e){
+            return 0;
+        }
+
     }
 }

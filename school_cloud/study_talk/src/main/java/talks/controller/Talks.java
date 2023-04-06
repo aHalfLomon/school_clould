@@ -54,22 +54,38 @@ public class Talks {
 //        schoolTalk.setTLikeCount(0);
 //        schoolTalk.setTStatus("正常");
 //        schoolTalkServer.addtalk(schoolTalk);
-        schoolTalkServer.addtalk(schoolTalk);
-        ResultData resultData = new ResultData("200","OK!","ok!");
-        return resultData;
+        int x=schoolTalkServer.addtalk(schoolTalk);
+        if(x==1){
+            ResultData resultData = new ResultData("200","OK!","增加成功!");
+            return resultData;
+        }else {
+            ResultData resultData = new ResultData("600","error!","请检查您的参数或者其他内容!");
+            return resultData;
+        }
     }
     //删除帖子按照帖子ID删除
     @GetMapping("/deltalk")
     public ResultData deltalk(@RequestParam("t_id") String tid){
-        delTalkServer.deltalk(tid);
-        ResultData resultData = new ResultData("200","OK!","增加成功!");
-        return resultData;
-    }
+        int f = delTalkServer.deltalk(tid);
+        if (f == 1){
+            ResultData resultData1 = new ResultData("200","OK!","succeeful!");
+            return resultData1;
+        }else {
+            ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容！");
+            return resultData2;
+        }
 
+    }
+    //更新用户信息
     @PostMapping("/Uptalk")
     public ResultData uptalk(@RequestBody School_talk schoolTalk){
-        upTalkServer.uptalk(schoolTalk);
-        ResultData resultData = new ResultData("200","OK!","修改成功!");
-        return resultData;
+        int f = upTalkServer.uptalk(schoolTalk);
+        if(f == 1){
+            ResultData resultData1 = new ResultData("200","OK!","修改成功!");
+            return resultData1;
+        }else{
+            ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容！");
+            return resultData2;
+        }
     }
 }

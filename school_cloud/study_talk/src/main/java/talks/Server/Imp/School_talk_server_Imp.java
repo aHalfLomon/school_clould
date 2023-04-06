@@ -22,6 +22,12 @@ public class School_talk_server_Imp implements School_talk_server {
 
     @Override
     public int addtalk(School_talk schoolTalk) {
-        return sentTalk.addtalk(schoolTalk);
+        try {
+            sentTalk.addtalk(schoolTalk);
+            return 1;
+        }
+        catch (Exception e){
+            return 0;
+        }
     }
 }
