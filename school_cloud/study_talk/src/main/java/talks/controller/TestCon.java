@@ -40,7 +40,7 @@ public class TestCon {
     }
     //用户发帖，在数据库中创建记录
     @PostMapping("/addtalk")
-    public void addtalk(@RequestBody School_talk schoolTalk)
+    public ResultData addtalk(@RequestBody School_talk schoolTalk)
 //            @RequestParam("tid") String tid
 //    ,@RequestParam("uid") String uid
 //    ,@RequestParam("timg")String t_img
@@ -59,8 +59,8 @@ public class TestCon {
 //        schoolTalk.setTStatus("正常");
 //        schoolTalkServer.addtalk(schoolTalk);
         schoolTalkServer.addtalk(schoolTalk);
-        ResultData resultData = new ResultData("200","请求成功","null");
-        //return resultData;
+        ResultData resultData = new ResultData("200","OK!","ok!");
+        return resultData;
     }
 
 }

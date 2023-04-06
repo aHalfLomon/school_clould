@@ -1,12 +1,19 @@
 package talks.Pojo;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
+
 /**
  * @Classname ResultData
  * @Description TODO
  * @Date 2023/4/6 9:40
  * @Created by wang
  */
-public class ResultData implements Constants {
+@Data
+@Getter
+@ToString
+public class ResultData{
 
     String code;
     String msg;
