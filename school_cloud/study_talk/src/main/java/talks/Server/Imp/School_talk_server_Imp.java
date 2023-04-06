@@ -21,7 +21,7 @@ public class School_talk_server_Imp implements School_talk_server {
     private Sent_talk sentTalk;
 
     @Override
-    public School_talk addtalk(School_talk schoolTalk) {
+    public int addtalk(School_talk schoolTalk) {
         return sentTalk.addtalk(schoolTalk);
     }
 }

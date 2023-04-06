@@ -3,8 +3,8 @@
 <mapper namespace="talks.mapper.Sent_talk">
 
     <insert id="addtalk">
-        insert into s_t(t_id,t_uid,t_img,t_source,t_data,t_usc_count,t_like_count,t_status)
-        values (#{t_id},#{t_uid},#{t_img},#{t_source},#{t_data},#{t_usc_count},#{t_like_count},#{t_status})
+        insert into s_t(t_id,t_uid,t_img,t_source,t_date,t_usc_count,t_like_count,t_status)
+        values (#{t_id},#{t_uid},#{t_img},#{t_source},#{t_date},#{t_usc_count},#{t_like_count},#{t_status})
     </insert>
 
 </mapper>

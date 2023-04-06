@@ -12,5 +12,5 @@ import talks.Pojo.School_talk;
 @Service
 public interface School_talk_server {
     //发表论坛相关
-    School_talk addtalk(School_talk schoolTalk);
+    int addtalk(School_talk schoolTalk);
 }

@@ -15,6 +15,6 @@ import talks.Pojo.School_talk;
 @Repository
 public interface Sent_talk {
     //发表论坛
-    School_talk addtalk(School_talk schoolTalk);
+    int addtalk(School_talk schoolTalk);
 
 }

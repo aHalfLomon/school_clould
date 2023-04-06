@@ -37,15 +37,14 @@ public class TestCon {
         return list;
     }
     @PostMapping("/addtalk")
-    public  List<Integer> addtalk(School_talk schoolTalk)
+    public void addtalk(@RequestBody School_talk schoolTalk)
 //            @RequestParam("tid") String tid
 //    ,@RequestParam("uid") String uid
 //    ,@RequestParam("timg")String t_img
 //    ,@RequestParam("tsource") String source
 //                                  ,@RequestParam("date") Date t_date)
     {
-        List<Integer> list1 = new ArrayList<>();
-        list1.add(1);
+
 //        School_talk schoolTalk = new School_talk();
 //        schoolTalk.setTId(tid);
 //        schoolTalk.setTUid(uid);
@@ -57,7 +56,7 @@ public class TestCon {
 //        schoolTalk.setTStatus("正常");
 //        schoolTalkServer.addtalk(schoolTalk);
         schoolTalkServer.addtalk(schoolTalk);
-        return list1;
+
     }
 
 }

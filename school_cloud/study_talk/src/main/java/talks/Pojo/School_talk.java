@@ -12,85 +12,84 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class School_talk extends Model<School_talk> {
     //帖子编号；由系统生成（主键）
-    private String tId;
+    private String t_id;
     //发帖人id ；记录发帖人的ID，以展示发帖人的部分信息
-    private String tUid;
+    private String t_uid;
     //发帖带的图片（暂定一张）
-    private String tImg;
+    private String t_img;
     //发帖内容
-    private String tSource;
+    private String t_source;
     //发帖日期
-    private Date tData;
+    private Date t_date;
     //帖子收藏数量
-    private Integer tUscCount;
+    private Integer t_usc_count;
     //帖子点赞数量
-    private Integer tLikeCount;
+    private Integer t_like_count;
     //帖子状态
-    private String tStatus;
+    private String t_status;
 
-
-    public String getTId() {
-        return tId;
+    public String getT_id() {
+        return t_id;
     }
 
-    public void setTId(String tId) {
-        this.tId = tId;
+    public String getT_uid() {
+        return t_uid;
     }
 
-    public String getTUid() {
-        return tUid;
+    public String getT_img() {
+        return t_img;
     }
 
-    public void setTUid(String tUid) {
-        this.tUid = tUid;
+    public String getT_source() {
+        return t_source;
     }
 
-    public String getTImg() {
-        return tImg;
+    public Date getT_date() {
+        return t_date;
     }
 
-    public void setTImg(String tImg) {
-        this.tImg = tImg;
+    public Integer getT_usc_count() {
+        return t_usc_count;
     }
 
-    public String getTSource() {
-        return tSource;
+    public Integer getT_like_count() {
+        return t_like_count;
     }
 
-    public void setTSource(String tSource) {
-        this.tSource = tSource;
+    public String getT_status() {
+        return t_status;
     }
 
-    public Date getTData() {
-        return tData;
+    public void setT_id(String t_id) {
+        this.t_id = t_id;
     }
 
-    public void setTData(Date tData) {
-        this.tData = tData;
+    public void setT_uid(String t_uid) {
+        this.t_uid = t_uid;
     }
 
-    public Integer getTUscCount() {
-        return tUscCount;
+    public void setT_img(String t_img) {
+        this.t_img = t_img;
     }
 
-    public void setTUscCount(Integer tUscCount) {
-        this.tUscCount = tUscCount;
+    public void setT_source(String t_source) {
+        this.t_source = t_source;
     }
 
-    public Integer getTLikeCount() {
-        return tLikeCount;
+    public void setT_date(Date t_date) {
+        this.t_date = t_date;
     }
 
-    public void setTLikeCount(Integer tLikeCount) {
-        this.tLikeCount = tLikeCount;
+    public void setT_usc_count(Integer t_usc_count) {
+        this.t_usc_count = t_usc_count;
     }
 
-    public String getTStatus() {
-        return tStatus;
+    public void setT_like_count(Integer t_like_count) {
+        this.t_like_count = t_like_count;
     }
 
-    public void setTStatus(String tStatus) {
-        this.tStatus = tStatus;
+    public void setT_status(String t_status) {
+        this.t_status = t_status;
     }
 
     /**
@@ -100,7 +99,7 @@ public class School_talk extends Model<School_talk> {
      */
     @Override
     protected Serializable pkVal() {
-        return this.tId;
+        return this.t_id;
     }
     }
 
