@@ -3,6 +3,8 @@ package talks.Server;
 import org.springframework.stereotype.Service;
 import talks.Pojo.School_talk;
 
+import java.util.List;
+
 /**
  * @Classname Search_talk_server
  * @Description TODO
@@ -11,5 +13,5 @@ import talks.Pojo.School_talk;
  */
 @Service
 public interface Search_talk_server {
-    School_talk search_talk_source(String source);
+    List<School_talk> search_talk_source(String source);
 }

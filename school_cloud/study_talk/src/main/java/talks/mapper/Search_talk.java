@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import talks.Pojo.School_talk;
 
+import java.util.List;
+
 /**
  * @Classname Serrch_talk
  * @Description TODO
@@ -13,5 +15,5 @@ import talks.Pojo.School_talk;
 @Mapper
 @Repository
 public interface Search_talk {
-    School_talk search_talk_source(String source);
+    List<School_talk> search_talk_source(String source);
 }

@@ -94,14 +94,15 @@ public class Talks {
     //按照帖子内容去查询帖子（支持模糊匹配）‘
     @GetMapping("/search_source")
     private ResultData search_source(@RequestParam("source") String source){
-         School_talk schoolTalk = searchTalkServerImp.search_talk_source(source);
-         if (schoolTalk != null){
-             ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
-             return resultData1;
-         }
-         else {
-             ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容");
-             return resultData2;
-         }
+         List<School_talk> schoolTalk = searchTalkServerImp.search_talk_source(source);
+//         if (schoolTalk != null){
+//             ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
+//             return resultData1;
+//         }else {
+//             ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容");
+//             return resultData2;
+//         }
+        ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
+        return resultData1;
     }
 }

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="talks.mapper.Search_talk">
 
-    <select id="search_talk">
-        SELECT * FROM s_t WHERE t_source like #{%source%};
+    <select id="search_talk_source" parameterType="List" resultType="talks.Pojo.School_talk">
+        SELECT * FROM s_t WHERE t_source like CONCAT("%",#{source},"%");
     </select>
 
 </mapper>
