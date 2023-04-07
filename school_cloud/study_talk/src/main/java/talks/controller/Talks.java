@@ -8,6 +8,7 @@ import talks.Pojo.ResultData;
 import talks.Pojo.STk;
 import talks.Pojo.School_talk;
 import talks.Server.Del_talk_server;
+import talks.Server.Imp.Search_talk_serverImp;
 import talks.Server.School_talk_server;
 import talks.Server.Up_talk_Server;
 import talks.mapper.Testmapper;
@@ -35,6 +36,8 @@ public class Talks {
     private Del_talk_server delTalkServer;
     @Resource
     private Up_talk_Server upTalkServer;
+    @Resource
+    private Search_talk_serverImp searchTalkServerImp;
 
     @GetMapping("/lists")
     public List<STk> findalllist(){
@@ -87,5 +90,18 @@ public class Talks {
             ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容！");
             return resultData2;
         }
+    }
+    //按照帖子内容去查询帖子（支持模糊匹配）‘
+    @GetMapping("/search_source")
+    private ResultData search_source(@RequestParam("source") String source){
+         School_talk schoolTalk = searchTalkServerImp.search_talk_source(source);
+         if (schoolTalk != null){
+             ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
+             return resultData1;
+         }
+         else {
+             ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容");
+             return resultData2;
+         }
     }
 }
