@@ -3,7 +3,7 @@ package talks.mapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import talks.Pojo.STk;
+import talks.Pojo.Talk_talks;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Test01 {
 
     @Test
     void xx(){
-        List<STk> findalltk = testmapper.findalltk();
+        List<Talk_talks> findalltk = testmapper.findalltk();
         System.out.println(findalltk);
     }
 

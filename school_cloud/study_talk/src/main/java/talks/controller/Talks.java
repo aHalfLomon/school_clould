@@ -5,12 +5,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import talks.Pojo.ResultData;
-import talks.Pojo.STk;
+import talks.Pojo.Talk_talks;
 import talks.Pojo.School_talk;
 import talks.Server.Del_talk_server;
 import talks.Server.Imp.Search_talk_serverImp;
-import talks.Server.Imp.Talk_conts_search_serverImp;
 import talks.Server.School_talk_server;
+import talks.Server.Talk_conts_search_server;
 import talks.Server.Up_talk_Server;
 import talks.mapper.Testmapper;
 
@@ -40,11 +40,11 @@ public class Talks {
     @Resource
     private Search_talk_serverImp searchTalkServerImp;
     @Resource
-    private Talk_conts_search_serverImp talkContsSearchServerImp;
+    private Talk_conts_search_server talkContsSearchServerImp;
 
     @GetMapping("/lists")
-    public List<STk> findalllist(){
-        List<STk> list =tests.findalltk();
+    public List<Talk_talks> findalllist(){
+        List<Talk_talks> list =tests.findalltk();
         return list;
     }
     //用户发帖，在数据库中创建记录
@@ -111,15 +111,15 @@ public class Talks {
 
     @GetMapping("/search_talk_like")
     public ResultData search_talk_like(@RequestParam("t_id") String t_id){
-//        int f = talkContsSearchServerImp.talk_like_cont(t_id);
-//        if(f != -1){
-//            return new ResultData("200","OK!",f);
-//        }
-//        else {
-//            return new ResultData("600","error!","请检查您的参数或者其他内容！");
-//        }
         int f = talkContsSearchServerImp.talk_like_cont(t_id);
-        return new ResultData("200","",f);
+        if(f != -1){
+            return new ResultData("200","OK!",f);
+        }
+        else {
+            return new ResultData("600","error!","请检查您的参数或者其他内容！");
+        }
+
+
 
     }
     @GetMapping("/search_talk_sc")

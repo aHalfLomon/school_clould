@@ -16,7 +16,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 @AllArgsConstructor
 @NoArgsConstructor
-public class STk extends Model<STk> {
+public class Talk_talks extends Model<Talk_talks> {
     //评论的ID
     private String tkId;
     //由此来展示评论用户的部分信息
