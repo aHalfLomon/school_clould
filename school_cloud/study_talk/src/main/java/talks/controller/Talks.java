@@ -9,6 +9,7 @@ import talks.Pojo.STk;
 import talks.Pojo.School_talk;
 import talks.Server.Del_talk_server;
 import talks.Server.Imp.Search_talk_serverImp;
+import talks.Server.Imp.Talk_conts_search_serverImp;
 import talks.Server.School_talk_server;
 import talks.Server.Up_talk_Server;
 import talks.mapper.Testmapper;
@@ -38,6 +39,8 @@ public class Talks {
     private Up_talk_Server upTalkServer;
     @Resource
     private Search_talk_serverImp searchTalkServerImp;
+    @Resource
+    private Talk_conts_search_serverImp talkContsSearchServerImp;
 
     @GetMapping("/lists")
     public List<STk> findalllist(){
@@ -91,7 +94,7 @@ public class Talks {
             return resultData2;
         }
     }
-    //按照帖子内容去查询帖子（支持模糊匹配）‘
+    //按照帖子内容去查询帖子（支持模糊匹配）
     @GetMapping("/search_source")
     private ResultData search_source(@RequestParam("source") String source){
          List<School_talk> schoolTalk = searchTalkServerImp.search_talk_source(source);
@@ -105,4 +108,31 @@ public class Talks {
         ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
         return resultData1;
     }
+
+    @GetMapping("/search_talk_like")
+    public ResultData search_talk_like(@RequestParam("t_id") String t_id){
+//        int f = talkContsSearchServerImp.talk_like_cont(t_id);
+//        if(f != -1){
+//            return new ResultData("200","OK!",f);
+//        }
+//        else {
+//            return new ResultData("600","error!","请检查您的参数或者其他内容！");
+//        }
+        int f = talkContsSearchServerImp.talk_like_cont(t_id);
+        return new ResultData("200","",f);
+
+    }
+    @GetMapping("/search_talk_sc")
+    public ResultData search_talk_sc(@RequestParam("t_id") String t_id){
+        int f = talkContsSearchServerImp.talk_usersc_cont(t_id);
+        if(f != -1){
+            return new ResultData("200","OK!",f);
+        }
+        else {
+            return new ResultData("600","error!","请检查您的参数或者其他内容！");
+        }
+    }
+
+
+
 }
