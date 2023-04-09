@@ -2,7 +2,6 @@ package talks.Server.Imp;
 
 import org.springframework.stereotype.Service;
 import talks.Server.Talk_conts_search_server;
-import talks.mapper.Talk_conts_search;
 
 /**
  * @Classname Talk_conts_search_serverImp

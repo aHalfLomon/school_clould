@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.School_talk;
 import talks.Server.Up_talk_Server;
-import talks.mapper.Up_talk;
 
 import javax.annotation.Resource;
 

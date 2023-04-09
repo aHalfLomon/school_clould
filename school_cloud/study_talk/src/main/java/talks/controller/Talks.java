@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import talks.Pojo.ResultData;
 import talks.Pojo.Talk_talks;
 import talks.Pojo.School_talk;
-import talks.Server.Del_talk_server;
+import talks.Server.Study_talk_about_server;
 import talks.Server.Imp.Search_talk_serverImp;
 import talks.Server.School_talk_server;
 import talks.Server.Talk_conts_search_server;
@@ -34,7 +34,7 @@ public class Talks {
     @Resource
     private School_talk_server schoolTalkServer;
     @Resource
-    private Del_talk_server delTalkServer;
+    private Study_talk_about_server delTalkServer;
     @Resource
     private Up_talk_Server upTalkServer;
     @Resource

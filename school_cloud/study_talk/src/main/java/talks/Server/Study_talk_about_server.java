@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
  * @Created by wang
  */
 @Service
-public interface Del_talk_server {
+public interface Study_talk_about_server {
     int deltalk(String t_id);
+
+
 }

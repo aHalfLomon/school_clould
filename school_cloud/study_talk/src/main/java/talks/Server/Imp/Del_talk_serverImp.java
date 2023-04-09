@@ -2,8 +2,8 @@ package talks.Server.Imp;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import talks.Server.Del_talk_server;
-import talks.mapper.Del_talk;
+import talks.Server.Study_talk_about_server;
+import talks.mapper.Study_talk_about;
 
 import javax.annotation.Resource;
 
@@ -15,10 +15,10 @@ import javax.annotation.Resource;
  */
 @Service
 @Transactional
-public class Del_talk_serverImp implements Del_talk_server {
+public class Del_talk_serverImp implements Study_talk_about_server {
 
     @Resource
-    private Del_talk delTalk;
+    private Study_talk_about delTalk;
     @Override
     public int deltalk(String t_id) {
         try {
