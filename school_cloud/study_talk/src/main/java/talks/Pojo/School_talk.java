@@ -32,60 +32,60 @@ public class School_talk extends Model<School_talk> {
         return t_id;
     }
 
-    public String getT_uid() {
-        return t_uid;
-    }
-
-    public String getT_img() {
-        return t_img;
-    }
-
-    public String getT_source() {
-        return t_source;
-    }
-
-    public Date getT_date() {
-        return t_date;
-    }
-
-    public Integer getT_usc_count() {
-        return t_usc_count;
-    }
-
-    public Integer getT_like_count() {
-        return t_like_count;
-    }
-
-    public String getT_status() {
-        return t_status;
-    }
-
     public void setT_id(String t_id) {
         this.t_id = t_id;
+    }
+
+    public String getT_uid() {
+        return t_uid;
     }
 
     public void setT_uid(String t_uid) {
         this.t_uid = t_uid;
     }
 
+    public String getT_img() {
+        return t_img;
+    }
+
     public void setT_img(String t_img) {
         this.t_img = t_img;
+    }
+
+    public String getT_source() {
+        return t_source;
     }
 
     public void setT_source(String t_source) {
         this.t_source = t_source;
     }
 
+    public Date getT_date() {
+        return t_date;
+    }
+
     public void setT_date(Date t_date) {
         this.t_date = t_date;
+    }
+
+    public Integer getT_usc_count() {
+        return t_usc_count;
     }
 
     public void setT_usc_count(Integer t_usc_count) {
         this.t_usc_count = t_usc_count;
     }
 
+    public Integer getT_like_count() {
+        return t_like_count;
+    }
+
     public void setT_like_count(Integer t_like_count) {
         this.t_like_count = t_like_count;
+    }
+
+    public String getT_status() {
+        return t_status;
     }
 
     public void setT_status(String t_status) {

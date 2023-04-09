@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@RequestMapping("/talk")
+@RequestMapping("/talk_talk")
 public class Talk_talks_about {
     @Resource
     private Talk_talk_server talkTalkServer;

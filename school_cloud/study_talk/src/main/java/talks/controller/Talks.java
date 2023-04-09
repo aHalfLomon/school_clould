@@ -8,10 +8,6 @@ import talks.Pojo.ResultData;
 import talks.Pojo.Talk_talks;
 import talks.Pojo.School_talk;
 import talks.Server.Study_talk_about_server;
-import talks.Server.Imp.Search_talk_serverImp;
-import talks.Server.School_talk_server;
-import talks.Server.Talk_conts_search_server;
-import talks.Server.Up_talk_Server;
 import talks.mapper.Testmapper;
 
 import javax.annotation.Resource;
@@ -27,20 +23,12 @@ import java.util.List;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@RequestMapping("/school")
+@RequestMapping("/study_talk")
 public class Talks {
     @Resource
     private Testmapper tests;
     @Resource
-    private School_talk_server schoolTalkServer;
-    @Resource
-    private Study_talk_about_server delTalkServer;
-    @Resource
-    private Up_talk_Server upTalkServer;
-    @Resource
-    private Search_talk_serverImp searchTalkServerImp;
-    @Resource
-    private Talk_conts_search_server talkContsSearchServerImp;
+    private Study_talk_about_server talkAboutServer;
 
     @GetMapping("/lists")
     public List<Talk_talks> findalllist(){
@@ -60,7 +48,7 @@ public class Talks {
 //        schoolTalk.setTLikeCount(0);
 //        schoolTalk.setTStatus("正常");
 //        schoolTalkServer.addtalk(schoolTalk);
-        int x=schoolTalkServer.addtalk(schoolTalk);
+        int x=talkAboutServer.addtalk(schoolTalk);
         if(x==1){
             ResultData resultData = new ResultData("200","OK!","增加成功!");
             return resultData;
@@ -72,7 +60,7 @@ public class Talks {
     //删除帖子按照帖子ID删除
     @GetMapping("/deltalk")
     public ResultData deltalk(@RequestParam("t_id") String tid){
-        int f = delTalkServer.deltalk(tid);
+        int f = talkAboutServer.deltalk(tid);
         if (f == 1){
             ResultData resultData1 = new ResultData("200","OK!","succeeful!");
             return resultData1;
@@ -85,7 +73,7 @@ public class Talks {
     //更新用户信息
     @PostMapping("/Uptalk")
     public ResultData uptalk(@RequestBody School_talk schoolTalk){
-        int f = upTalkServer.uptalk(schoolTalk);
+        int f = talkAboutServer.uptalk(schoolTalk);
         if(f == 1){
             ResultData resultData1 = new ResultData("200","OK!","修改成功!");
             return resultData1;
@@ -97,7 +85,7 @@ public class Talks {
     //按照帖子内容去查询帖子（支持模糊匹配）
     @GetMapping("/search_source")
     private ResultData search_source(@RequestParam("source") String source){
-         List<School_talk> schoolTalk = searchTalkServerImp.search_talk_source(source);
+         List<School_talk> schoolTalk = talkAboutServer.search_talk_source(source);
 //         if (schoolTalk != null){
 //             ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
 //             return resultData1;
@@ -111,7 +99,7 @@ public class Talks {
 
     @GetMapping("/search_talk_like")
     public ResultData search_talk_like(@RequestParam("t_id") String t_id){
-        int f = talkContsSearchServerImp.talk_like_cont(t_id);
+        int f = talkAboutServer.talk_like_cont(t_id);
         if(f != -1){
             return new ResultData("200","OK!",f);
         }
@@ -124,7 +112,7 @@ public class Talks {
     }
     @GetMapping("/search_talk_sc")
     public ResultData search_talk_sc(@RequestParam("t_id") String t_id){
-        int f = talkContsSearchServerImp.talk_usersc_cont(t_id);
+        int f = talkAboutServer.talk_usersc_cont(t_id);
         if(f != -1){
             return new ResultData("200","OK!",f);
         }

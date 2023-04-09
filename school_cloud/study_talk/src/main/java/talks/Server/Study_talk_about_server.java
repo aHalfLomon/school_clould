@@ -1,6 +1,9 @@
 package talks.Server;
 
 import org.springframework.stereotype.Service;
+import talks.Pojo.School_talk;
+
+import java.util.List;
 
 /**
  * @Classname Del_talk_server
@@ -10,7 +13,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface Study_talk_about_server {
-    int deltalk(String t_id);
+    Integer addtalk(School_talk schoolTalk);
+    //删除帖子
+    Integer deltalk(String t_id);
+    //更新帖子
+    Integer uptalk(School_talk schoolTalk);
+
+    //搜索相关
+    Integer talk_like_cont(String t_id);
+
+    Integer talk_usersc_cont(String t_id);
+    List<School_talk> search_talk_source(String source);
 
 
 }
