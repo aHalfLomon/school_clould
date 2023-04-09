@@ -31,7 +31,7 @@ public class Talk_talks_about {
     public ResultData deltalk(@RequestParam("tk_id") String tk_id){
         int f = talkTalkServer.del_talk_talk(tk_id);
         if(f != -1){
-            return new ResultData("200","OK","添加成功!");
+            return new ResultData("200","OK","删除成功!");
         }else
             return new ResultData("600","error!","请检查您的参数或者其他内容");
     }

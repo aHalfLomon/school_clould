@@ -18,65 +18,59 @@ import java.util.Date;
 @NoArgsConstructor
 public class Talk_talks extends Model<Talk_talks> {
     //评论的ID
-    private String tkId;
+    private String tk_id;
     //由此来展示评论用户的部分信息
-    private String tkUid;
+    private String tk_uid;
     //评论帖子ID
-    private String tkTid;
+    private String tk_tid;
     //评论内容
-    private String tkSource;
+    private String tk_source;
     //发表评论的时间
-    private Date tkData;
+    private Date tk_data;
 
-
-    public String getTkId() {
-        return tkId;
+    public String getTk_id() {
+        return tk_id;
     }
 
-    public void setTkId(String tkId) {
-        this.tkId = tkId;
+    public String getTk_uid() {
+        return tk_uid;
     }
 
-    public String getTkUid() {
-        return tkUid;
+    public String getTk_tid() {
+        return tk_tid;
     }
 
-    public void setTkUid(String tkUid) {
-        this.tkUid = tkUid;
+    public String getTk_source() {
+        return tk_source;
     }
 
-    public String getTkTid() {
-        return tkTid;
+    public Date getTk_data() {
+        return tk_data;
     }
 
-    public void setTkTid(String tkTid) {
-        this.tkTid = tkTid;
+    public void setTk_id(String tk_id) {
+        this.tk_id = tk_id;
     }
 
-    public String getTkSource() {
-        return tkSource;
+    public void setTk_uid(String tk_uid) {
+        this.tk_uid = tk_uid;
     }
 
-    public void setTkSource(String tkSource) {
-        this.tkSource = tkSource;
+    public void setTk_tid(String tk_tid) {
+        this.tk_tid = tk_tid;
     }
 
-    public Date getTkData() {
-        return tkData;
+    public void setTk_source(String tk_source) {
+        this.tk_source = tk_source;
     }
 
-    public void setTkData(Date tkData) {
-        this.tkData = tkData;
+    public void setTk_data(Date tk_data) {
+        this.tk_data = tk_data;
     }
 
-    /**
-     * 获取主键值
-     *
-     * @return 主键值
-     */
     @Override
     protected Serializable pkVal() {
-        return this.tkId;
+        return this.tk_id;
     }
     }
 

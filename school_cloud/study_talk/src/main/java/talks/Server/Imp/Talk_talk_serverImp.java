@@ -1,6 +1,5 @@
 package talks.Server.Imp;
 
-import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.Talk_talks;
@@ -10,6 +9,11 @@ import talks.mapper.Talk_talk;
 @Transactional
 public class Talk_talk_serverImp implements Talk_talk_server {
     private Talk_talk talkTalk;
+
+    public Talk_talk_serverImp(Talk_talk talkTalk) {
+        this.talkTalk = talkTalk;
+    }
+
     @Override
     public Integer addtalk_talk(Talk_talks talkTalks) {
         try{
@@ -18,6 +22,7 @@ public class Talk_talk_serverImp implements Talk_talk_server {
         }catch (Exception e){
             return -1;
         }
+        //  return  talkTalk.addtalk_talk(talkTalks);
     }
 
     @Override
