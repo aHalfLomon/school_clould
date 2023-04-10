@@ -12,6 +12,13 @@ spring:
     nacos:
       discovery:
         server-addr: 119.3.172.171:7000
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
