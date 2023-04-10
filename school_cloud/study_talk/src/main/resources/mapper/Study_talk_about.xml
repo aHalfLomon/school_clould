@@ -17,11 +17,11 @@
     </select>
 
     <select id="talk_like_cont" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
-        SELECT t_like_count FROM s_t WHERE t_id = {t_id}
+        SELECT t_like_count FROM s_t WHERE t_id = #{t_id};
     </select>
 
     <select id="talk_usersc_cont" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
-        SELECT t_usc_count FROM s_t WHERE t_id = {t_id}
+        SELECT t_usc_count FROM s_t WHERE t_id = #{t_id};
     </select>
 
     <update id="uptalk" parameterType="talks.Pojo.School_talk">

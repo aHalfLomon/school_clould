@@ -23,9 +23,9 @@ public interface Study_talk_about {
     Integer uptalk(School_talk schoolTalk);
 
     //搜索相关
-    Integer talk_like_cont(String t_id);
+    School_talk talk_like_cont(String t_id);
 
-    Integer talk_usersc_cont(String t_id);
+    School_talk talk_usersc_cont(String t_id);
     List<School_talk> search_talk_source(String source);
 
 

@@ -12,3 +12,6 @@ spring:
     nacos:
       discovery:
         server-addr: 119.3.172.171:7000
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false

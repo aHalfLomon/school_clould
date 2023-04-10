@@ -54,24 +54,25 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
     }
 
     @Override
-    public Integer talk_like_cont(String t_id) {
-        try {
-            int f = studyTalkAbout.talk_like_cont(t_id);
-            return  f;
-        }catch (Exception e) {
-            return -1;
-        }
-        //return talkContsSearch.talk_like_cont(t_id);
+    public School_talk talk_like_cont(String t_id) {
+//        try {
+//            int f = studyTalkAbout.talk_like_cont(t_id);
+//            return  f;
+//        }catch (Exception e) {
+//            return -1;
+//        }
+        return studyTalkAbout.talk_like_cont(t_id);
     }
 
     @Override
-    public Integer talk_usersc_cont(String t_id) {
-        try {
-            int f = studyTalkAbout.talk_usersc_cont(t_id);
-            return f;
-        }catch (Exception e){
-            return -1;
-        }
+    public School_talk talk_usersc_cont(String t_id) {
+//        try {
+//            int f = studyTalkAbout.talk_usersc_cont(t_id);
+//            return f;
+//        }catch (Exception e){
+//            return -1;
+//        }
+        return studyTalkAbout.talk_usersc_cont(t_id);
     }
 
     @Override

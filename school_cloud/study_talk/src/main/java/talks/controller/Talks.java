@@ -99,21 +99,18 @@ public class Talks {
 
     @GetMapping("/search_talk_like")
     public ResultData search_talk_like(@RequestParam("t_id") String t_id){
-        int f = talkAboutServer.talk_like_cont(t_id);
-        if(f != -1){
+        School_talk f = talkAboutServer.talk_like_cont(t_id);
+        if(f != null){
             return new ResultData("200","OK!",f);
         }
         else {
             return new ResultData("600","error!","请检查您的参数或者其他内容！");
         }
-
-
-
     }
     @GetMapping("/search_talk_sc")
     public ResultData search_talk_sc(@RequestParam("t_id") String t_id){
-        int f = talkAboutServer.talk_usersc_cont(t_id);
-        if(f != -1){
+        School_talk f = talkAboutServer.talk_usersc_cont(t_id);
+        if(f != null){
             return new ResultData("200","OK!",f);
         }
         else {
