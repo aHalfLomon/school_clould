@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="help_sove.dao.HlepMessDao">
+
+    <resultMap id="BaseResultMap" type="help_sove.entity.HlepMess">
+        <!--@Table hlep_mess-->
+        <result property="hId" column="h_id" jdbcType="VARCHAR"/>
+        <result property="hUid" column="h_uid" jdbcType="VARCHAR"/>
+        <result property="hSource" column="h_source" jdbcType="VARCHAR"/>
+        <result property="hState" column="h_state" jdbcType="INTEGER"/>
+        <result property=" hData" column=" h_data" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          h_id, h_uid, h_source, h_state,  h_data
+        from hlep_mess
+        where h_id = #{hId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          h_id, h_uid, h_source, h_state,  h_data
+        from hlep_mess
+        <where>
+            <if test="hId != null and hId != ''">
+                and h_id = #{hId}
+            </if>
+            <if test="hUid != null and hUid != ''">
+                and h_uid = #{hUid}
+            </if>
+            <if test="hSource != null and hSource != ''">
+                and h_source = #{hSource}
+            </if>
+            <if test="hState != null">
+                and h_state = #{hState}
+            </if>
+            <if test=" hData != null">
+                and  h_data = #{ hData}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          h_id, h_uid, h_source, h_state,  h_data
+        from schools.hlep_mess
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from hlep_mess
+        <where>
+            <if test="hId != null and hId != ''">
+                and h_id = #{hId}
+            </if>
+            <if test="hUid != null and hUid != ''">
+                and h_uid = #{hUid}
+            </if>
+            <if test="hSource != null and hSource != ''">
+                and h_source = #{hSource}
+            </if>
+            <if test="hState != null">
+                and h_state = #{hState}
+            </if>
+            <if test=" hData != null">
+                and  h_data = #{ hData}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="hId" useGeneratedKeys="true">
+        insert into hlep_mess(h_uid, h_source, h_state,  h_data)
+        values (#{hUid}, #{hSource}, #{hState}, #{ hData})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="hId" useGeneratedKeys="true">
+        insert into hlep_mess(h_uid, h_source, h_state,  h_data)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.hUid}, #{entity.hSource}, #{entity.hState}, #{entity. hData})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="hId" useGeneratedKeys="true">
+        insert into hlep_mess(h_uid, h_source, h_state,  h_data)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.hUid}, #{entity.hSource}, #{entity.hState}, #{entity. hData})
+        </foreach>
+        on duplicate key update
+        h_uid = values(h_uid),
+        h_source = values(h_source),
+        h_state = values(h_state),
+         h_data = values( h_data)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update hlep_mess
+        <set>
+            <if test="hUid != null and hUid != ''">
+                h_uid = #{hUid},
+            </if>
+            <if test="hSource != null and hSource != ''">
+                h_source = #{hSource},
+            </if>
+            <if test="hState != null">
+                h_state = #{hState},
+            </if>
+            <if test=" hData != null">
+                 h_data = #{ hData},
+            </if>
+        </set>
+        where h_id = #{hId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from hlep_mess where h_id = #{hId}
+    </delete>
+
+</mapper>
+

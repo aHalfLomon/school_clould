@@ -11,6 +11,7 @@
         <module name="user" />
         <module name="Geteway" />
         <module name="study_talk" />
+        <module name="help_about" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
