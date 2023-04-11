@@ -1,0 +1,13 @@
+server:
+  servlet:
+    context-path: /auth
+  port: 63070
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://119.3.172.171:3300/schools?serverTimezone=UTC&userUnicode=true&useSSL=false&
+    username: root
+    password: 985211
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848

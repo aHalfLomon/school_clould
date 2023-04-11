@@ -6,11 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="user_auth" />
         <module name="School_shop" />
         <module name="user" />
         <module name="Geteway" />
         <module name="study_talk" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="user (1)" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
