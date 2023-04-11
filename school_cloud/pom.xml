@@ -13,6 +13,7 @@
         <module>user</module>
         <module>study_talk</module>
         <module>School_shop</module>
+        <module>help_about</module>
     </modules>
 
     <properties>
