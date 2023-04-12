@@ -1,5 +1,7 @@
 package users.model.po;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +20,10 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("s_user")
 public class SUser extends Model<SUser> {
     //用户ID；系统生成 (主键)
+    @TableId(value = "user_id")
     private String userId;
     //用户昵称
     private String userName;

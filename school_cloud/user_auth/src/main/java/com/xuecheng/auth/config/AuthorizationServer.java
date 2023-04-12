@@ -45,7 +45,7 @@ import javax.annotation.Resource;
                 .scopes("all")// 允许的授权范围
                 .autoApprove(false)//false跳转到授权页面
                 //客户端接收授权码的重定向地址
-                .redirectUris("http://www.51xuecheng.cn")
+                .redirectUris("https://www.baidu.com/")
    ;
   }
 

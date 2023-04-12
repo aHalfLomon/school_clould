@@ -1,0 +1,25 @@
+server:
+  port: 63010 # 网关端口
+spring:
+  application:
+    name: school-gateway
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: school
+        group: school-project
+    gateway:
+      routes:
+        - id: content-api
+          uri: lb://content-api
+          predicates:
+            - Path=/content/**
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+        - id: school-user
+          uri: lb://school-user
+          predicates:
+            - Path=/user/**

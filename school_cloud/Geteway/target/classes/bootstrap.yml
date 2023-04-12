@@ -1,0 +1,44 @@
+server:
+  port: 63010 # 网关端口
+spring:
+  application:
+    name: school-gateway
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: school
+        group: school-project
+    gateway:
+      routes: # 网关路由配置
+        - id: content-api # 路由id，自定义，只要唯一即可
+          uri: lb://content-api # 路由的目标地址 lb就是负载均衡，后面跟服务名称
+          predicates: # 路由断言，也就是判断请求是否符合路由规则的条件
+            - Path=/content/** # 这个是按照路径匹配，只要以/content/开头就符合要求
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+        - id: school-user
+          uri: lb://school-user
+          predicates:
+            - Path=/user/**
+
+
+#spring:
+#  application:
+#    name: school-gateway
+#  cloud:
+#    nacos:
+#      server-addr: 127.0.0.1:8848
+#      discovery:
+#        namespace: school
+#        group: school-project
+#      config:
+#        namespace: school
+#        group: school-project
+#        file-extension: yaml
+#        refresh-enabled: true
+#
+#  profiles:
+#    active: dev

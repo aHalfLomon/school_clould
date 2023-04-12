@@ -10,5 +10,8 @@ spring:
     name: school-user
   cloud:
     nacos:
+      server-addr: 127.0.0.1:8848
       discovery:
-        server-addr: 127.0.0.1:8848
+        namespace: school
+        group: school-project
+
