@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="help_sove.mapper.HelpmessMapper">
+    <insert id="addHelpmess">
+        insert into hlep_mess(h_id,h_uid,h_source,h_state,h_data)
+        values (#{h_id},#{t_uid},#{h_source},#{h_state},#{h_data})
+    </insert>
+
+    <update id="uphelpless" parameterType="help_sove.pojo.HlepMess">
+        update hlep_mess
+        <trim prefix="set" suffixOverrides=",">
+
+            <if test="h_source != null" >
+                h_source = #{h_source},
+            </if>
+            <if test="h_state != null" >
+                h_state = #{h_state},
+            </if>
+            <if test="h_data != null" >
+                h_data = #{h_data},
+            </if>
+        </trim>
+        where h_id = #{h_id}
+    </update>
+</mapper>

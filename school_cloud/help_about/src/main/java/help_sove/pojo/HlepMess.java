@@ -1,5 +1,8 @@
 package help_sove.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,6 +12,8 @@ import java.io.Serializable;
  * @author makejava
  * @since 2023-04-11 11:37:11
  */
+@AllArgsConstructor
+@NoArgsConstructor
 public class HlepMess implements Serializable {
     private static final long serialVersionUID = 107108958048741983L;
     /**

@@ -72,5 +72,6 @@ public class Talk_talks extends Model<Talk_talks> {
     protected Serializable pkVal() {
         return this.tk_id;
     }
+
     }
 

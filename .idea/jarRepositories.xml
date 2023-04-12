@@ -52,14 +52,14 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="pentaho" />
-      <option name="name" value="pentaho" />
-      <option name="url" value="https://nexus.pentaho.org/content/repositories/omni/" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="SpringRpo" />
       <option name="name" value="SpringRpo" />
       <option name="url" value="http://repo.spring.io/release/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="pentaho" />
+      <option name="name" value="pentaho" />
+      <option name="url" value="https://nexus.pentaho.org/content/repositories/omni/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jboss.community" />
