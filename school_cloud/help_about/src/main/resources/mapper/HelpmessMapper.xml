@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="help_sove.mapper.HelpmessMapper">
-    <insert id="addHelpmess">
+
+
+    <insert id="addHelpmess" parameterType="help_sove.pojo.HlepMess">
         insert into hlep_mess(h_id,h_uid,h_source,h_state,h_data)
-        values (#{h_id},#{t_uid},#{h_source},#{h_state},#{h_data})
+        values (#{h_id},#{h_uid},#{h_source},#{h_state},#{h_data})
     </insert>
 
     <update id="uphelpless" parameterType="help_sove.pojo.HlepMess">

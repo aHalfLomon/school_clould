@@ -1,5 +1,6 @@
 package help_sove.pojo;
 
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -14,68 +15,73 @@ import java.io.Serializable;
  */
 @AllArgsConstructor
 @NoArgsConstructor
-public class HlepMess implements Serializable {
-    private static final long serialVersionUID = 107108958048741983L;
+public class HlepMess extends Model<HlepMess> {
+
     /**
      * 求助，反馈ID
      */
-    private String hId;
+    private String h_id;
     /**
      * 求助，反馈人;展示发起人的部分基本信息
      */
-    private String hUid;
+    private String h_uid;
     /**
      * 求助，反馈内容
      */
-    private String hSource;
+    private String h_source;
     /**
      * 解决状态:0待解决 1解决
      */
-    private Integer hState;
+    private String h_state;
     /**
      * 求助、反馈时间
      */
-    private Date hData;
+    private Date h_data;
 
 
-    public String getHId() {
-        return hId;
+    public String getH_id() {
+        return h_id;
     }
 
-    public void setHId(String hId) {
-        this.hId = hId;
+    public void setH_id(String h_id) {
+        this.h_id = h_id;
     }
 
-    public String getHUid() {
-        return hUid;
+    public String getH_uid() {
+        return h_uid;
     }
 
-    public void setHUid(String hUid) {
-        this.hUid = hUid;
+    public void setH_uid(String h_uid) {
+        this.h_uid = h_uid;
     }
 
-    public String getHSource() {
-        return hSource;
+    public String getH_source() {
+        return h_source;
     }
 
-    public void setHSource(String hSource) {
-        this.hSource = hSource;
+    public void setH_source(String h_source) {
+        this.h_source = h_source;
     }
 
-    public Integer getHState() {
-        return hState;
+    public String getH_state() {
+        return h_state;
     }
 
-    public void setHState(Integer hState) {
-        this.hState = hState;
+    public void setH_state(String h_state) {
+        this.h_state = h_state;
     }
 
-    public Date gethData() {
-        return hData;
+    public Date getH_data() {
+        return h_data;
     }
 
-    public void sethData(Date hData) {
-        this.hData = hData;
+    public void setH_data(Date h_data) {
+        this.h_data = h_data;
+    }
+
+    @Override
+    protected Serializable pkVal() {
+        return this.h_id;
     }
 
 }

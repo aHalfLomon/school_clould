@@ -23,7 +23,35 @@ public class HlepMessController {
 
     @PostMapping("/add_help")
     public ResultData addHelpMess(@RequestBody HlepMess hlepMess){
-        return new ResultData("200","OK!","OK!");
+        int f = hlepMessService.addHelpmess(hlepMess);
+        if(f == 1){
+            return new ResultData("200","OK!","添加成功!");
+        }
+        else {
+            return new ResultData("600","error!","请检查您的参数或者其他内容");
+        }
+    }
+
+    @PostMapping("/upHelp_mess")
+    public ResultData upmess(@RequestBody HlepMess hlepMess){
+        int f = hlepMessService.uphelpless(hlepMess);
+        if(f == 1){
+            return new ResultData("200","OK!","更新完成!");
+        }else {
+            return new ResultData("600","error!","请检查您的参数或者其他内容");
+        }
+
+    }
+
+    @GetMapping("/del_helpMess")
+    public ResultData del_helpMess(@RequestParam("h_id") String h_id){
+        int f = hlepMessService.delHelpmess(h_id);
+        if(f == 1){
+            return new ResultData("200","OK!","删除成功!");
+        }else {
+            return new ResultData("600","error!","请检查您的参数或者其他内容");
+        }
+
     }
 
 }

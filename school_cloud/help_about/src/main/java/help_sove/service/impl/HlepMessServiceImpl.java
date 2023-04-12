@@ -18,16 +18,33 @@ public class HlepMessServiceImpl implements HlepMessService {
 
     @Override
     public Integer addHelpmess(HlepMess hlepMess) {
-        return helpmessMapper.addHelpmess(hlepMess);
+        try{
+            helpmessMapper.addHelpmess(hlepMess);
+            return  1;
+        }catch (Exception e){
+            return -100;
+        }
+
     }
 
     @Override
     public Integer delHelpmess(String h_id) {
-        return null;
+        try {
+            helpmessMapper.delHelpmess(h_id);
+            return 1;
+        }catch (Exception e){
+            return -100;
+        }
     }
 
     @Override
     public Integer uphelpless(HlepMess hlepMess) {
-        return helpmessMapper.uphelpless(hlepMess);
+        try{
+            helpmessMapper.uphelpless(hlepMess);
+            return 1;
+        }catch (Exception e){
+            return -100;
+        }
+
     }
 }
