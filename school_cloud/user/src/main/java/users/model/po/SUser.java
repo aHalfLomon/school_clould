@@ -1,8 +1,6 @@
 package users.model.po;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +39,7 @@ public class SUser extends Model<SUser> {
     //用户自我介绍 
     private String userIntroduct;
     //用户注册时间
+    @TableField(fill = FieldFill.INSERT)
     private Date userCreateTime;
     //用户状态1正常 2 异常
     private String userStatus;
@@ -51,6 +50,7 @@ public class SUser extends Model<SUser> {
     //用户年龄
     private Integer userAge;
     //用户资料更新时间
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date userUpdateTime;
 
 

@@ -9,9 +9,9 @@ POST {{gateway}}/user/open/logon
 Content-Type: application/json
 
 {
-  "userPhone":"12333333333",
+  "userPhone":"1887277735",
   "userPassward":"1234",
-  "userName":"administrators",
+  "userName":"oran cheng",
   "sms":"12"
 }
 

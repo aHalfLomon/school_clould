@@ -1,5 +1,6 @@
 package users.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -14,6 +15,7 @@ import users.service.UserService;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -61,7 +63,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean SendSms(String phone) {
         //判断手机号是否被注册
-
+        LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
+        queryWrapper.eq(SUser::getUserPhone,phone);
+        SUser phuser=suserMapper.selectOne(queryWrapper);
+        if (phuser!=null){
+            return false;
+        }
         //发送到手机
 
         //生产验证码，并存入redis
@@ -75,7 +82,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean UpUser(SUser sUser) {
         SecurityUtil.XcUser user=SecurityUtil.getUser();
-//        sUser.setUserUpdateTime();
+
         return false;
     }
 }
