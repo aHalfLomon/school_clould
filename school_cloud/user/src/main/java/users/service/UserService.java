@@ -7,8 +7,12 @@ import java.util.List;
 
 public interface UserService {
 
-    List<SUser> getAllUsers();
-
     //注册
     boolean LogonUser(LogonUserDto logonUserDto);
+
+    //发送验证码
+    boolean SendSms(String phone);
+
+    //修改用户信息
+    boolean UpUser(SUser sUser);
 }

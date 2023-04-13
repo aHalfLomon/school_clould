@@ -1,6 +1,8 @@
 package users.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 import users.config.SecurityUtil;
 import users.model.dto.LogonUserDto;
@@ -17,37 +19,50 @@ import java.util.List;
  * @Created by wang
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user/open")
 public class UserController {
 
     @Autowired
     UserService userService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     //发送验证码
-    @GetMapping("/sedsms/{Sms}")
-    public ResultData test1(@PathVariable("Sms") String Sms){
-        SecurityUtil.XcUser user=SecurityUtil.getUser();
-        List<SUser> list=userService.getAllUsers();
-        return new ResultData("200","ok",list);
+    @GetMapping("/sedsms/{Phone}")
+    public ResultData test1(@PathVariable("Phone") String Phone){
+        try {
+            boolean b = userService.SendSms(Phone);
+            if(b){
+                return new ResultData("200","ok","验证码发送成功");
+            }
+            return new ResultData("400","error","手机号已经被注册");
+        }catch (Exception e){
+            return new ResultData("400","error","验证码发送失败");
+        }
     }
 
     //注册
     @PostMapping("/logon")
     public ResultData Logon(@RequestBody LogonUserDto logonUserDto){
-        userService.LogonUser(logonUserDto);
-        return new ResultData("200","ok","logon");
+        try {
+            boolean b = userService.LogonUser(logonUserDto);
+            if(b){
+                return new ResultData("200","ok","注册成功");
+            }
+            return new ResultData("400","error","验证码错误");
+        }catch (Exception e){
+            return new ResultData("400","error","注册失败");
+        }
+
     }
 
-    //退出
-    @PostMapping("/logout")
-    public ResultData Logout(){
-        return new ResultData("200","ok","logon");
-    }
-
-    //修改用户信息
-    @PostMapping("/upuser")
-    public ResultData upUser(@RequestBody SUser sUser){
-        return new ResultData("200","ok","logon");
+    //redis测试
+    @GetMapping("/redis")
+    public ResultData test(){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        redis.set("longtao","666");
+        return new ResultData("200","ok","redis");
     }
 
 

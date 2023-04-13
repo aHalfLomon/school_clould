@@ -46,15 +46,14 @@ public class PasswordAuthServiceImpl implements AuthService {
 //  //拿 到用户输入的密码
   String passwordForm = authParamsDto.getPassword();
   //校验密码
-//  boolean matches = passwordEncoder.matches(passwordForm, passwordDb);
-//  if(!matches){
-//   throw new RuntimeException("账号或密码错误xxx");
-//  }
-//  XcUserExt xcUserExt = new XcUserExt();
-//  BeanUtils.copyProperties(xcUser,xcUserExt);
-  if(!passwordDb.equals(passwordForm)){
-   throw new RuntimeException("账号或密码错误");
+  boolean matches = passwordEncoder.matches(passwordForm, passwordDb);
+//  System.out.println(passwordDb+" "+passwordForm);
+  if(!matches){
+   throw new RuntimeException("账号或密码错误xxx");
   }
+//  if(!passwordDb.equals(passwordForm)){
+//   throw new RuntimeException("账号或密码错误");
+//  }
 
   return sUser;
  }
