@@ -20,7 +20,7 @@ public class HlepMessController {
 
     @Resource
     HlepMessService hlepMessService;
-
+    //增加一条反馈的帖子
     @PostMapping("/add_help")
     public ResultData addHelpMess(@RequestBody HlepMess hlepMess){
         int f = hlepMessService.addHelpmess(hlepMess);
@@ -31,7 +31,7 @@ public class HlepMessController {
             return new ResultData("600","error!","请检查您的参数或者其他内容");
         }
     }
-
+    //更新反馈的内容
     @PostMapping("/upHelp_mess")
     public ResultData upmess(@RequestBody HlepMess hlepMess){
         int f = hlepMessService.uphelpless(hlepMess);
@@ -42,7 +42,7 @@ public class HlepMessController {
         }
 
     }
-
+    //把反馈的内容删除
     @GetMapping("/del_helpMess")
     public ResultData del_helpMess(@RequestParam("h_id") String h_id){
         int f = hlepMessService.delHelpmess(h_id);
@@ -51,7 +51,6 @@ public class HlepMessController {
         }else {
             return new ResultData("600","error!","请检查您的参数或者其他内容");
         }
-
     }
 
 }

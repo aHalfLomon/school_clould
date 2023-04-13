@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface HelpmessMapper {
     Integer addHelpmess(HlepMess helpMess);
 
-    @Delete("DELETE FROM hlep_mess where h_id = #{h_id}")
+    @Delete("DELETE FROM help_mess where h_id = #{h_id}")
     Integer delHelpmess(String h_id);
 
     Integer uphelpless(HlepMess helpMess);

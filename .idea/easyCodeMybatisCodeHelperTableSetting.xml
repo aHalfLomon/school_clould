@@ -3,6 +3,43 @@
   <component name="EasyCodeTableSetting">
     <option name="tableInfoMap">
       <map>
+        <entry key="schools.hlep_img">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="图片url " />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hImgUrl" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="图片所属求助反馈ID" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hImgSid" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="图片编号 ;在求助，反馈详情页展示的顺序" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hImg" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="HlepImg" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="study_talk" />
+              <option name="savePackageName" value="help_sove.pojo" />
+              <option name="savePath" value="./school_cloud/study_talk/src/main/java/help_sove/pojo" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="schools.hlep_mess">
           <value>
             <TableInfoDTO>
@@ -50,6 +87,43 @@
               <option name="saveModelName" value="help_about" />
               <option name="savePackageName" value="help_sove" />
               <option name="savePath" value="./school_cloud/help_about/src/main/java/help_sove" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="schools.hlep_sove">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="求助，反馈ID" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hId" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="解决状态;0待解决 1解决" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hState" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="解决方案" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hSFa" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="HlepSove" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="study_talk" />
+              <option name="savePackageName" value="help_sove.pojo" />
+              <option name="savePath" value="./school_cloud/study_talk/src/main/java/help_sove/pojo" />
               <option name="templateGroupName" value="Default" />
             </TableInfoDTO>
           </value>

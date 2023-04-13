@@ -4,16 +4,19 @@
 
 
     <insert id="addHelpmess" parameterType="help_sove.pojo.HlepMess">
-        insert into hlep_mess(h_id,h_uid,h_source,h_state,h_data)
-        values (#{h_id},#{h_uid},#{h_source},#{h_state},#{h_data})
+        insert into help_mess(h_id,h_uid,h_source,h_location,h_state,h_data)
+        values (#{h_id},#{h_uid},#{h_source},#{h_location},#{h_state},#{h_data})
     </insert>
 
     <update id="uphelpless" parameterType="help_sove.pojo.HlepMess">
-        update hlep_mess
+        update help_mess
         <trim prefix="set" suffixOverrides=",">
 
             <if test="h_source != null" >
                 h_source = #{h_source},
+            </if>
+            <if test="h_location != null" >
+                h_location = #{h_location},
             </if>
             <if test="h_state != null" >
                 h_state = #{h_state},
@@ -21,6 +24,7 @@
             <if test="h_data != null" >
                 h_data = #{h_data},
             </if>
+
         </trim>
         where h_id = #{h_id}
     </update>

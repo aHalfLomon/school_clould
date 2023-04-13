@@ -29,6 +29,9 @@ public class HlepMess extends Model<HlepMess> {
      * 求助，反馈内容
      */
     private String h_source;
+
+    private String h_location;
+
     /**
      * 解决状态:0待解决 1解决
      */
@@ -79,6 +82,13 @@ public class HlepMess extends Model<HlepMess> {
         this.h_data = h_data;
     }
 
+    public String getH_location() {
+        return h_location;
+    }
+
+    public void setH_location(String h_location) {
+        this.h_location = h_location;
+    }
     @Override
     protected Serializable pkVal() {
         return this.h_id;
