@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import users.mapper.SuserMapper;
+import users.model.dto.LogonUserDto;
 import users.model.po.SUser;
 import users.service.UserService;
 
@@ -26,5 +27,15 @@ public class UserServiceImpl implements UserService {
         QueryWrapper<SUser> queryWrapper=new QueryWrapper<SUser>();
         List<SUser> list=suserMapper.selectList(queryWrapper);
         return list;
+    }
+
+    @Override
+    public boolean LogonUser(LogonUserDto logonUserDto) {
+        SUser sUser=new SUser();
+        sUser.setUserPhone(logonUserDto.getUserPhone());
+        sUser.setUserPassward(logonUserDto.getUserPassward());
+        sUser.setUserName(logonUserDto.getUserName());
+        suserMapper.insert(sUser);
+        return true;
     }
 }

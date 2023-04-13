@@ -1,5 +1,6 @@
 package users.model.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -23,7 +24,7 @@ import java.util.Date;
 @TableName("s_user")
 public class SUser extends Model<SUser> {
     //用户ID；系统生成 (主键)
-    @TableId(value = "user_id")
+    @TableId(value = "user_id",type = IdType.ASSIGN_UUID)
     private String userId;
     //用户昵称
     private String userName;
