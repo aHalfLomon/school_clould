@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -21,6 +22,12 @@ public class HlepMessController {
     @Resource
     HlepMessService hlepMessService;
     //增加一条反馈的帖子
+
+    @GetMapping("/all_helpmess")
+    public ResultData all_helpmess(){
+        List<HlepMess> lists = hlepMessService.allmessages();
+        return new ResultData("200","OK!",lists);
+    }
     @PostMapping("/add_help")
     public ResultData addHelpMess(@RequestBody HlepMess hlepMess){
         int f = hlepMessService.addHelpmess(hlepMess);

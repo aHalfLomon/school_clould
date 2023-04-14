@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="help_sove.mapper.HelpmessMapper">
 
+    <select id="allmessages" parameterType="help_sove.pojo.HlepMess" resultType="help_sove.pojo.HlepMess">
+        SELECT * FROM help_mess;
+    </select>
 
     <insert id="addHelpmess" parameterType="help_sove.pojo.HlepMess">
         insert into help_mess(h_id,h_uid,h_source,h_location,h_state,h_data)

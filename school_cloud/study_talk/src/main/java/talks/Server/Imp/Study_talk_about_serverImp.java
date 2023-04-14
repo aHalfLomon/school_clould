@@ -32,6 +32,17 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
     }
 
     @Override
+    public List<School_talk> search_all() {
+        try {
+            return studyTalkAbout.search_all();
+
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+
+    @Override
     public Integer addtalk(School_talk schoolTalk) {
         try {
             studyTalkAbout.addtalk(schoolTalk);

@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
+@CrossOrigin
 @RequestMapping("/talk_talk")
 public class Talk_talks_about {
     @Resource
@@ -22,6 +23,7 @@ public class Talk_talks_about {
 
     @Resource
     private Talk_talk_likeserver talkLikeserver;
+
 
     @PostMapping("/addtalk")
     public ResultData addtalks(@RequestBody Talk_talks talk){
@@ -60,8 +62,6 @@ public class Talk_talks_about {
         }else {
             return new ResultData("600","error!","请检查您的参数或者其他内容");
         }
-
-
     }
 
 

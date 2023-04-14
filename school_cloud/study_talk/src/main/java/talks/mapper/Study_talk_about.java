@@ -14,6 +14,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface Study_talk_about {
+    //展示所有的帖子
+    List<School_talk> search_all();
 
     //发送帖子
     Integer addtalk(School_talk schoolTalk);

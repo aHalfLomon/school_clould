@@ -23,6 +23,7 @@ import java.util.List;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
+@CrossOrigin
 @RequestMapping("/study_talk")
 public class Talks {
     @Resource
@@ -83,6 +84,7 @@ public class Talks {
         }
     }
     //按照帖子内容去查询帖子（支持模糊匹配）
+    @CrossOrigin
     @GetMapping("/search_source")
     private ResultData search_source(@RequestParam("source") String source){
          List<School_talk> schoolTalk = talkAboutServer.search_talk_source(source);
@@ -116,6 +118,13 @@ public class Talks {
         else {
             return new ResultData("600","error!","请检查您的参数或者其他内容！");
         }
+    }
+
+    //来展示所有的帖子
+    @GetMapping("/all_studyTalk")
+    public ResultData all_studyTalk(){
+        List<School_talk> talks = talkAboutServer.search_all();
+        return new ResultData("200","OK!",talks);
     }
 
 

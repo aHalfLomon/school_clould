@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 @Transactional
@@ -15,6 +16,15 @@ public class HlepMessServiceImpl implements HlepMessService {
     @Resource
     private HelpmessMapper helpmessMapper;
 
+
+    @Override
+    public List<HlepMess> allmessages() {
+        try{
+            return  helpmessMapper.allmessages();
+        }catch (Exception e){
+            return null;
+        }
+    }
 
     @Override
     public Integer addHelpmess(HlepMess hlepMess) {
