@@ -43,6 +43,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()//其它请求全部放行
                 .and()
                 .formLogin().successForwardUrl("/login-success");//登录成功跳转到/login-success
+
+//        http
+//                .logout()
+//                .logoutUrl("/logout") // 注销请求 URL
+//                .invalidateHttpSession(true) // 是否使会话无效
+//                .deleteCookies("JSESSIONID") // 删除 cookie
+//                .permitAll(); // 注销请求允许所有用户访问
     }
 
 }
