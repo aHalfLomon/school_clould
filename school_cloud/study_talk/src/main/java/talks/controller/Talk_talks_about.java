@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 @EnableWebMvc
 @RestController
 @CrossOrigin
-@RequestMapping("/talk_talk")
+@RequestMapping("/talk/talk_talk")
 public class Talk_talks_about {
     @Resource
     private Talk_talk_server talkTalkServer;

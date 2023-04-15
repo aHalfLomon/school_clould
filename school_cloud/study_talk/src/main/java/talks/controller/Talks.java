@@ -24,7 +24,7 @@ import java.util.List;
 @EnableWebMvc
 @RestController
 @CrossOrigin
-@RequestMapping("/study_talk")
+@RequestMapping("/talk/study_talk")
 public class Talks {
     @Resource
     private Testmapper tests;
