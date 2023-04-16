@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="help_sove.mapper.Help_ImageMapper">
+
+    <insert id="addImg" parameterType="help_sove.pojo.HelpImg">
+        insert into help_img(h_img_url,h_img_sid,h_img)
+        values (#{h_img_url},#{h_img_sid},#{h_img})
+    </insert>
+
+</mapper>
