@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@RequestMapping("/help_sove")
+@RequestMapping("/helptalk/help_sove")
 public class Help_sove {
     @Resource
     private Help_sove_Server helpSove;

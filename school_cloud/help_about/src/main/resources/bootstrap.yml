@@ -18,6 +18,8 @@ spring:
     nacos:
       discovery:
         server-addr: 119.3.172.171:7000
+        group: help-project
+        namespace: help
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8

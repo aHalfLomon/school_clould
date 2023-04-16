@@ -50,7 +50,7 @@ public class HlepMessController {
 
     }
     //把反馈的内容删除
-    @GetMapping("/del_helpMess")
+    @GetMapping("/helptalk/del_helpMess")
     public ResultData del_helpMess(@RequestParam("h_id") String h_id){
         int f = hlepMessService.delHelpmess(h_id);
         if(f == 1){

@@ -7,12 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
 import javax.annotation.Resource;
 
 /**
  * @Classname Help_Img
- * @Description TODO
  * @Date 2023/4/13 17:07
  * @Created by wang
  */
@@ -21,7 +19,7 @@ import javax.annotation.Resource;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@RequestMapping("/help_img")
+@RequestMapping("/helptalk/help_img")
 public class Help_Img {
     @Resource
     private Help_ImgServer helpImgServer;

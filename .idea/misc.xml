@@ -6,7 +6,14 @@
       <list>
         <option value="$PROJECT_DIR$/school_cloud/pom.xml" />
         <option value="$PROJECT_DIR$/school_cloud/user_auth/pom.xml" />
+        <option value="$PROJECT_DIR$/school_cloud/project-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/school_cloud/project_base/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/school_cloud/project_parent/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />

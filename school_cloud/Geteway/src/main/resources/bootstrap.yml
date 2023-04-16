@@ -23,4 +23,8 @@ spring:
           uri: lb://school-talk
           predicates:
             - Path=/talk/**
+        - id: school-help
+          uri: lb://school-help
+          predicates:
+            - Path=/helptalk/**
 

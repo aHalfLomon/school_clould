@@ -18,5 +18,6 @@ public interface Help_ImageMapper {
     @Delete("DELETE FROM help_img where h_img_sid = #{h_img_sid} and h_img = ${h_img}")
     Integer delImg(String h_img_sid,String h_img);
 
+    
 
 }

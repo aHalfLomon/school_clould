@@ -3,8 +3,8 @@
 <mapper namespace="help_sove.mapper.Help_soveMapper">
 
     <insert id="soveit" parameterType="help_sove.pojo.HelpSove">
-        insert into help_sove(h_id,h_s_time,h_state,h_s_fa)
-        values (#{h_id},#{h_s_time},#{h_state},#{h_s_fa})
+        insert into help_sove(h_id,h_s_time,h_sovePerson,h_state,h_s_fa)
+        values (#{h_id},#{h_s_time},#{h_sovePerson},#{h_state},#{h_s_fa})
     </insert>
 
 </mapper>

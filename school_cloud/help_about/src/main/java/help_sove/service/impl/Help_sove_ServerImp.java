@@ -5,6 +5,7 @@ import help_sove.mapper.Help_soveMapper;
 import help_sove.pojo.HelpSove;
 import help_sove.service.Help_sove_Server;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -13,8 +14,8 @@ import javax.annotation.Resource;
  * @Date 2023/4/13 16:41
  * @Created by wang
  */
-
 @Service
+@Transactional
 public class Help_sove_ServerImp implements Help_sove_Server {
 
     @Resource
