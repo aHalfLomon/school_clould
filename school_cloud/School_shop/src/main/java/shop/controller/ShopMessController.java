@@ -1,10 +1,7 @@
 package shop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import shop.entity.po.ShopMess;
 import shop.entity.utilsDto.ResultData;
 import shop.service.ShopMessService;
@@ -18,17 +15,18 @@ import java.util.List;
  * @Date 2023/4/16 17:10
  **/
 @RestController
-@RequestMapping("/shop")
+@RequestMapping("/shop/mess")
 public class ShopMessController {
 
     @Autowired
-    ShopMessService service;
+    ShopMessService shopMessService;
 
-    //发布商品
-//    @PostMapping("/up")
-//    public ResultData upMySshop(){
-//
-//    }
+//    发布商品
+    @PostMapping("/up")
+    public ResultData upMySshop(@RequestBody ShopMess shopMess){
+        shopMessService.upMyShop(shopMess);
+        return new ResultData("200","ok","null");
+    }
 
     //删除商品
 

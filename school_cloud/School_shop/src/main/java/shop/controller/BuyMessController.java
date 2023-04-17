@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2023/4/17 16:32
  **/
 @RestController
-@RequestMapping
+@RequestMapping("/shop/buy")
 public class BuyMessController {
 
     //查看我购买的商品

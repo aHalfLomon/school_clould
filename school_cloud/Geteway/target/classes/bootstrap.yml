@@ -28,4 +28,8 @@ spring:
           uri: lb://school-help
           predicates:
             - Path=/helptalk/**
+        - id: school-shop
+          uri: lb://school-shop
+          predicates:
+            - Path=/shop/**
 

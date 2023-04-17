@@ -1,6 +1,7 @@
 package shop.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shop.config.SecurityUtil;
@@ -25,6 +26,7 @@ public class ShopMessServiceImpl implements ShopMessService {
     @Override
     public List<ShopMess> getAllShop() {
         //分页
+        Page<ShopMess> page= new Page<>(1,8);
         LambdaQueryWrapper<ShopMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         List<ShopMess> list=shopMessDao.selectList(lambdaQueryWrapper);
         return list;
@@ -33,18 +35,23 @@ public class ShopMessServiceImpl implements ShopMessService {
     @Override
     public void upMyShop(ShopMess shopMess) {
         //将shopUid赋值
-        SecurityUtil.XcUser user=SecurityUtil.getUser();
-        shopMess.setShopId(user.getUserId());
+//        String userid=SecurityUtil.getUser().getUserId();
+        String userid="110110110";
+        shopMess.setShopUid(userid);
         shopMessDao.insert(shopMess);
     }
 
     @Override
     public void deleteMyShop(String shopId) {
-
+        shopMessDao.deleteById(shopId);
     }
 
     @Override
     public List<ShopMess> getMyUpShop() {
-        return null;
+        SecurityUtil.XcUser user=SecurityUtil.getUser();
+        LambdaQueryWrapper<ShopMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(ShopMess::getShopId,user.getUserId());
+        List<ShopMess> list = shopMessDao.selectList(queryWrapper);
+        return list;
     }
 }

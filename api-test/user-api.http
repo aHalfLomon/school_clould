@@ -20,5 +20,15 @@ GET {{gateway}}/user/logout
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJ1c2VyQWdlXCI6MTksXCJ1c2VyQXZhdGFyXCI6XCJodHRwcy8vOnh4eHgueHh4eFwiLFwidXNlckNyZWF0ZVRpbWVcIjoxNjgwNTE5ODYxMDAwLFwidXNlckVtYWlsXCI6XCIxMjM0NTZAZW1haWwuY29tXCIsXCJ1c2VySWRcIjpcIjB4MDAwMDkxMjdcIixcInVzZXJJbnRyb2R1Y3RcIjpcIm51bGxcIixcInVzZXJOYW1lXCI6XCJ6aGFuZ3NhblwiLFwidXNlclBob25lXCI6XCIxMjMzMzMzMzMzM1wiLFwidXNlclNleFwiOlwi55S3XCIsXCJ1c2VyU3RhdHVzXCI6XCLmraPluLhcIixcInVzZXJUeXBlXCI6XCLnrqHnkIblkZhcIixcInVzZXJVcGRhdGVUaW1lXCI6MTY4MDUxOTg3ODAwMH0iLCJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjgxMzkzMjgwLCJhdXRob3JpdGllcyI6WyJ0ZXN0Il0sImp0aSI6ImM5ZWRlMjJlLTdiMDItNGYzZC1iMzYxLTg4ZDBjNDQxZDU2YyIsImNsaWVudF9pZCI6IlhjV2ViQXBwIn0.U3-O32QUmodYmbMABz31iiigW-MxCezK-tVS2_Vmjho
 
 ###学校市场mysql测试
-
 GET {{shop-api}}/mess/get
+
+###发布商品
+POST {{gateway}}/shop/mess/up
+Content-Type: application/json
+
+{
+  "shopName":"PB",
+  "shopIntuoduct":"ASS",
+  "shopPrice":"89",
+  "shopBuy":"0"
+}
