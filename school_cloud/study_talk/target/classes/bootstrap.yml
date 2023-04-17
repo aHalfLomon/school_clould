@@ -1,0 +1,30 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:mysql://119.3.172.171:3300/schools?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: root
+    password: 985211
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: school-talk
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 119.3.172.171:7000
+        group: school-project
+        namespace: school
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+
+
+
