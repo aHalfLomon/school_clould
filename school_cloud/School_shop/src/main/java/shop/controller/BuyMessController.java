@@ -1,5 +1,6 @@
 package shop.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/shop/buy")
+@CrossOrigin
 public class BuyMessController {
 
     //查看我购买的商品

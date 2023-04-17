@@ -8,13 +8,13 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: school-shop
-#  cloud:
-#    nacos:
-#      discovery:
-##        server-addr: 119.3.172.171:7000
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 119.3.172.171:7000
 #        server-addr: 127.0.0.1:8848
-#        namespace: school
-#        group: school-project
+        namespace: school
+        group: school-project
 
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss

@@ -13,7 +13,7 @@ import java.util.List;
 public interface ShopMessService {
 
     //查询所有商品，分页
-    List<ShopMess> getAllShop();
+    List<ShopMess> getAllShop(int page);
 
     //发布商品
     void upMyShop(ShopMess shopMess);
@@ -24,5 +24,6 @@ public interface ShopMessService {
     //查询我发布的商品
     List<ShopMess> getMyUpShop();
 
-
+    //通过id查商品信息
+    ShopMess getOneShop(String shopId);
 }

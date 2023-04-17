@@ -24,11 +24,12 @@ public class ShopMessServiceImpl implements ShopMessService {
     ShopMessDao shopMessDao;
 
     @Override
-    public List<ShopMess> getAllShop() {
+    public List<ShopMess> getAllShop(int p) {
         //分页
-        Page<ShopMess> page= new Page<>(1,8);
+        Page<ShopMess> page= new Page<>(p,4);
+        page=shopMessDao.selectPage(page,null);
         LambdaQueryWrapper<ShopMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
-        List<ShopMess> list=shopMessDao.selectList(lambdaQueryWrapper);
+        List<ShopMess> list=page.getRecords();
         return list;
     }
 
@@ -53,5 +54,11 @@ public class ShopMessServiceImpl implements ShopMessService {
         queryWrapper.eq(ShopMess::getShopId,user.getUserId());
         List<ShopMess> list = shopMessDao.selectList(queryWrapper);
         return list;
+    }
+
+    @Override
+    public ShopMess getOneShop(String shopId) {
+        ShopMess shopMess=shopMessDao.selectById(shopId);
+        return shopMess;
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/shop/mess")
+@CrossOrigin
 public class ShopMessController {
 
     @Autowired
@@ -33,4 +34,9 @@ public class ShopMessController {
     //查询我发布的商品
 
     //查询所有商品，分页
+    @GetMapping("/get/{p}")
+    public ResultData getAll(@PathVariable("p") int p){
+        List<ShopMess> list=shopMessService.getAllShop(p);
+        return new ResultData("200","ok",list);
+    }
 }

@@ -14,6 +14,7 @@ import users.service.UserService;
  **/
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserAuthController {
 
     @Autowired
