@@ -30,8 +30,19 @@ public class ShopMessController {
     }
 
     //删除商品
+    @DeleteMapping("/delete/{id}")
+    public ResultData deleteMySHop(@PathVariable("id") String id){
+        shopMessService.deleteMyShop(id);
+        return new ResultData("200","ok","null");
+    }
+
 
     //查询我发布的商品
+    @GetMapping("/getMyShop")
+    public ResultData getMySHop(){
+        List<ShopMess> myUpShop = shopMessService.getMyUpShop();
+        return new ResultData("200","ok",myUpShop);
+    }
 
     //查询所有商品，分页
     @GetMapping("/get/{p}")
