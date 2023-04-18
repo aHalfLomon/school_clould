@@ -4,6 +4,9 @@ POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&gr
 ###测试redis
 GET {{gateway}}/user/open/redis
 
+###发送验证码
+GET {{gateway}}/user/open/sedsms/18876521895
+
 ###注册
 POST {{gateway}}/user/open/logon
 Content-Type: application/json

@@ -1,7 +1,14 @@
 package users.service.impl;
 
+import com.aliyuncs.IAcsClient;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
+import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
+import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.exceptions.ServerException;
+import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -19,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import com.aliyuncs.DefaultAcsClient;
 
 /**
  * @Description TODO
@@ -69,13 +77,16 @@ public class UserServiceImpl implements UserService {
         if (phuser!=null){
             return false;
         }
-        //发送到手机
 
         //生产验证码，并存入redis
         Random random=new Random();
         String sms=String.valueOf(random.nextInt(9999-1000+1)+1000);
         ValueOperations redis = redisTemplate.opsForValue();
         redis.set(phone,sms,5, TimeUnit.MINUTES);//有效时间5分钟
+
+        //发送到手机
+        sendphoneSms(phone, sms);
+
         return true;
     }
 
@@ -85,4 +96,27 @@ public class UserServiceImpl implements UserService {
 
         return false;
     }
+
+    private void sendphoneSms(String phone, String sms) {
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
+        IAcsClient client = new DefaultAcsClient(profile);
+        SendSmsRequest request = new SendSmsRequest();
+        request.setSignName("Hi同学科技");
+        request.setPhoneNumbers(phone);
+        request.setTemplateCode("SMS_252635072");
+        request.setTemplateParam("{\"code\":\""+ sms +"\"}");
+        try {
+            SendSmsResponse response = client.getAcsResponse(request);
+            System.out.println(new Gson().toJson(response));
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            System.out.println("ErrCode:" + e.getErrCode());
+            System.out.println("ErrMsg:" + e.getErrMsg());
+            System.out.println("RequestId:" + e.getRequestId());
+        }
+
+    }
+
+
 }

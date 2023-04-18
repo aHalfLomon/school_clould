@@ -23,6 +23,8 @@ public class BuyMessServiceImpl implements BuyMessService {
 
     @Override
     public List<BuyMess> getBuyShop() {
+        //将shopUid赋值
+//        String userid=SecurityUtil.getUser().getUserId();
         LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(BuyMess::getBuyId,"100");
         List<BuyMess> buyMesses = buyMessDao.selectList(lambdaQueryWrapper);
