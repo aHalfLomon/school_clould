@@ -8,4 +8,6 @@ public interface BuyMessService {
 
     //查看我购买的商品
     public List<BuyMess> getBuyShop();
+
+    //
 }

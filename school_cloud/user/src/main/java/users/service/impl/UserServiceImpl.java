@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    private void sendphoneSms(String phone, String sms) {
+    private static void sendphoneSms(String phone, String sms) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
         IAcsClient client = new DefaultAcsClient(profile);
         SendSmsRequest request = new SendSmsRequest();
@@ -116,6 +116,10 @@ public class UserServiceImpl implements UserService {
             System.out.println("RequestId:" + e.getRequestId());
         }
 
+    }
+
+    public static void main(String[] args) {
+        sendphoneSms("18119451226","2498");
     }
 
 

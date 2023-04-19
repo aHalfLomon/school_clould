@@ -36,7 +36,6 @@ public class ShopMessController {
         return new ResultData("200","ok","null");
     }
 
-
     //查询我发布的商品
     @GetMapping("/getMyShop")
     public ResultData getMySHop(){
