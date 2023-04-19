@@ -29,7 +29,7 @@ public class MinioController {
     private MinioUtils minioUtils;
     private String bucketName="test";
 
-    private final String address = "http://121.36.100.147:9000";
+    private final String address = "http://121.36.100.147:9001";
     /**
      * 上传
      * @param file

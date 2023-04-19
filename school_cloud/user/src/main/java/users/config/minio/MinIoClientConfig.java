@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 public class MinIoClientConfig {
-    private String endpoint="http://121.36.100.147:9000";
+    private String endpoint="http://121.36.100.147:9001";
     private String accessKey="minioadmin";
     private String secretKey="minioadmin";
 
