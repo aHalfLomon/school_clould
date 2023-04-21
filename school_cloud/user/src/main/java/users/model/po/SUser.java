@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,8 +28,10 @@ public class SUser extends Model<SUser> {
     //用户昵称
     private String userName;
     //用户类别；包括 管理员 学生 校媒体
+    @TableField(fill = FieldFill.INSERT)
     private String userType;
     //用户头像；255字符 图床的url
+    @TableField(fill = FieldFill.INSERT)
     private String userAvatar;
     //用户邮箱
     private String userEmail;
@@ -36,12 +39,14 @@ public class SUser extends Model<SUser> {
     private String userPhone;
     //用户密码
     private String userPassward;
-    //用户自我介绍 
+    //用户自我介绍
+    @TableField(fill = FieldFill.INSERT)
     private String userIntroduct;
     //用户注册时间
     @TableField(fill = FieldFill.INSERT)
     private Date userCreateTime;
     //用户状态1正常 2 异常
+    @TableField(fill = FieldFill.INSERT)
     private String userStatus;
     //用户学校
     private String userSchool;

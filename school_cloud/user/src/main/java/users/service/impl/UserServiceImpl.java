@@ -9,6 +9,7 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.gson.Gson;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import users.config.SecurityUtil;
 import users.mapper.SuserMapper;
 import users.model.dto.LogonUserDto;
+import users.model.dto.UpUserDto;
 import users.model.po.SUser;
 import users.service.UserService;
 
@@ -91,12 +93,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean UpUser(SUser sUser) {
+    public boolean UpUser(UpUserDto upUserDto) {
         SecurityUtil.XcUser user=SecurityUtil.getUser();
-
+        SUser userx = suserMapper.selectById(user.getUserId());
+        BeanUtils.copyProperties(upUserDto,userx);
+        suserMapper.updateById(userx);
         return false;
     }
 
+
+    //发送短信
     private static void sendphoneSms(String phone, String sms) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
         IAcsClient client = new DefaultAcsClient(profile);

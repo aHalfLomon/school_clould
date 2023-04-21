@@ -1,5 +1,5 @@
 ### 密码模式，请求AuthParamsDto参数
-POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"password":"1234","authType":"password","cellphone":"12333333333"}
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"password":"1234","authType":"password","cellphone":"1649"}
 
 ###测试redis
 GET {{gateway}}/user/open/redis
@@ -12,9 +12,9 @@ POST {{gateway}}/user/open/logon
 Content-Type: application/json
 
 {
-  "userPhone":"188723232232",
+  "userPhone":"11111111111",
   "userPassward":"1234",
-  "userName":"xxxsa",
+  "userName":"yuyuyuyuu",
   "sms":"12"
 }
 
@@ -22,6 +22,9 @@ Content-Type: application/json
 GET {{gateway}}/user/logout
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJ1c2VyQWdlXCI6MTksXCJ1c2VyQXZhdGFyXCI6XCJodHRwcy8vOnh4eHgueHh4eFwiLFwidXNlckNyZWF0ZVRpbWVcIjoxNjgwNTE5ODYxMDAwLFwidXNlckVtYWlsXCI6XCIxMjM0NTZAZW1haWwuY29tXCIsXCJ1c2VySWRcIjpcIjB4MDAwMDkxMjdcIixcInVzZXJJbnRyb2R1Y3RcIjpcIm51bGxcIixcInVzZXJOYW1lXCI6XCJ6aGFuZ3NhblwiLFwidXNlclBob25lXCI6XCIxMjMzMzMzMzMzM1wiLFwidXNlclNleFwiOlwi55S3XCIsXCJ1c2VyU3RhdHVzXCI6XCLmraPluLhcIixcInVzZXJUeXBlXCI6XCLnrqHnkIblkZhcIixcInVzZXJVcGRhdGVUaW1lXCI6MTY4MDUxOTg3ODAwMH0iLCJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjgxMzkzMjgwLCJhdXRob3JpdGllcyI6WyJ0ZXN0Il0sImp0aSI6ImM5ZWRlMjJlLTdiMDItNGYzZC1iMzYxLTg4ZDBjNDQxZDU2YyIsImNsaWVudF9pZCI6IlhjV2ViQXBwIn0.U3-O32QUmodYmbMABz31iiigW-MxCezK-tVS2_Vmjho
 
+###测试
+GET {{gateway}}/user/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJ1c2VyQ3JlYXRlVGltZVwiOjE2ODIxMDk0ODYwMDAsXCJ1c2VySWRcIjpcIjc3ODIwNzA2YjE3ODExYTJkNjVjMzMxNGQyNWJhZGYwXCIsXCJ1c2VyTmFtZVwiOlwieHh4c2FcIixcInVzZXJQaG9uZVwiOlwiMTY0OVwiLFwidXNlclVwZGF0ZVRpbWVcIjoxNjgyMTA5NDg2MDAwfSIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2ODIwODc5MDksImF1dGhvcml0aWVzIjpbInRlc3QiXSwianRpIjoiODFjNzliZWItZWU0ZS00ODdiLTgyY2MtZWM2NjI3OGE0N2JmIiwiY2xpZW50X2lkIjoiWGNXZWJBcHAifQ.5N9jrtZxsfAaFH1C7yGpKvb078k4RxfxIy3x5T9cMwY
 
 ###发布商品
 POST {{gateway}}/shop/mess/up
@@ -36,3 +39,17 @@ Content-Type: application/json
 
 ###获取所有商品
 GET  {{gateway}}/shop/mess/get/1
+
+###修改用户信息
+POST {{gateway}}/user/upuser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJ1c2VyQ3JlYXRlVGltZVwiOjE2ODIxMDk0ODYwMDAsXCJ1c2VySWRcIjpcIjc3ODIwNzA2YjE3ODExYTJkNjVjMzMxNGQyNWJhZGYwXCIsXCJ1c2VyTmFtZVwiOlwieHh4c2FcIixcInVzZXJQaG9uZVwiOlwiMTY0OVwiLFwidXNlclVwZGF0ZVRpbWVcIjoxNjgyMTEwODE0MDAwfSIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2ODIwODk3NDIsImF1dGhvcml0aWVzIjpbInRlc3QiXSwianRpIjoiNDIzYWIyOTgtNzQ2Ny00OTFlLWE3Y2MtZjNjZmE1NThiMWQ2IiwiY2xpZW50X2lkIjoiWGNXZWJBcHAifQ.qroxboMCUvjb_1eAQ7FyKFPUuXaMSKutg3P5eIXF6Do
+Content-Type: application/json
+
+{
+  "userName":"asas",
+  "userEmail":"a@asdfa",
+  "userIntroduct":"asdasda",
+  "userSchool":"中国海洋大学",
+  "userSex":"男",
+  "userAge":"12"
+}

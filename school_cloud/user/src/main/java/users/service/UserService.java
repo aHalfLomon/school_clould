@@ -1,6 +1,7 @@
 package users.service;
 
 import users.model.dto.LogonUserDto;
+import users.model.dto.UpUserDto;
 import users.model.po.SUser;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface UserService {
     boolean SendSms(String phone);
 
     //修改用户信息
-    boolean UpUser(SUser sUser);
+    boolean UpUser(UpUserDto upUserDto);
 }
