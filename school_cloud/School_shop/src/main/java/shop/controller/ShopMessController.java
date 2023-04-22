@@ -16,7 +16,6 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/shop/mess")
-@CrossOrigin
 public class ShopMessController {
 
     @Autowired

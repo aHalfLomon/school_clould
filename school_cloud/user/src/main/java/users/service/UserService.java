@@ -16,4 +16,7 @@ public interface UserService {
 
     //修改用户信息
     boolean UpUser(UpUserDto upUserDto);
+
+    //获取用户信息
+    SUser getUser();
 }

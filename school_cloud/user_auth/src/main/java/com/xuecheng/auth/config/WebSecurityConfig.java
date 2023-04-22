@@ -43,14 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .logout()
-                .logoutUrl("/logout") // 注销请求 URL
-                .invalidateHttpSession(true) // 是否使会话无效
-                .deleteCookies("JSESSIONID") // 删除 cookie
-                .permitAll() // 注销请求允许所有用户访问
-                .and()
-                .cors()
-                .and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/r/**").authenticated()//访问/r开始的请求需要认证通过
@@ -60,16 +52,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/auth/oauth/token", configuration);
-        return source;
-    }
 
 }

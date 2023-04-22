@@ -101,6 +101,14 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public SUser getUser() {
+        SecurityUtil.XcUser user=SecurityUtil.getUser();
+        SUser userx = suserMapper.selectById(user.getUserId());
+        userx.setUserPassward(null);
+        return userx;
+    }
+
 
     //发送短信
     private static void sendphoneSms(String phone, String sms) {

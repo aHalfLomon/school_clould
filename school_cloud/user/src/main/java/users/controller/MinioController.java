@@ -22,7 +22,6 @@ import java.util.List;
 @Api(tags = "文件上传")
 @Slf4j
 @RequestMapping("/user/open")
-@CrossOrigin
 @RestController
 public class MinioController {
     @Autowired

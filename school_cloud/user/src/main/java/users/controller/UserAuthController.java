@@ -15,7 +15,6 @@ import users.service.UserService;
  **/
 @RestController
 @RequestMapping("/user")
-@CrossOrigin
 public class UserAuthController {
 
     @Autowired
@@ -34,7 +33,15 @@ public class UserAuthController {
         return new ResultData("200","ok","upuser");
     }
 
+    //获取用户信息
+    @GetMapping("/getuser")
+    public ResultData getUser(){
+        SUser user = userService.getUser();
+        return new ResultData("200","ok",user);
+    }
+
     @GetMapping("/test")
     public ResultData test(){return new ResultData("200","ok","带token测试成功");}
+
 
 }
