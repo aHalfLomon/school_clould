@@ -14,6 +14,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
 
 /**
  * @author Mr.M
@@ -38,6 +43,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .logout()
+                .logoutUrl("/logout") // 注销请求 URL
+                .invalidateHttpSession(true) // 是否使会话无效
+                .deleteCookies("JSESSIONID") // 删除 cookie
+                .permitAll() // 注销请求允许所有用户访问
+                .and()
                 .cors()
                 .and()
                 .csrf().disable()
@@ -47,12 +58,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().successForwardUrl("/login-success");//登录成功跳转到/login-success
 
-//        http
-//                .logout()
-//                .logoutUrl("/logout") // 注销请求 URL
-//                .invalidateHttpSession(true) // 是否使会话无效
-//                .deleteCookies("JSESSIONID") // 删除 cookie
-//                .permitAll(); // 注销请求允许所有用户访问
+    }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/auth/oauth/token", configuration);
+        return source;
     }
 
 }

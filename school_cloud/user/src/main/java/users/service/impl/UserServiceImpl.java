@@ -57,10 +57,10 @@ public class UserServiceImpl implements UserService {
         ValueOperations redis = redisTemplate.opsForValue();
         String hSms= (String) redis.get(logonUserDto.getUserPhone());
 
-//        if (!qSms.equals(hSms)){
-//            //验证码错误
-//            return false;
-//        }
+        if (!qSms.equals(hSms)){
+            //验证码错误
+            return false;
+        }
         SUser sUser=new SUser();
         String password = passwordEncoder.encode(logonUserDto.getUserPassward());
         sUser.setUserPhone(logonUserDto.getUserPhone());
