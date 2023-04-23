@@ -2,6 +2,7 @@ package users.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import users.config.SecurityUtil;
 import users.model.dto.UpUserDto;
 import users.model.po.SUser;
 import users.model.utilsDto.ResultData;
@@ -22,8 +23,9 @@ public class UserAuthController {
 
     //退出
     @GetMapping("/logout")
-    public ResultData Logout(){
-        return new ResultData("200","ok","logout");
+    public ResultData Logout(@RequestHeader(value="Authorization") String token){
+        String s=token.substring(7);
+        return new ResultData("200","ok",s);
     }
 
     //修改用户信息
@@ -41,7 +43,9 @@ public class UserAuthController {
     }
 
     @GetMapping("/test")
-    public ResultData test(){return new ResultData("200","ok","带token测试成功");}
+    public ResultData test(){
+        SecurityUtil.XcUser user=SecurityUtil.getUser();
+        return new ResultData("200","ok","带token测试成功:"+user.getUserId());}
 
 
 }

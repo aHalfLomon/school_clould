@@ -3,6 +3,7 @@ package com.xuecheng.ucenter.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.xuecheng.ucenter.mapper.UserMapper;
 import com.xuecheng.ucenter.model.dto.AuthParamsDto;
+import com.xuecheng.ucenter.model.dto.LoginUserDto;
 import com.xuecheng.ucenter.model.po.SUser;
 import com.xuecheng.ucenter.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
@@ -46,21 +47,21 @@ public class UserServiceImpl implements UserDetailsService {
         String beanName=authType+"_authservice";
         AuthService authService = applicationContext.getBean(beanName, AuthService.class);
         //调用
-        SUser execute = authService.execute(authParamsDto);
+        LoginUserDto execute = authService.execute(authParamsDto);
         //
 
         UserDetails userPrincipal = getUserPrincipal(execute);
         return userPrincipal;
     }
 
-    public UserDetails getUserPrincipal(SUser xcUser){
-        String password = xcUser.getUserPassward();
+    public UserDetails getUserPrincipal(LoginUserDto xcUser){
+//        String password = xcUser.getUserPassward();
         //权限
         String[] authorities=  {"test"};
-        xcUser.setUserPassward(null);
+//        xcUser.setUserPassward(null);
         //将用户信息转json
         String userJson = JSON.toJSONString(xcUser);
-        UserDetails userDetails = User.withUsername(userJson).password(password).authorities(authorities).build();
+        UserDetails userDetails = User.withUsername(userJson).password("null").authorities(authorities).build();
         return  userDetails;
     }
 

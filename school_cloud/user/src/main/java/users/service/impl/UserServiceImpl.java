@@ -132,9 +132,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    public static void main(String[] args) {
-        sendphoneSms("18119451226","2498");
-    }
+
 
 
 }

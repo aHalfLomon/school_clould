@@ -17,10 +17,13 @@ public class UpUserDto {
     private String userName;
     //用户邮箱
     private String userEmail;
+//    用户头像
+    private String userAvatar;
     //用户学校
     private String userSchool;
     //用户自我介绍
     private String userIntroduct;
+//    用户性别
     private String userSex;
     //用户年龄
     private Integer userAge;

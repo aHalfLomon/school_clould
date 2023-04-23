@@ -26,4 +26,6 @@ public interface ShopMessService {
 
     //通过id查商品信息
     ShopMess getOneShop(String shopId);
+
+
 }

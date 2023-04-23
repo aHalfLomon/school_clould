@@ -48,4 +48,11 @@ public class ShopMessController {
         List<ShopMess> list=shopMessService.getAllShop(p);
         return new ResultData("200","ok",list);
     }
+
+    //通过id查商品信息
+    @GetMapping("/getone/{p}")
+    public ResultData getOne(@PathVariable("p") String p){
+        ShopMess shopMess=shopMessService.getOneShop(p);
+        return new ResultData("200","ok",shopMess);
+    }
 }

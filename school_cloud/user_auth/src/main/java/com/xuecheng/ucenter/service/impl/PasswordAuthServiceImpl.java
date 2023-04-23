@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xuecheng.ucenter.mapper.UserMapper;
 
 import com.xuecheng.ucenter.model.dto.AuthParamsDto;
+import com.xuecheng.ucenter.model.dto.LoginUserDto;
 import com.xuecheng.ucenter.model.po.SUser;
 import com.xuecheng.ucenter.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class PasswordAuthServiceImpl implements AuthService {
  PasswordEncoder passwordEncoder;
 
  @Override
- public SUser execute(AuthParamsDto authParamsDto) {
+ public LoginUserDto execute(AuthParamsDto authParamsDto) {
   //账号
   String cellphone = authParamsDto.getCellphone();
 
@@ -37,7 +38,7 @@ public class PasswordAuthServiceImpl implements AuthService {
 
   //查询到用户不存在，要返回null即可，spring security框架抛出异常用户不存在
   if(sUser==null){
-   throw new RuntimeException("账号不存在xxxx");
+   throw new RuntimeException("账号不存在");
   }
 
   //验证密码是否正确
@@ -47,15 +48,15 @@ public class PasswordAuthServiceImpl implements AuthService {
   String passwordForm = authParamsDto.getPassword();
   //校验密码
   boolean matches = passwordEncoder.matches(passwordForm, passwordDb);
-//  System.out.println(passwordDb+" "+passwordForm);
-  if(!matches){
-   throw new RuntimeException("账号或密码错误xxx");
-  }
-//  if(!passwordDb.equals(passwordForm)){
-//   throw new RuntimeException("账号或密码错误");
-//  }
 
-  return sUser;
+  if(!matches){
+   throw new RuntimeException("账号或密码错误");
+  }
+
+  LoginUserDto dtouser=new LoginUserDto();
+  dtouser.setUserId(sUser.getUserId());
+  dtouser.setUserPhone(sUser.getUserPhone());
+  return dtouser;
  }
 
 }
