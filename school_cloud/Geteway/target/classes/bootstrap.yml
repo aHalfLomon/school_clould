@@ -11,6 +11,13 @@ spring:
         namespace: school
         group: school-project
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
       routes:
         - id: auth-service
           uri: lb://auth-service

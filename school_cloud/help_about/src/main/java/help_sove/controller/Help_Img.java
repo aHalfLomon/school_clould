@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@CrossOrigin
 @EnableWebMvc
 @RestController
 @RequestMapping("/helptalk/help_img")
