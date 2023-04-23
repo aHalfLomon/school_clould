@@ -14,6 +14,7 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@CrossOrigin
 @EnableWebMvc
 @RestController
 @RequestMapping("/help_mess")

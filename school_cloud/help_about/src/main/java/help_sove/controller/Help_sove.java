@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableWebMvc
+@CrossOrigin
 @RestController
 @RequestMapping("/helptalk/help_sove")
 public class Help_sove {
