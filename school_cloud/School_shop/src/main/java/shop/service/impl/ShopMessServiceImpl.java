@@ -36,8 +36,7 @@ public class ShopMessServiceImpl implements ShopMessService {
     @Override
     public void upMyShop(ShopMess shopMess) {
         //将shopUid赋值
-//        String userid=SecurityUtil.getUser().getUserId();
-        String userid="110110110";
+        String userid=SecurityUtil.getUser().getUserId();
         shopMess.setShopUid(userid);
         shopMessDao.insert(shopMess);
     }

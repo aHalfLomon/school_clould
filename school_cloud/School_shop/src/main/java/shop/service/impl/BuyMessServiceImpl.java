@@ -3,6 +3,7 @@ package shop.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shop.config.SecurityUtil;
 import shop.entity.po.BuyMess;
 import shop.mapper.BuyMessDao;
 import shop.service.BuyMessService;
@@ -24,9 +25,9 @@ public class BuyMessServiceImpl implements BuyMessService {
     @Override
     public List<BuyMess> getBuyShop() {
         //将shopUid赋值
-//        String userid=SecurityUtil.getUser().getUserId();
+        String userid= SecurityUtil.getUser().getUserId();
         LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(BuyMess::getBuyId,"100");
+        lambdaQueryWrapper.eq(BuyMess::getBuyId,userid);
         List<BuyMess> buyMesses = buyMessDao.selectList(lambdaQueryWrapper);
         return buyMesses;
     }
