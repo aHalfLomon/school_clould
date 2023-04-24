@@ -26,6 +26,9 @@ import org.springframework.stereotype.Component;
 public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
+    AuthService authService;
+
+    @Autowired
     UserMapper userMapper;
 
     @Autowired
@@ -44,8 +47,8 @@ public class UserServiceImpl implements UserDetailsService {
         String authType=authParamsDto.getAuthType();
 
         //根据认证类型从spring容器取出指定的bean
-        String beanName=authType+"_authservice";
-        AuthService authService = applicationContext.getBean(beanName, AuthService.class);
+//        String beanName=authType+"_authservice";
+//        AuthService authService = applicationContext.getBean(beanName, AuthService.class);
         //调用
         LoginUserDto execute = authService.execute(authParamsDto);
         //

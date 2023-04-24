@@ -18,6 +18,7 @@ import java.util.Arrays;
  **/
 @Configuration
 public class TokenConfig {
+    //每次登录,先判断有没有登录过,没有就把token存储到redis,有就把之前登录的token存储到黑名单
 
     private String SIGNING_KEY = "mq123";
 

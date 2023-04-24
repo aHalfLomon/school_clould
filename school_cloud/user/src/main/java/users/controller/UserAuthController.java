@@ -1,12 +1,16 @@
 package users.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 import users.config.SecurityUtil;
 import users.model.dto.UpUserDto;
 import users.model.po.SUser;
 import users.model.utilsDto.ResultData;
 import users.service.UserService;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Description TODO
@@ -21,11 +25,17 @@ public class UserAuthController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     //退出
     @GetMapping("/logout")
-    public ResultData Logout(@RequestHeader(value="Authorization") String token){
-        String s=token.substring(7);
-        return new ResultData("200","ok",s);
+    public ResultData Logout(){
+        ValueOperations redis = redisTemplate.opsForValue();
+        SecurityUtil.XcUser user=SecurityUtil.getUser();
+        String s = (String) redis.get("token:" + user.getUserPhone());
+        redis.set("guoqi:"+s,user.getUserPhone(),2, TimeUnit.HOURS);
+        return new ResultData("200","ok",null);
     }
 
     //修改用户信息

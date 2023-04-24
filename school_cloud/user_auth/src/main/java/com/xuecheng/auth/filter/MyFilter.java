@@ -1,7 +1,11 @@
 package com.xuecheng.auth.filter;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xuecheng.ucenter.model.dto.AuUserDto;
 import com.xuecheng.ucenter.model.dto.TokenDto;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,6 +19,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Description TODO
@@ -37,13 +42,24 @@ public class MyFilter implements Filter {
         String responseBody = new String(responseData, response.getCharacterEncoding());
         //处理响应体数据
         TokenDto tokenDto = JSON.parseObject(responseBody, TokenDto.class);
+        //token
+        String jwt=tokenDto.getAccess_token();
+        String secretKey = "mq123";
+        Claims claims = Jwts.parser()
+                .setSigningKey(secretKey.getBytes())
+                .parseClaimsJws(jwt)
+                .getBody();
+        String username = claims.get("user_name", String.class);
+        ObjectMapper mapper = new ObjectMapper();
+
+        AuUserDto userDto=mapper.readValue(username,AuUserDto.class);
+
+        String phone=userDto.getUserPhone();
+
+//     phone  jwt 存入redis
         ValueOperations redis = redisTemplate.opsForValue();
-//        Object principalObj = tokenDto.getAccess_token();
-//            //取出用户身份信息
-//            String principal = principalObj.toString();
-//            //将json转成对象
-//            XcUser user = JSON.parseObject(principal, XcUser.class);
-//
+        redis.set("token:"+phone,jwt,2, TimeUnit.HOURS);
+
         chain.doFilter(request,response);
     }
 

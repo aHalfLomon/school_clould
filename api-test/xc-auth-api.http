@@ -10,3 +10,4 @@ POST {{auth_host}}/auth/oauth/check_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX
 ### 密码模式，请求AuthParamsDto参数
 POST {{gateway}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"password":"1234","authType":"password","cellphone":"12333333333"}
 
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJ1c2VySWRcIjpcImU5NDQzZDU5ZTI4MjY5NTRhYTQzMmExNjZjYjQ3ZmIzXCIsXCJ1c2VyUGhvbmVcIjpcIjEyMzMzMzMzMzMzXCJ9Iiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTY4MjM1NTUxMSwiYXV0aG9yaXRpZXMiOlsidGVzdCJdLCJqdGkiOiIzYzQzMjNjOS05ODlmLTRmZTItOWFmNS1iMjJjZmI0MjRkMjQiLCJjbGllbnRfaWQiOiJYY1dlYkFwcCJ9.0AksAWZjZfiqf-9fN0BW7TwdrXhf2BjROuheYAJxHo8

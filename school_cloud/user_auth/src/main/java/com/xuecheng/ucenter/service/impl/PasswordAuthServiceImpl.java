@@ -9,8 +9,12 @@ import com.xuecheng.ucenter.model.dto.LoginUserDto;
 import com.xuecheng.ucenter.model.po.SUser;
 import com.xuecheng.ucenter.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Mr.M
@@ -27,10 +31,27 @@ public class PasswordAuthServiceImpl implements AuthService {
  @Autowired
  PasswordEncoder passwordEncoder;
 
+ @Autowired
+ RedisTemplate redisTemplate;
+
  @Override
  public LoginUserDto execute(AuthParamsDto authParamsDto) {
   //账号
   String cellphone = authParamsDto.getCellphone();
+  //redis
+  boolean exists = redisTemplate.hasKey("token:"+cellphone);
+  ValueOperations redis = redisTemplate.opsForValue();
+  String flag = (String) redis.get("flag");
+  if (flag.equals("0")){//第一次
+   redis.set("flag","1");
+   if (exists){//已经登录
+    // 将token存入reids中的过期
+    String s = (String) redis.get("token:" + cellphone);
+    redis.set("guoqi:"+s,cellphone,2, TimeUnit.HOURS);
+   }
+  }else{
+   redis.set("flag","0");
+  }
 
   //账号是否存在
   //根据username账号查询数据库

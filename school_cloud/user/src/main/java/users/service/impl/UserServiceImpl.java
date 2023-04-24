@@ -50,6 +50,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean LogonUser(LogonUserDto logonUserDto) {
+        LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
+        queryWrapper.eq(SUser::getUserPhone,logonUserDto.getUserPhone());
+        SUser phuser=suserMapper.selectOne(queryWrapper);
+        if (phuser!=null){
+            return false;
+        }
 
 //        前端传过来的验证码
         String qSms=logonUserDto.getSms();
