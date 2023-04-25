@@ -1,4 +1,0 @@
-geteway\config\SecurityConfig.class
-geteway\getawayapplication.class
-geteway\config\GatewayAuthFilter.class
-geteway\config\TokenConfig.class
