@@ -1,6 +1,0 @@
-geteway\config\SecurityConfig.class
-geteway\config\GatewayAuthFilter.class
-geteway\config\TokenConfig.class
-geteway\filter\MyGatewayFilter.class
-geteway\config\RedisConfig.class
-geteway\getawayapplication.class
