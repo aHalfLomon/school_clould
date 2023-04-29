@@ -16,7 +16,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         this.setFieldValByName("shopData", new Date(), metaObject);
         this.setFieldValByName("buyData", new Date(), metaObject);
         this.setFieldValByName("evnData", new Date(), metaObject);
-
+        this.setFieldValByName("shopBuy", 0, metaObject);
     }
 
     @Override

@@ -45,7 +45,7 @@ public class ShopMessServiceImpl implements ShopMessService {
     @Override
     public List<GetShop> getAllShop(int p) {
         //分页
-        Page<ShopMess> page= new Page<>(p,4);
+        Page<ShopMess> page= new Page<>(p,6);
         page=shopMessDao.selectPage(page,null);
         LambdaQueryWrapper<ShopMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         List<ShopMess> list=page.getRecords();
@@ -153,6 +153,7 @@ public class ShopMessServiceImpl implements ShopMessService {
         return getShops;
     }
 
+    //直接购买商品
     @Override
     public void buyShop(String shopid) {
         //修改商品是否为购买
@@ -162,5 +163,39 @@ public class ShopMessServiceImpl implements ShopMessService {
         //新增购买订单信息
         List<String> list = imageService.getList(shopid);
         buyMessService.buyShop(shopMess,list.get(0));
+    }
+
+    //加入购物车
+    @Override
+    public void incar(String shopid) {
+        ShopMess shopMess = shopMessDao.selectById(shopid);
+        List<String> list = imageService.getList(shopid);
+        buyMessService.inShopCar(shopMess,list.get(0));
+    }
+
+    @Override
+    public List<GetShop> classShop(String className,int p) {
+        LambdaQueryWrapper<ShopMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(ShopMess::getShopClass,className);
+        Page<ShopMess> page= new Page<>(p,6);
+        page=shopMessDao.selectPage(page,queryWrapper);
+        List<ShopMess> list=page.getRecords();
+        List<GetShop> getShops=new ArrayList<>();
+        for (ShopMess shopMess:list){
+            GetShop getShop=new GetShop();
+            getShop.setShopId(shopMess.getShopId());
+            getShop.setShopName(shopMess.getShopName());
+            getShop.setShopIntuoduct(shopMess.getShopIntuoduct());
+            getShop.setShopPrice(shopMess.getShopPrice());
+            getShop.setShopUid(shopMess.getShopUid());
+            getShop.setShopBuy(shopMess.getShopBuy());
+            getShop.setShopData(shopMess.getShopData());
+            UserUn userUn= userClient.findUserUn(shopMess.getShopUid());
+            getShop.setUserName(userUn.getUserName());
+            getShop.setUserUrl(userUn.getUserAvatar());
+            getShop.setUrlList(imageService.getList(shopMess.getShopId()));
+            getShops.add(getShop);
+        }
+        return getShops;
     }
 }

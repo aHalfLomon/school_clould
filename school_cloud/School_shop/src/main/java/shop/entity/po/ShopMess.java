@@ -27,6 +27,7 @@ public class ShopMess extends Model<ShopMess> {
     //发售用户ID
     private String shopUid;
     //是否被购买 1为购买，0为未购买
+    @TableField(fill = FieldFill.INSERT)
     private Integer shopBuy;
     //发售时间
     @TableField(fill = FieldFill.INSERT)

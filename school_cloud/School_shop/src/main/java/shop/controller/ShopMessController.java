@@ -67,9 +67,22 @@ public class ShopMessController {
     }
 
     //购买商品
-        @GetMapping("/buy/{shopid}")
+    @GetMapping("/buy/{shopid}")
     public ResultData buyShop(@PathVariable("shopid") String shopid){
         shopMessService.buyShop(shopid);
         return new ResultData("200","ok",null);
+    }
+    //加入购物车
+    @GetMapping("/incar/{shopid}")
+    public ResultData inCar(@PathVariable("shopid") String shopid){
+        shopMessService.incar(shopid);
+        return new ResultData("200","ok",null);
+    }
+
+    //查询分类商品
+    @GetMapping("/open/class/{className}/{p}")
+    public ResultData classShop(@PathVariable("className") String className,@PathVariable("p") int p){
+        List<GetShop> getShops = shopMessService.classShop(className, p);
+        return new ResultData("200","ok",getShops);
     }
 }

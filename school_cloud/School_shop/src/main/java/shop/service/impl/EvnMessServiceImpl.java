@@ -1,10 +1,12 @@
 package shop.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shop.entity.dto.NewDto;
 import shop.entity.po.EvnMess;
+import shop.entity.po.ShopMess;
 import shop.mapper.EvnMessDao;
 import shop.service.EvnMessService;
 
@@ -37,10 +39,11 @@ public class EvnMessServiceImpl implements EvnMessService {
     }
 
     @Override
-    public List<EvnMess> getAllNews() {
-        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
-//        queryWrapper.like(EvnMess::getEvnTitle,"%"+title+"%");
-        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
-        return evnMesses;
+    public List<EvnMess> getAllNews(int p) {
+        LambdaQueryWrapper<EvnMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        Page<EvnMess> page= new Page<>(p,6);
+        page=evnMessDao.selectPage(page,null);
+        List<EvnMess> list=page.getRecords();
+        return list;
     }
 }

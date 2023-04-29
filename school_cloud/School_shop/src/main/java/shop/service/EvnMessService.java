@@ -14,5 +14,5 @@ public interface EvnMessService {
     void delete(String newId);
 
     //查询新闻
-    List<EvnMess> getAllNews();
+    List<EvnMess> getAllNews(int p);
 }
