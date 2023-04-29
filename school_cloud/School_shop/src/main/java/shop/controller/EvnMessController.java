@@ -34,9 +34,9 @@ public class EvnMessController {
         return new ResultData("200","ok",null);
     }
 
-    @GetMapping("/getAll")
-    public ResultData getNews(){
-        List<EvnMess> allNews = evnMessService.getAllNews();
+    @GetMapping("/getAll/{p}")
+    public ResultData getNews(@PathVariable("p") int p){
+        List<EvnMess> allNews = evnMessService.getAllNews(p);
         return new ResultData("200","ok",allNews);
     }
 
