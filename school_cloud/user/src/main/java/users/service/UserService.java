@@ -19,4 +19,7 @@ public interface UserService {
 
     //获取用户信息
     SUser getUser();
+
+    //根据id查用户信息
+    SUser getUserByid(String id);
 }

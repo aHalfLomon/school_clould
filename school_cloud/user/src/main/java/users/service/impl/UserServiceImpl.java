@@ -115,6 +115,12 @@ public class UserServiceImpl implements UserService {
         return userx;
     }
 
+    @Override
+    public SUser getUserByid(String id) {
+        SUser sUser = suserMapper.selectById(id);
+        return sUser;
+    }
+
 
     //发送短信
     private static void sendphoneSms(String phone, String sms) {

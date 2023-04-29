@@ -7,6 +7,7 @@ com\xuecheng\auth\filter\MyFilter$MyServletOutputStream.class
 com\xuecheng\ucenter\service\impl\PasswordAuthServiceImpl.class
 com\xuecheng\auth\config\MybatisPlusConfig.class
 com\xuecheng\ucenter\model\dto\AuthParamsDto.class
+com\xuecheng\ucenter\model\dto\AuUserDto.class
 com\xuecheng\auth\config\RedisConfig.class
 com\xuecheng\auth\filter\MyFilter.class
 com\xuecheng\ucenter\service\AuthService.class

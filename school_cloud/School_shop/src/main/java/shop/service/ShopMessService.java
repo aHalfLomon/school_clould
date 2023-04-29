@@ -1,5 +1,7 @@
 package shop.service;
 
+import shop.entity.dto.GetShop;
+import shop.entity.dto.ShopDto;
 import shop.entity.po.ShopMess;
 
 import java.util.List;
@@ -13,10 +15,10 @@ import java.util.List;
 public interface ShopMessService {
 
     //查询所有商品，分页
-    List<ShopMess> getAllShop(int page);
+    List<GetShop>  getAllShop(int page);
 
     //发布商品
-    void upMyShop(ShopMess shopMess);
+    void upMyShop(ShopDto shopDto);
 
     //删除商品
     void deleteMyShop(String shopId);
@@ -27,5 +29,9 @@ public interface ShopMessService {
     //通过id查商品信息
     ShopMess getOneShop(String shopId);
 
+    //通过name查商品信息
+    ShopMess getOneShopbyName(String name);
+
+    void buyShop(String shopid);
 
 }

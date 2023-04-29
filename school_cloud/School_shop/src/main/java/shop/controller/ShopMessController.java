@@ -2,6 +2,8 @@ package shop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import shop.entity.dto.GetShop;
+import shop.entity.dto.ShopDto;
 import shop.entity.po.ShopMess;
 import shop.entity.utilsDto.ResultData;
 import shop.service.ShopMessService;
@@ -21,9 +23,10 @@ public class ShopMessController {
     @Autowired
     ShopMessService shopMessService;
 
+
 //    发布商品
     @PostMapping("/up")
-    public ResultData upMySshop(@RequestBody ShopMess shopMess){
+    public ResultData upMySshop(@RequestBody ShopDto shopMess){
         shopMessService.upMyShop(shopMess);
         return new ResultData("200","ok","null");
     }
@@ -43,16 +46,29 @@ public class ShopMessController {
     }
 
     //查询所有商品，分页
-    @GetMapping("/get/{p}")
+    @GetMapping("/open/get/{p}")
     public ResultData getAll(@PathVariable("p") int p){
-        List<ShopMess> list=shopMessService.getAllShop(p);
+        List<GetShop> list=shopMessService.getAllShop(p);
         return new ResultData("200","ok",list);
     }
 
     //通过id查商品信息
-    @GetMapping("/getone/{p}")
+    @GetMapping("/open/getone/{p}")
     public ResultData getOne(@PathVariable("p") String p){
         ShopMess shopMess=shopMessService.getOneShop(p);
         return new ResultData("200","ok",shopMess);
+    }
+
+    //通过name查商品信息
+    @GetMapping("/open/getbyname/{name}")
+    public ResultData getOnebyname(@PathVariable("name") String name){
+        ShopMess oneShopbyName = shopMessService.getOneShopbyName(name);
+        return new ResultData("200","ok",oneShopbyName);
+    }
+
+    //购买商品
+    @GetMapping("/buy/{shopid}")
+    public ResultData buyShop(@PathVariable("shopid") String shopid){
+        return new ResultData("200","ok",null);
     }
 }

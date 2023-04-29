@@ -57,6 +57,13 @@ public class UserController {
 
     }
 
+    //根据id查用户
+    @GetMapping("/getUserbyId/{id}")
+    public ResultData getUserbyId(@PathVariable("id") String id){
+        SUser userByid = userService.getUserByid(id);
+        return new ResultData("200","ok",userByid);
+    }
+
     //redis测试
     @GetMapping("/redis")
     public ResultData test(){
@@ -64,8 +71,4 @@ public class UserController {
         redis.set("longtao","666");
         return new ResultData("200","ok","redis");
     }
-
-
-
-
 }

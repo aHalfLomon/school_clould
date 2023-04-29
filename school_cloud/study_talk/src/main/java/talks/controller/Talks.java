@@ -23,7 +23,6 @@ import java.util.List;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@CrossOrigin
 @RequestMapping("/talk/study_talk")
 public class Talks {
     @Resource
@@ -84,7 +83,6 @@ public class Talks {
         }
     }
     //按照帖子内容去查询帖子（支持模糊匹配）
-    @CrossOrigin
     @GetMapping("/search_source")
     private ResultData search_source(@RequestParam("source") String source){
          List<School_talk> schoolTalk = talkAboutServer.search_talk_source(source);

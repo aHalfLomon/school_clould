@@ -1,4 +1,5 @@
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\mapper\Talk_talk.java
+E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\config\TokenConfig.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\mapper\Testmapper.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\controller\Talks.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\controller\Talk_talks_about.java
@@ -12,7 +13,9 @@ E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\Pojo\Talk_talks.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\Server\Imp\Talk_talk_serverImp.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\Talksapplication.java
+E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\config\ResouceServerConfig.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\Server\Imp\Talk_talklikeserverImp.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\Server\Talk_talk_server.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\Server\Talk_talk_likeserver.java
 E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\Pojo\ResultData.java
+E:\IDEAU\springCloud-2\school-clould\school_cloud\study_talk\src\main\java\talks\config\SecurityUtil.java

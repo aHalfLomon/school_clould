@@ -73,7 +73,7 @@ public class GatewayAuthFilter implements GlobalFilter, Ordered {
         //检查token是否存在
         String token = getToken(exchange);
         if (StringUtils.isBlank(token)) {
-            return buildReturnMono("没有认证",exchange);
+            return buildReturnMono("没有认证,token为空",exchange);
         }
         //判断是否是有效的token
         OAuth2AccessToken oAuth2AccessToken;

@@ -1,4 +1,3 @@
-talks\mapper\Study_talk_about.class
 talks\Pojo\School_talk.class
 talks\mapper\Talk_talk_like.class
 talks\Server\Study_talk_about_server.class
@@ -9,10 +8,15 @@ talks\controller\Talk_talks_about.class
 talks\Pojo\Talk_Talk_likes.class
 talks\mapper\Talk_talk.class
 talks\controller\Talks.class
-talks\Server\Talk_talk_server.class
 talks\Server\Imp\Talk_talk_serverImp.class
-talks\Server\Talk_talk_likeserver.class
 talks\Talksapplication.class
-talks\Pojo\Constants.class
 talks\Server\Imp\Study_talk_about_serverImp.class
 talks\mapper\Testmapper.class
+talks\mapper\Study_talk_about.class
+talks\config\ResouceServerConfig.class
+talks\config\TokenConfig.class
+talks\config\SecurityUtil.class
+talks\Server\Talk_talk_server.class
+talks\Server\Talk_talk_likeserver.class
+talks\config\SecurityUtil$XcUser.class
+talks\Pojo\Constants.class

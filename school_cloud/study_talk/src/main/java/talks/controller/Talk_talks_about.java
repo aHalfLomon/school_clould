@@ -15,7 +15,6 @@ import javax.annotation.Resource;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@CrossOrigin
 @RequestMapping("/talk/talk_talk")
 public class Talk_talks_about {
     @Resource
@@ -43,7 +42,6 @@ public class Talk_talks_about {
             return new ResultData("600","error!","请检查您的参数或者其他内容");
     }
 
-    @CrossOrigin
     @PostMapping("/like_talk")
     public ResultData like_talk(@RequestBody Talk_Talk_likes talkLikes){
         int f = talkLikeserver.addTalkTalk_like(talkLikes);
@@ -54,7 +52,7 @@ public class Talk_talks_about {
         }
 
     }
-    @CrossOrigin
+
     @GetMapping("/dislike_talk")
     public ResultData dislike_talk(@RequestParam("like_sid") String like_sid){
         int f = talkLikeserver.dislike_talk_talk(like_sid);

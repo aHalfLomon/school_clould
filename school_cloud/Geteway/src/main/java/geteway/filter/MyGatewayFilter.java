@@ -29,11 +29,13 @@ public class MyGatewayFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 过滤器逻辑
         String aus = exchange.getRequest().getHeaders().getFirst("Authorization");
-        String authorization=aus.substring(7);
-        Boolean aBoolean = redisTemplate.hasKey("guoqi:" + authorization);
-        if (aBoolean){
-            exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-            return exchange.getResponse().setComplete();
+        if(aus!=null){
+            String authorization=aus.substring(7);
+            Boolean aBoolean = redisTemplate.hasKey("guoqi:" + authorization);
+            if (aBoolean){
+                exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+                return exchange.getResponse().setComplete();
+            }
         }
         return chain.filter(exchange);
     }
