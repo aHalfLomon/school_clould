@@ -48,6 +48,8 @@
         where t_id = #{t_id}
     </update>
 
-    
+    <select id="mytalk" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
+        SELECT * FROM s_t;
+    </select>
 
 </mapper>

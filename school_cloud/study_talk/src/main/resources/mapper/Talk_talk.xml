@@ -11,4 +11,6 @@
         DELETE FROM s_tk WHERE tk_id = #{tk_id};
     </delete>
 
+
+
 </mapper>

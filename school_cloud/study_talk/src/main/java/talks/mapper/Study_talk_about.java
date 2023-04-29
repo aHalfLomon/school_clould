@@ -3,6 +3,7 @@ package talks.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import talks.Pojo.School_talk;
+import talks.Pojo.Talk_talks;
 
 import java.util.List;
 
@@ -29,6 +30,8 @@ public interface Study_talk_about {
 
     School_talk talk_usersc_cont(String t_id);
     List<School_talk> search_talk_source(String source);
+
+    List<School_talk> mytalk(String uid);
 
 
 }

@@ -65,6 +65,11 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
     }
 
     @Override
+    public List<School_talk> mytalk(String uid) {
+        return null;
+    }
+
+    @Override
     public School_talk talk_like_cont(String t_id) {
 //        try {
 //            int f = studyTalkAbout.talk_like_cont(t_id);
