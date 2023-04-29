@@ -15,6 +15,7 @@
         <module>../School_shop</module>
         <module>../project_base</module>
         <module>../user</module>
+        <module>../feign</module>
 
     </modules>
 
