@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 import users.config.SecurityUtil;
 import users.model.dto.LogonUserDto;
+import users.model.dto.UserUn;
 import users.model.po.SUser;
 import users.model.utilsDto.ResultData;
 import users.service.UserService;
@@ -62,6 +63,13 @@ public class UserController {
     public ResultData getUserbyId(@PathVariable("id") String id){
         SUser userByid = userService.getUserByid(id);
         return new ResultData("200","ok",userByid);
+    }
+
+    //根据id查用户name和头像
+    @GetMapping("/getusernu/{id}")
+    public UserUn getusernu(@PathVariable("id") String id){
+        UserUn userUn = userService.getUserUn(id);
+        return userUn;
     }
 
     //redis测试

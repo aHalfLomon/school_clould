@@ -24,13 +24,13 @@ public interface ShopMessService {
     void deleteMyShop(String shopId);
 
     //查询我发布的商品
-    List<ShopMess> getMyUpShop();
+    List<GetShop> getMyUpShop();
 
     //通过id查商品信息
     ShopMess getOneShop(String shopId);
 
     //通过name查商品信息
-    ShopMess getOneShopbyName(String name);
+    List<GetShop> getOneShopbyName(String name);
 
     void buyShop(String shopid);
 

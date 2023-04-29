@@ -12,11 +12,13 @@
         <module name="user_auth" />
         <module name="School_shop" />
         <module name="user" />
+        <module name="feign" />
         <module name="project_base" />
         <module name="help_about" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="news" target="1.8" />
       <module name="project_parent" target="1.8" />
       <module name="school_cloud" target="1.8" />
       <module name="user (1)" target="1.8" />
