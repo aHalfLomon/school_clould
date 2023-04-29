@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.School_talk;
 import talks.Pojo.Talk_Talk_likes;
 import talks.Server.Study_talk_about_server;
+import talks.config.SecurityUtil;
 import talks.mapper.Study_talk_about;
 
 import javax.annotation.Resource;
@@ -42,9 +43,11 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         }
     }
 
+    //user
     @Override
     public Integer addtalk(School_talk schoolTalk) {
         try {
+            schoolTalk.setT_uid(SecurityUtil.getUser().getUserId());
             studyTalkAbout.addtalk(schoolTalk);
             return 1;
         }
@@ -64,9 +67,16 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         return list;
     }
 
+    //返回用户发的帖子
     @Override
     public List<School_talk> mytalk(String uid) {
-        return null;
+        try{
+            return studyTalkAbout.mytalk(uid);
+        }catch (Exception e)
+        {
+            return null;
+        }
+
     }
 
     @Override
@@ -99,5 +109,6 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         }catch (Exception e){
             return 0;
         }
+
     }
 }

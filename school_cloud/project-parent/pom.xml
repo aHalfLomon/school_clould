@@ -16,6 +16,9 @@
         <module>../project_base</module>
         <module>../user_auth</module>
         <module>../help_about</module>
+        <module>../user</module>
+        <module>../feign</module>
+
     </modules>
 
     <properties>

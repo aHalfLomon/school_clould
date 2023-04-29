@@ -19,6 +19,7 @@ import users.config.SecurityUtil;
 import users.mapper.SuserMapper;
 import users.model.dto.LogonUserDto;
 import users.model.dto.UpUserDto;
+import users.model.dto.UserUn;
 import users.model.po.SUser;
 import users.service.UserService;
 
@@ -119,6 +120,15 @@ public class UserServiceImpl implements UserService {
     public SUser getUserByid(String id) {
         SUser sUser = suserMapper.selectById(id);
         return sUser;
+    }
+
+    @Override
+    public UserUn getUserUn(String id) {
+        SUser sUser = suserMapper.selectById(id);
+        UserUn userUn=new UserUn();
+        userUn.setUserAvatar(sUser.getUserAvatar());
+        userUn.setUserName(sUser.getUserName());
+        return userUn;
     }
 
 

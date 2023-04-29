@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.Talk_Talk_likes;
 import talks.Server.Talk_talk_likeserver;
+import talks.config.SecurityUtil;
 import talks.mapper.Talk_talk_like;
 
 import javax.annotation.Resource;
@@ -13,9 +14,11 @@ public class Talk_talklikeserverImp implements Talk_talk_likeserver {
 
     @Resource
     private Talk_talk_like talkLike;
+    //user
     @Override
     public Integer addTalkTalk_like(Talk_Talk_likes talkLikes) {
         try{
+            talkLikes.setLike_uid(SecurityUtil.getUser().getUserId());
             int f = talkLike.addTalkTalk_like(talkLikes);
             return f;
         }catch (Exception e){

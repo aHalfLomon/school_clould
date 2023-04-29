@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.Talk_talks;
 import talks.Server.Talk_talk_server;
+import talks.config.SecurityUtil;
 import talks.mapper.Talk_talk;
 @Service
 @Transactional
@@ -14,9 +15,11 @@ public class Talk_talk_serverImp implements Talk_talk_server {
         this.talkTalk = talkTalk;
     }
 
+    //user
     @Override
     public Integer addtalk_talk(Talk_talks talkTalks) {
         try{
+            talkTalks.setTk_uid(SecurityUtil.getUser().getUserId());
             int f = talkTalk.addtalk_talk(talkTalks);
             return f;
         }catch (Exception e){

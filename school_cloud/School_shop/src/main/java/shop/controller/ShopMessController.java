@@ -41,7 +41,7 @@ public class ShopMessController {
     //查询我发布的商品
     @GetMapping("/getMyShop")
     public ResultData getMySHop(){
-        List<ShopMess> myUpShop = shopMessService.getMyUpShop();
+        List<GetShop>  myUpShop = shopMessService.getMyUpShop();
         return new ResultData("200","ok",myUpShop);
     }
 
@@ -62,13 +62,14 @@ public class ShopMessController {
     //通过name查商品信息
     @GetMapping("/open/getbyname/{name}")
     public ResultData getOnebyname(@PathVariable("name") String name){
-        ShopMess oneShopbyName = shopMessService.getOneShopbyName(name);
+        List<GetShop>  oneShopbyName = shopMessService.getOneShopbyName(name);
         return new ResultData("200","ok",oneShopbyName);
     }
 
     //购买商品
-    @GetMapping("/buy/{shopid}")
+        @GetMapping("/buy/{shopid}")
     public ResultData buyShop(@PathVariable("shopid") String shopid){
+        shopMessService.buyShop(shopid);
         return new ResultData("200","ok",null);
     }
 }

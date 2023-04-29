@@ -9,10 +9,14 @@
         <option value="$PROJECT_DIR$/school_cloud/project-parent/pom.xml" />
         <option value="$PROJECT_DIR$/school_cloud/project_base/pom.xml" />
         <option value="$PROJECT_DIR$/school_cloud/help_about/pom.xml" />
+        <option value="$PROJECT_DIR$/feign/pom.xml" />
+        <option value="$PROJECT_DIR$/school_cloud/feign/pom.xml" />
+        <option value="$PROJECT_DIR$/news/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/school_cloud/news/pom.xml" />
         <option value="$PROJECT_DIR$/school_cloud/project_parent/pom.xml" />
       </set>
     </option>

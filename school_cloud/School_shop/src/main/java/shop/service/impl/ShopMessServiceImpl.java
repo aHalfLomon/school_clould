@@ -2,6 +2,8 @@ package shop.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lt.feign.clients.UserClient;
+import com.lt.feign.pojo.UserUn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shop.config.SecurityUtil;
@@ -36,6 +38,10 @@ public class ShopMessServiceImpl implements ShopMessService {
     @Autowired
     ImageService imageService;
 
+    @Autowired
+    UserClient userClient;
+
+    //查询所有商品，分页
     @Override
     public List<GetShop> getAllShop(int p) {
         //分页
@@ -53,8 +59,9 @@ public class ShopMessServiceImpl implements ShopMessService {
             getShop.setShopUid(shopMess.getShopUid());
             getShop.setShopBuy(shopMess.getShopBuy());
             getShop.setShopData(shopMess.getShopData());
-            getShop.setUserName("null");
-            getShop.setUserUrl("null");
+            UserUn userUn= userClient.findUserUn(shopMess.getShopUid());
+            getShop.setUserName(userUn.getUserName());
+            getShop.setUserUrl(userUn.getUserAvatar());
             getShop.setUrlList(imageService.getList(shopMess.getShopId()));
             getShops.add(getShop);
         }
@@ -87,13 +94,32 @@ public class ShopMessServiceImpl implements ShopMessService {
         shopMessDao.deleteById(shopId);
     }
 
+    //查询我发布的商品
     @Override
-    public List<ShopMess> getMyUpShop() {
+    public List<GetShop> getMyUpShop() {
         SecurityUtil.XcUser user=SecurityUtil.getUser();
         LambdaQueryWrapper<ShopMess> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(ShopMess::getShopId,user.getUserId());
+        queryWrapper.eq(ShopMess::getShopUid,user.getUserId());
         List<ShopMess> list = shopMessDao.selectList(queryWrapper);
-        return list;
+        System.out.println("=======================================================");
+        System.out.println(list);
+        List<GetShop> getShops=new ArrayList<>();
+        for (ShopMess shopMess:list){
+            GetShop getShop=new GetShop();
+            getShop.setShopId(shopMess.getShopId());
+            getShop.setShopName(shopMess.getShopName());
+            getShop.setShopIntuoduct(shopMess.getShopIntuoduct());
+            getShop.setShopPrice(shopMess.getShopPrice());
+            getShop.setShopUid(shopMess.getShopUid());
+            getShop.setShopBuy(shopMess.getShopBuy());
+            getShop.setShopData(shopMess.getShopData());
+            UserUn userUn= userClient.findUserUn(shopMess.getShopUid());
+            getShop.setUserName(userUn.getUserName());
+            getShop.setUserUrl(userUn.getUserAvatar());
+            getShop.setUrlList(imageService.getList(shopMess.getShopId()));
+            getShops.add(getShop);
+        }
+        return getShops;
     }
 
     @Override
@@ -102,21 +128,39 @@ public class ShopMessServiceImpl implements ShopMessService {
         return shopMess;
     }
 
+    //通过name查商品信息
     @Override
-    public ShopMess getOneShopbyName(String name) {
+    public List<GetShop> getOneShopbyName(String name) {
         LambdaQueryWrapper<ShopMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         lambdaQueryWrapper.like(ShopMess::getShopName,"%"+name+"%");
-        ShopMess shopMess = shopMessDao.selectOne(lambdaQueryWrapper);
-        return shopMess;
+        List<ShopMess> list = shopMessDao.selectList(lambdaQueryWrapper);
+        List<GetShop> getShops=new ArrayList<>();
+        for (ShopMess shopMess:list){
+            GetShop getShop=new GetShop();
+            getShop.setShopId(shopMess.getShopId());
+            getShop.setShopName(shopMess.getShopName());
+            getShop.setShopIntuoduct(shopMess.getShopIntuoduct());
+            getShop.setShopPrice(shopMess.getShopPrice());
+            getShop.setShopUid(shopMess.getShopUid());
+            getShop.setShopBuy(shopMess.getShopBuy());
+            getShop.setShopData(shopMess.getShopData());
+            UserUn userUn= userClient.findUserUn(shopMess.getShopUid());
+            getShop.setUserName(userUn.getUserName());
+            getShop.setUserUrl(userUn.getUserAvatar());
+            getShop.setUrlList(imageService.getList(shopMess.getShopId()));
+            getShops.add(getShop);
+        }
+        return getShops;
     }
 
     @Override
     public void buyShop(String shopid) {
+        //修改商品是否为购买
         ShopMess shopMess = shopMessDao.selectById(shopid);
         shopMess.setShopBuy(1);
-        BuyMess buyMess=new BuyMess();
-        //赞停
         shopMessDao.updateById(shopMess);
-
+        //新增购买订单信息
+        List<String> list = imageService.getList(shopid);
+        buyMessService.buyShop(shopMess,list.get(0));
     }
 }

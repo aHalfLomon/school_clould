@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="talks.mapper.Talk_talk">
+
+    <insert id="addtalk_talk">
+        insert into s_tk(tk_id,tk_uid,tk_tid,tk_source,tk_data)
+        values (#{tk_id},#{tk_uid},#{tk_tid},#{tk_source},#{tk_data})
+    </insert>
+
+    <delete id="del_talk_talk">
+        DELETE FROM s_tk WHERE tk_id = #{tk_id};
+    </delete>
+
+
+
+</mapper>

@@ -31,7 +31,11 @@ public interface Study_talk_about {
     School_talk talk_usersc_cont(String t_id);
     List<School_talk> search_talk_source(String source);
 
+    //返回用户发布的帖子
     List<School_talk> mytalk(String uid);
+
+    Integer linkit(String t_id);
+
 
 
 }
