@@ -17,6 +17,8 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/talk/talk_talk")
 public class Talk_talks_about {
+
+    //评论相关
     @Resource
     private Talk_talk_server talkTalkServer;
 

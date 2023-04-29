@@ -25,6 +25,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/talk/study_talk")
 public class Talks {
+    //帖子相关
     @Resource
     private Testmapper tests;
     @Resource
@@ -96,7 +97,7 @@ public class Talks {
         ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
         return resultData1;
     }
-
+    //帖子的点赞数
     @GetMapping("/search_talk_like")
     public ResultData search_talk_like(@RequestParam("t_id") String t_id){
         School_talk f = talkAboutServer.talk_like_cont(t_id);
@@ -107,6 +108,7 @@ public class Talks {
             return new ResultData("600","error!","请检查您的参数或者其他内容！");
         }
     }
+    //返回帖子的收藏数
     @GetMapping("/search_talk_sc")
     public ResultData search_talk_sc(@RequestParam("t_id") String t_id){
         School_talk f = talkAboutServer.talk_usersc_cont(t_id);
@@ -125,6 +127,11 @@ public class Talks {
         return new ResultData("200","OK!",talks);
     }
 
-
+    //展示用户发布的帖子
+    @GetMapping("/mytalks")
+    public ResultData allmytalk(@RequestParam("uid") String uid){
+        List<School_talk> mytalks = talkAboutServer.mytalk(uid);
+        return new ResultData("200","OK!",mytalks);
+    }
 
 }

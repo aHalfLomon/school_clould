@@ -67,6 +67,18 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         return list;
     }
 
+    //返回用户发的帖子
+    @Override
+    public List<School_talk> mytalk(String uid) {
+        try{
+            return studyTalkAbout.mytalk(uid);
+        }catch (Exception e)
+        {
+            return null;
+        }
+
+    }
+
     @Override
     public School_talk talk_like_cont(String t_id) {
 //        try {
@@ -97,5 +109,6 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         }catch (Exception e){
             return 0;
         }
+
     }
 }

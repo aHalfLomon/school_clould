@@ -26,6 +26,7 @@ public interface Study_talk_about_server {
 
     School_talk talk_usersc_cont(String t_id);
     List<School_talk> search_talk_source(String source);
+    List<School_talk> mytalk(String uid);
 
 
 }

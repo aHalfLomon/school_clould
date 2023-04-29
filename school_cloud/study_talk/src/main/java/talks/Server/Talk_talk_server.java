@@ -10,4 +10,5 @@ public interface Talk_talk_server {
 
     Integer del_talk_talk(String tk_id);
 
+
 }

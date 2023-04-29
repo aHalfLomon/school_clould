@@ -17,6 +17,8 @@ public class School_talk extends Model<School_talk> {
     private String t_uid;
     //发帖带的图片（暂定一张）
     private String t_img;
+    //帖子的标题
+    private String t_titile;
     //发帖内容
     private String t_source;
     //发帖日期
@@ -90,6 +92,14 @@ public class School_talk extends Model<School_talk> {
 
     public void setT_status(String t_status) {
         this.t_status = t_status;
+    }
+
+    public String getT_titile() {
+        return t_titile;
+    }
+
+    public void setT_titile(String t_titile) {
+        this.t_titile = t_titile;
     }
 
     /**

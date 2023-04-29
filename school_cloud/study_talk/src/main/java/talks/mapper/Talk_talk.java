@@ -13,4 +13,6 @@ public interface Talk_talk {
     Integer addtalk_talk(Talk_talks talkTalks);
 
     Integer del_talk_talk(String tk_id);
+
+
 }
