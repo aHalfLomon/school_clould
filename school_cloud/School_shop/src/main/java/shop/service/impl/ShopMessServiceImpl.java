@@ -162,7 +162,11 @@ public class ShopMessServiceImpl implements ShopMessService {
         shopMessDao.updateById(shopMess);
         //新增购买订单信息
         List<String> list = imageService.getList(shopid);
-        buyMessService.buyShop(shopMess,list.get(0));
+        if (list==null){
+            buyMessService.buyShop(shopMess,"null");
+        }else {
+            buyMessService.buyShop(shopMess,list.get(0));
+        }
     }
 
     //加入购物车

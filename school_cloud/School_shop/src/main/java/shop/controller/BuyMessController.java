@@ -28,6 +28,7 @@ public class BuyMessController {
         return new ResultData("200","ok",buyShop);
     }
 
+    //查看我的购物车
     @GetMapping("/getmucar")
     public ResultData getcar(){
         List<BuyMess> carShop = buyMessService.getcar();

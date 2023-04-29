@@ -66,7 +66,7 @@ public class ShopMessController {
         return new ResultData("200","ok",oneShopbyName);
     }
 
-    //购买商品
+    //直接购买商品
     @GetMapping("/buy/{shopid}")
     public ResultData buyShop(@PathVariable("shopid") String shopid){
         shopMessService.buyShop(shopid);

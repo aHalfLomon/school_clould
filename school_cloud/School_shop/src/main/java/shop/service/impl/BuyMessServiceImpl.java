@@ -27,20 +27,22 @@ public class BuyMessServiceImpl implements BuyMessService {
     public List<BuyMess> getBuyShop() {
         //将shopUid赋值
         String userid= SecurityUtil.getUser().getUserId();
-        LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(BuyMess::getBuyId,userid);
-        lambdaQueryWrapper.eq(BuyMess::getBuyState,2);
+        LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<BuyMess>()
+                .eq(BuyMess::getBuyUid,userid)
+                .eq(BuyMess::getBuyState,2);
         List<BuyMess> buyMesses = buyMessDao.selectList(lambdaQueryWrapper);
+
         return buyMesses;
     }
 
     @Override
     public List<BuyMess> getcar() {
         String userid= SecurityUtil.getUser().getUserId();
-        LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(BuyMess::getBuyId,userid);
-        lambdaQueryWrapper.eq(BuyMess::getBuyState,1);
+        LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<BuyMess>()
+                .eq(BuyMess::getBuyUid,userid)
+                .eq(BuyMess::getBuyState,1);
         List<BuyMess> buyMesses = buyMessDao.selectList(lambdaQueryWrapper);
+
         return buyMesses;
     }
 
