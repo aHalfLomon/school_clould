@@ -1,10 +1,7 @@
 package shop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import shop.entity.po.BuyMess;
 import shop.entity.utilsDto.ResultData;
 import shop.service.BuyMessService;
@@ -30,5 +27,19 @@ public class BuyMessController {
         List<BuyMess> buyShop = buyMessService.getBuyShop();
         return new ResultData("200","ok",buyShop);
     }
+
+    @GetMapping("/getmucar")
+    public ResultData getcar(){
+        List<BuyMess> carShop = buyMessService.getcar();
+        return new ResultData("200","ok",carShop);
+    }
+
+    //在购物车中购买
+    @GetMapping("/inshopCat/{id}")
+    public ResultData inshopCat(@PathVariable("id") String id){
+        buyMessService.buyShopinCar(id);
+        return new ResultData("200","ok",null);
+    }
+
 
 }

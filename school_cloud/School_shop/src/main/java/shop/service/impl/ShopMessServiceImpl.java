@@ -153,6 +153,7 @@ public class ShopMessServiceImpl implements ShopMessService {
         return getShops;
     }
 
+    //直接购买商品
     @Override
     public void buyShop(String shopid) {
         //修改商品是否为购买
@@ -162,6 +163,14 @@ public class ShopMessServiceImpl implements ShopMessService {
         //新增购买订单信息
         List<String> list = imageService.getList(shopid);
         buyMessService.buyShop(shopMess,list.get(0));
+    }
+
+    //加入购物车
+    @Override
+    public void incar(String shopid) {
+        ShopMess shopMess = shopMessDao.selectById(shopid);
+        List<String> list = imageService.getList(shopid);
+        buyMessService.inShopCar(shopMess,list.get(0));
     }
 
     @Override

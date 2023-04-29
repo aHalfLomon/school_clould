@@ -72,6 +72,12 @@ public class ShopMessController {
         shopMessService.buyShop(shopid);
         return new ResultData("200","ok",null);
     }
+    //加入购物车
+    @GetMapping("/incar/{shopid}")
+    public ResultData inCar(@PathVariable("shopid") String shopid){
+        shopMessService.incar(shopid);
+        return new ResultData("200","ok",null);
+    }
 
     //查询分类商品
     @GetMapping("/open/class/{className}/{p}")

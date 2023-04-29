@@ -29,6 +29,17 @@ public class BuyMessServiceImpl implements BuyMessService {
         String userid= SecurityUtil.getUser().getUserId();
         LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(BuyMess::getBuyId,userid);
+        lambdaQueryWrapper.eq(BuyMess::getBuyState,2);
+        List<BuyMess> buyMesses = buyMessDao.selectList(lambdaQueryWrapper);
+        return buyMesses;
+    }
+
+    @Override
+    public List<BuyMess> getcar() {
+        String userid= SecurityUtil.getUser().getUserId();
+        LambdaQueryWrapper<BuyMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(BuyMess::getBuyId,userid);
+        lambdaQueryWrapper.eq(BuyMess::getBuyState,1);
         List<BuyMess> buyMesses = buyMessDao.selectList(lambdaQueryWrapper);
         return buyMesses;
     }
@@ -38,12 +49,35 @@ public class BuyMessServiceImpl implements BuyMessService {
     public void buyShop(ShopMess shopMess,String url) {
         BuyMess buyMess=new BuyMess();
         buyMess.setBuyUid(SecurityUtil.getUser().getUserId());
+        buyMess.setBuyState(2);
+        buyMess.setBuyImgUrl(url);
+        buyMess.setBuyShopName(shopMess.getShopName());
+        buyMess.setBuyShopIntuoduct(shopMess.getShopIntuoduct());
+        buyMess.setBuyShopId(shopMess.getShopId());
+        buyMessDao.insert(buyMess);
+    }
+
+    //加入购物车
+    @Override
+    public void inShopCar(ShopMess shopMess,String url) {
+        BuyMess buyMess=new BuyMess();
+        buyMess.setBuyUid(SecurityUtil.getUser().getUserId());
         buyMess.setBuyState(1);
         buyMess.setBuyImgUrl(url);
         buyMess.setBuyShopName(shopMess.getShopName());
         buyMess.setBuyShopIntuoduct(shopMess.getShopIntuoduct());
         buyMess.setBuyShopId(shopMess.getShopId());
         buyMessDao.insert(buyMess);
+    }
+
+    //在购物车中购买
+    @Override
+    public void buyShopinCar(String shopid) {
+        LambdaQueryWrapper<BuyMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(BuyMess::getBuyShopId,shopid);
+        BuyMess buyMess = buyMessDao.selectOne(queryWrapper);
+        buyMess.setBuyState(2);
+        buyMessDao.updateById(buyMess);
     }
 
 }
