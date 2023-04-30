@@ -34,14 +34,20 @@ public class user_sc {
     @PostMapping("/addsc")
     public ResultData add_user_sc(@RequestBody s_usc s_usc){
         Integer f =  usc.user_sc(s_usc);
+        if(f == 200){
         return new ResultData("200","OK!",f);
+        }
+        else return new ResultData("600","OK!","请检查您的参数或者其他内容！");
     }
 
     //删除用户的收藏帖子
-    @GetMapping("/delsc/{sid}")
-    public ResultData del_user_sc(@PathVariable("sid") String sid){
+    @GetMapping("/delsc")
+    public ResultData del_user_sc(@RequestParam("sid") String sid){
         Integer f =  usc.user_dis_sc(sid);
-        return new ResultData("200","OK!",f);
+        if(f == 200){
+            return new ResultData("200","OK!","删除成功！");
+        }
+        else return new ResultData("600","OK!","请检查您的参数或者其他内容！");
     }
 
 }

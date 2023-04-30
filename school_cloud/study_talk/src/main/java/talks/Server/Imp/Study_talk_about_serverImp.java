@@ -79,6 +79,7 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
 
     }
 
+
     @Override
     public School_talk talk_like_cont(String t_id) {
 //        try {
@@ -111,4 +112,27 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         }
 
     }
+
+//---------------------一下用于对帖子主表的点赞数个收藏数进行增加--------------------------------------
+    @Override
+    public Integer addcount(String t_id) {
+        return studyTalkAbout.addcount(t_id);
+    }
+
+    @Override
+    public Integer disaddcount(String t_id) {
+        return studyTalkAbout.disaddcount(t_id);
+    }
+
+    @Override
+    public Integer addlike(String t_id) {
+        return studyTalkAbout.addlike(t_id);
+    }
+
+    @Override
+    public Integer disaddlike(String t_id) {
+        return studyTalkAbout.disaddlike(t_id);
+    }
+
+    //------------------------------------------------------------------------------------------
 }

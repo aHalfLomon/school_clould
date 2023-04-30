@@ -52,4 +52,25 @@
         SELECT * FROM s_t where t_uid = #{uid};
     </select>
 
+
+    <!--用于将主数据库中的帖子收藏数加一-->
+    <update id="addcount" parameterType="java.lang.String">
+        update s_t set t_usc_count = (t_usc_count + 1) where t_id = #{t_id};
+    </update>
+
+    <!--用于将主数据库中的帖子收藏数减一-->
+    <update id="disaddcount" parameterType="java.lang.String">
+        update s_t set t_usc_count = (t_usc_count - 1) where t_id = #{t_id};
+    </update>
+
+    <!--用于将主数据库中的帖子点赞数加一-->
+    <update id="addlike" parameterType="java.lang.String">
+        update s_t set t_like_count = (t_like_count + 1) where t_id = #{t_id};
+    </update>
+
+    <!--用于将主数据库中的帖子点赞数减一-->
+    <update id="disaddlike" parameterType="java.lang.String">
+        update s_t set t_like_count = (t_like_count - 1) where t_id = #{t_id};
+    </update>
+
 </mapper>

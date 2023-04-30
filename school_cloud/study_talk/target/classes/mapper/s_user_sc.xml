@@ -8,10 +8,6 @@
         values (#{usc_sid},#{usc_uid},#{usc_data},#{tk_title})
     </insert>
 
-    <delete id="user_dis_sc" parameterType="talks.Pojo.s_usc">
-        DELETE FROM s_usc WHERE usc_sid = #{usc_sid} and usc_uid=#{usc_uid};
-    </delete>
-
     <select id="mysc" parameterType="talks.Pojo.s_usc" resultType="talks.Pojo.s_usc">
         SELECT * FROM s_usc where usc_uid = #{usc_uid};
     </select>
