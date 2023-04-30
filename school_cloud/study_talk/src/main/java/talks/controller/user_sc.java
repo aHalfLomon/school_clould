@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import talks.Pojo.ResultData;
 import talks.Pojo.s_usc;
 import talks.Server.s_user_sc_server;
+import talks.config.SecurityUtil;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -36,9 +38,9 @@ public class user_sc {
     }
 
     //删除用户的收藏帖子
-    @GetMapping("/delsc")
-    public ResultData del_user_sc(@RequestParam("usc_sid") String sid,@RequestParam("usc_uid") String uid){
-        Integer f =  usc.user_dis_sc(sid,uid);
+    @GetMapping("/delsc/{sid}")
+    public ResultData del_user_sc(@PathVariable("sid") String sid){
+        Integer f =  usc.user_dis_sc(sid);
         return new ResultData("200","OK!",f);
     }
 
