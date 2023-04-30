@@ -80,6 +80,7 @@ public class ShopMessServiceImpl implements ShopMessService {
         shopMess.setShopPrice(shopDto.getShopPrice());
         shopMess.setShopUid(userid);
         shopMess.setShopBuy(0);
+        shopMess.setShopClass(shopDto.getShopClass());
         int i=0;
         for (String u:shopDto.getUrl()){
             imageService.addImg(u,shopMess.getShopId(),i);
@@ -101,8 +102,6 @@ public class ShopMessServiceImpl implements ShopMessService {
         LambdaQueryWrapper<ShopMess> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.eq(ShopMess::getShopUid,user.getUserId());
         List<ShopMess> list = shopMessDao.selectList(queryWrapper);
-        System.out.println("=======================================================");
-        System.out.println(list);
         List<GetShop> getShops=new ArrayList<>();
         for (ShopMess shopMess:list){
             GetShop getShop=new GetShop();

@@ -28,6 +28,7 @@ public class ImageServiceImpl implements ImageService {
         shopImg.setSImgUrl(url);
         shopImg.setSImgSid(shopId);
         shopImg.setSImg(f);
+        shopImgDao.insert(shopImg);
     }
 
     @Override

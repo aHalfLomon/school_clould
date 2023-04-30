@@ -58,7 +58,7 @@ public class MyFilter implements Filter {
 
 //     phone  jwt 存入redis
         ValueOperations redis = redisTemplate.opsForValue();
-        redis.set("token:"+phone,jwt,2, TimeUnit.HOURS);
+        redis.set("token:"+phone,jwt,20, TimeUnit.HOURS);
 
         chain.doFilter(request,response);
     }

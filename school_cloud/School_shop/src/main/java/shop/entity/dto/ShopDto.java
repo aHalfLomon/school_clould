@@ -20,4 +20,6 @@ public class ShopDto {
     private Double shopPrice;
     //图片
     private String[] url;
+    //分类
+    private String shopClass;
 }

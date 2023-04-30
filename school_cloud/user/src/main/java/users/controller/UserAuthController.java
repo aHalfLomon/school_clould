@@ -34,7 +34,7 @@ public class UserAuthController {
         ValueOperations redis = redisTemplate.opsForValue();
         SecurityUtil.XcUser user=SecurityUtil.getUser();
         String s = (String) redis.get("token:" + user.getUserPhone());
-        redis.set("guoqi:"+s,user.getUserPhone(),2, TimeUnit.HOURS);
+        redis.set("guoqi:"+s,user.getUserPhone(),20, TimeUnit.HOURS);
         return new ResultData("200","ok",null);
     }
 

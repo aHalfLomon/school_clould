@@ -47,7 +47,7 @@ public class PasswordAuthServiceImpl implements AuthService {
    if (exists){//已经登录
     // 将token存入reids中的过期
     String s = (String) redis.get("token:" + cellphone);
-    redis.set("guoqi:"+s,cellphone,2, TimeUnit.HOURS);
+    redis.set("guoqi:"+s,cellphone,20, TimeUnit.HOURS);
    }
   }else{
    redis.set("flag","0");
