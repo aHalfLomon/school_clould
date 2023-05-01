@@ -1,6 +1,5 @@
 package help_sove.service;
 
-import help_sove.pojo.HlepMess;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,11 +12,6 @@ import java.util.List;
  */
 @Service
 public interface HlepMessService {
-    List<HlepMess> allmessages();
-    Integer addHelpmess(HlepMess helpMess);
 
-    Integer delHelpmess(String h_id);
-
-    Integer uphelpless(HlepMess helpMess);
 
 }

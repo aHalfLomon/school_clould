@@ -1,6 +1,5 @@
 package help_sove.service;
 
-import help_sove.pojo.HelpSove;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +10,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface Help_sove_Server {
-    Integer soveit(HelpSove helpSove);
 
-    Integer nosoveit(String h_id);
 }

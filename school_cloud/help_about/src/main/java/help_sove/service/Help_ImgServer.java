@@ -1,6 +1,5 @@
 package help_sove.service;
 
-import help_sove.pojo.HelpImg;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +10,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface Help_ImgServer {
-    Integer addImg(HelpImg Img);
 
-    Integer delImg(String h_img_sid,String h_img);
 }
