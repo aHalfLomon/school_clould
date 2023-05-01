@@ -13,5 +13,10 @@ import java.util.List;
 @Service
 public interface HlepMessService {
 
+    //增加一条反馈的帖子
+
+    //查询我反馈的帖子
+
+    //删除我反馈的帖子
 
 }

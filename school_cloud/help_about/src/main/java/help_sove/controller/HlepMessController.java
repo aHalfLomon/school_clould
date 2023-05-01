@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/help_mess")
+@RequestMapping("/help")
 public class HlepMessController {
 
     @Resource

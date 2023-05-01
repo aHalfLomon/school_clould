@@ -1,11 +1,8 @@
 package help_sove.service.impl;
 
-import help_sove.mapper.Help_soveMapper;
-import help_sove.service.Help_sove_Server;
+import help_sove.service.HelpSoveService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 
 /**
  * @Classname Help_sove_ServerImp
@@ -14,7 +11,7 @@ import javax.annotation.Resource;
  */
 @Service
 @Transactional
-public class Help_sove_ServerImp implements Help_sove_Server {
+public class HelpSoveServiceImpl implements HelpSoveService {
 
 
 }

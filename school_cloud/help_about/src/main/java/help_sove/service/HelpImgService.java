@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public interface Help_ImgServer {
+public interface HelpImgService {
+
+    //添加反馈图片
+
+    //根据反馈id查图片
 
 }

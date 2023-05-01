@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public interface Help_sove_Server {
+public interface HelpSoveService {
 
+    //解决
+
+    //解决不了
 }

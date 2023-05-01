@@ -1,8 +1,8 @@
 package help_sove.mapper;
 
-import org.apache.ibatis.annotations.Delete;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import help_sove.pojo.po.HelpSove;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 /**
  * @Classname Help_soveMapper
@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * @Created by wang
  */
 @Mapper
-public interface Help_soveMapper {
+public interface HelpSoveMapper extends BaseMapper<HelpSove> {
 
 }

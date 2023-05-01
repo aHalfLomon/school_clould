@@ -1,10 +1,8 @@
 package help_sove.service.impl;
 
-import help_sove.service.Help_ImgServer;
+import help_sove.service.HelpImgService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 
 /**
  * @Classname Help_ImgIMp
@@ -14,7 +12,7 @@ import javax.annotation.Resource;
 
 @Service
 @Transactional
-public class Help_ImgIMp implements Help_ImgServer {
+public class HelpImgServiceImpl implements HelpImgService {
 
 
 }
