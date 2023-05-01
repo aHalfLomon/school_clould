@@ -3,6 +3,7 @@ package help_sove.controller;
 import help_sove.pojo.R;
 import help_sove.pojo.dto.HelpMessDto;
 import help_sove.pojo.vo.HelpMessVo;
+import help_sove.pojo.vo.UpHelpMessVo;
 import help_sove.service.HlepMessService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -23,31 +24,36 @@ public class HlepMessController {
     //增加一条反馈的帖子
     @PostMapping("/addHelp")
     public R<String> addHelp(@RequestBody HelpMessVo helpMessVo){
+        hlepMessService.addHelp(helpMessVo);
         return R.success("ok");
     }
 
     //删除我反馈的帖子
-    @DeleteMapping("/delMyHelp/{id}")
-    public R<String> delMyHelp(@PathVariable("id") String id){
+    @DeleteMapping("/delMyHelp/{hid}")
+    public R<String> delMyHelp(@PathVariable("hid") String hid){
+        hlepMessService.delMyHelp(hid);
         return R.success("ok");
     }
 
     //修改我的反馈
     @PostMapping("/upMyHelp/{id}")
-    public R<String> upMyHelp(@RequestBody HelpMessVo helpMessVo){
+    public R<String> upMyHelp(@RequestBody UpHelpMessVo upHelpMessVo){
+        hlepMessService.upMyHelp(upHelpMessVo);
         return R.success("ok");
     }
 
     //查询我反馈的帖子
     @PostMapping("/getMyHelp")
     public R<List<HelpMessDto>> getMyHelp(){
-        return R.success(null);
+        List<HelpMessDto> myHelp = hlepMessService.getMyHelp();
+        return R.success(myHelp);
     }
 
     //查询所有反馈的帖子
     @PostMapping("/getAllHelp")
     public R<List<HelpMessDto>> getAllHelp(){
-        return R.success(null);
+        List<HelpMessDto> allHelp = hlepMessService.getAllHelp();
+        return R.success(allHelp);
     }
 }
 

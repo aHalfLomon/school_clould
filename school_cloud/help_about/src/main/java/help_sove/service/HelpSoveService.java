@@ -1,6 +1,9 @@
 package help_sove.service;
 
+import help_sove.pojo.po.HelpSove;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Classname Help_sove_Server
@@ -8,10 +11,14 @@ import org.springframework.stereotype.Service;
  * @Created by wang
  */
 
-@Service
 public interface HelpSoveService {
 
-    //解决
+    //添加解决方案
+    boolean Solve(HelpSove helpSove);
 
-    //解决不了
+    //查询我的解决方案
+    List<HelpSove> getMySolve();
+
+    //查询所有的解决方案
+    List<HelpSove> getAllSolve();
 }

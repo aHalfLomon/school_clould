@@ -3,6 +3,7 @@ package help_sove.controller;
 import help_sove.pojo.R;
 import help_sove.pojo.po.HelpSove;
 import help_sove.service.HelpSoveService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,30 +20,28 @@ import java.util.List;
 @RestController
 @RequestMapping("/help")
 public class HelpSoveController {
-    @Resource
-    private HelpSoveService helpSove;
+
+    @Autowired
+    private HelpSoveService helpSoveService;
 
     //解决
     @PostMapping("/solve")
     public R<String> Solve(@RequestBody HelpSove helpSove){
-        return R.success("ok");
-    }
-
-    //解决不了
-    @PostMapping("/nosolve")
-    public R<String> NoSolve(@RequestBody HelpSove helpSove){
+        helpSoveService.Solve(helpSove);
         return R.success("ok");
     }
 
     //查询我的解决方案
     @GetMapping("/getMySolve")
     public R<List<HelpSove>> getMySolve(){
-        return R.success(null);
+        List<HelpSove> mySolve = helpSoveService.getMySolve();
+        return R.success(mySolve);
     }
 
     //查询所有的解决方案
     @GetMapping("/getAllSolve")
     public R<List<HelpSove>> getAllSolve(){
-        return R.success(null);
+        List<HelpSove> allSolve = helpSoveService.getAllSolve();
+        return R.success(allSolve);
     }
 }

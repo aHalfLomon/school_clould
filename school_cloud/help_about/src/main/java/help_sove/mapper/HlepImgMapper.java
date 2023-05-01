@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2023-04-30 23:37:40
  */
 @Mapper
-public interface HlepImgDao extends BaseMapper<HlepImg> {
+public interface HlepImgMapper extends BaseMapper<HlepImg> {
 
 }
 

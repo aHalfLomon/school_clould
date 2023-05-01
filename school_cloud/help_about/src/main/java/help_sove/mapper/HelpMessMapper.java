@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2023-04-30 23:36:52
  */
 @Mapper
-public interface HelpMessDao extends BaseMapper<HelpMess> {
+public interface HelpMessMapper extends BaseMapper<HelpMess> {
 
 }
 

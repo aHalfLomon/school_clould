@@ -27,6 +27,8 @@ public class HelpSove extends Model<HelpSove> {
     private String hState;
     //解决方案
     private String hSFa;
+    //反馈人id
+    private String hUid;
 
 
     public String getHId() {
@@ -67,6 +69,14 @@ public class HelpSove extends Model<HelpSove> {
 
     public void setHSFa(String hSFa) {
         this.hSFa = hSFa;
+    }
+
+    public String gethUid() {
+        return hUid;
+    }
+
+    public void sethUid(String hUid) {
+        this.hUid = hUid;
     }
 
     /**
