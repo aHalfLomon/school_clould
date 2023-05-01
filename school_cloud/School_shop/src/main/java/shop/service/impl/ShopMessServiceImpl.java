@@ -45,7 +45,7 @@ public class ShopMessServiceImpl implements ShopMessService {
     @Override
     public List<GetShop> getAllShop(int p) {
         //分页
-        Page<ShopMess> page= new Page<>(p,6);
+        Page<ShopMess> page= new Page<>(p,8);
         page=shopMessDao.selectPage(page,null);
         LambdaQueryWrapper<ShopMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         List<ShopMess> list=page.getRecords();
@@ -180,7 +180,7 @@ public class ShopMessServiceImpl implements ShopMessService {
     public List<GetShop> classShop(String className,int p) {
         LambdaQueryWrapper<ShopMess> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.eq(ShopMess::getShopClass,className);
-        Page<ShopMess> page= new Page<>(p,6);
+        Page<ShopMess> page= new Page<>(p,8);
         page=shopMessDao.selectPage(page,queryWrapper);
         List<ShopMess> list=page.getRecords();
         List<GetShop> getShops=new ArrayList<>();
