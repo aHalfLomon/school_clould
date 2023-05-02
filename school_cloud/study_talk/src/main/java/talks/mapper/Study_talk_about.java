@@ -36,6 +36,11 @@ public interface Study_talk_about {
 
     Integer linkit(String t_id);
 
+    //用于对主表中的点赞和收藏数进行操作
+    Integer addcount(String t_id);
+    Integer disaddcount(String t_id);
+    Integer addlike(String t_id);
+    Integer disaddlike(String t_id);
 
 
 }

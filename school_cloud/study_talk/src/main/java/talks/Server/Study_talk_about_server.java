@@ -28,5 +28,12 @@ public interface Study_talk_about_server {
     List<School_talk> search_talk_source(String source);
     List<School_talk> mytalk(String uid);
 
+    //用于对主表中的点赞和收藏数进行操作
+    Integer addcount(String t_id);
+    Integer disaddcount(String t_id);
+    Integer addlike(String t_id);
+    Integer disaddlike(String t_id);
+
+
 
 }

@@ -127,7 +127,7 @@ public class Talks {
         return new ResultData("200","OK!",talks);
     }
 
-    //展示用户发布的帖子
+    //展示用户发布的帖子 --------------------------------------------------------------------------------------
     @GetMapping("/mytalks")
     public ResultData allmytalk(@RequestParam("uid") String uid){
         List<School_talk> mytalks = talkAboutServer.mytalk(uid);

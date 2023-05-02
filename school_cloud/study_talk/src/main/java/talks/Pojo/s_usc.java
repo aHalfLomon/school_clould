@@ -20,6 +20,7 @@ public class s_usc extends Model<School_talk> {
     private Date usc_data;
     //帖子的标题
     private String tk_title;
+
     public String getUsc_sid() {
         return usc_sid;
     }
@@ -52,4 +53,13 @@ public class s_usc extends Model<School_talk> {
         this.tk_title = tk_title;
     }
 
+    @Override
+    public String toString() {
+        return "s_usc{" +
+                "usc_sid='" + usc_sid + '\'' +
+                ", usc_uid='" + usc_uid + '\'' +
+                ", usc_data=" + usc_data +
+                ", tk_title='" + tk_title + '\'' +
+                '}';
+    }
 }
