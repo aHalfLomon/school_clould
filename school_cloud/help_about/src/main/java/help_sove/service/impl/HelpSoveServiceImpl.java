@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import help_sove.config.SecurityUtil;
 import help_sove.mapper.HelpMessMapper;
 import help_sove.mapper.HelpSoveMapper;
+import help_sove.pojo.dto.HelpSoveDto;
 import help_sove.pojo.po.HelpMess;
 import help_sove.pojo.po.HelpSove;
 import help_sove.service.HelpSoveService;
@@ -28,10 +29,15 @@ public class HelpSoveServiceImpl implements HelpSoveService {
     HelpMessMapper helpMessMapper;
 
     @Override
-    public boolean Solve(HelpSove helpSove) {
-        HelpMess helpMess = helpMessMapper.selectById(helpSove.getHId());
-        helpMess.setHState(helpSove.getHState());
+    public boolean Solve(HelpSoveDto helpSoveDto) {
+        HelpMess helpMess = helpMessMapper.selectById(helpSoveDto.getHid());
+        helpMess.setHState(helpSoveDto.getHstate());
+        HelpSove helpSove=new HelpSove();
+        helpSove.setHId(helpSoveDto.getHid());
         helpSove.sethUid(helpMess.getHUid());
+        helpSove.setHSoveperson(helpSoveDto.getHsoveperson());
+        helpSove.setHSFa(helpSoveDto.getHsfa());
+        helpSove.setHState(helpSoveDto.getHstate());
         helpSoveMapper.insert(helpSove);
         helpMessMapper.updateById(helpMess);
         return true;

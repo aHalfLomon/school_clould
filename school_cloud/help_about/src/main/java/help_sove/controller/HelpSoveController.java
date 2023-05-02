@@ -1,6 +1,7 @@
 package help_sove.controller;
 
 import help_sove.pojo.R;
+import help_sove.pojo.dto.HelpSoveDto;
 import help_sove.pojo.po.HelpSove;
 import help_sove.service.HelpSoveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,7 @@ public class HelpSoveController {
 
     //解决
     @PostMapping("/open/solve")
-    public R<String> Solve(@RequestBody HelpSove helpSove){
-        System.out.println("==========================");
-        System.out.println(helpSove.getHState());
-        System.out.println(helpSove.getHId());
-        System.out.println(helpSove.getHSoveperson());
-        System.out.println(helpSove.getHSFa());
+    public R<String> Solve(@RequestBody HelpSoveDto helpSove){
         helpSoveService.Solve(helpSove);
         return R.success("ok");
     }

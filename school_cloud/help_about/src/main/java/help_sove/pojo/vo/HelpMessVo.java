@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 public class HelpMessVo {
     //求助，反馈内容
-    private String hSource;
+    private String hsource;
     //反馈的地点
-    private String hLocation;
+    private String hlocation;
     //图片
     private String[] url;
 }

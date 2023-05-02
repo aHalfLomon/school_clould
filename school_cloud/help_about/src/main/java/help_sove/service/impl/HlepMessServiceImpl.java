@@ -37,12 +37,10 @@ public class HlepMessServiceImpl implements HlepMessService {
         HelpMess helpMess=new HelpMess();
         helpMess.setHId(UUID.randomUUID().toString().replaceAll("-",""));
         helpMess.setHUid(SecurityUtil.getUser().getUserId());
-        helpMess.setHSource(helpMessVo.getHSource());
-        helpMess.setHLocation(helpMessVo.getHLocation());
+        helpMess.setHSource(helpMessVo.getHsource());
+        helpMess.setHLocation(helpMessVo.getHlocation());
         helpMess.setHState("0");
         helpMessMapper.insert(helpMess);
-        System.out.println("==========================================");
-        System.out.println(helpMessVo);
 
         for (String u:helpMessVo.getUrl()){
             helpImgService.addImg(u,helpMess.getHId());

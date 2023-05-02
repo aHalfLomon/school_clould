@@ -24,8 +24,6 @@ public class HlepMessController {
     //增加一条反馈的帖子
     @PostMapping("/addHelp")
     public R<String> addHelp(@RequestBody HelpMessVo helpMessVo){
-        System.out.println("===========================");
-        System.out.println(helpMessVo);
         hlepMessService.addHelp(helpMessVo);
         return R.success("ok");
     }
