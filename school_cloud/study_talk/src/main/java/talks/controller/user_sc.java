@@ -5,6 +5,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import talks.Pojo.ResultData;
+import talks.Pojo.S_user_like;
 import talks.Pojo.s_usc;
 import talks.Server.s_user_sc_server;
 import talks.config.SecurityUtil;
@@ -24,8 +25,8 @@ public class user_sc {
 
     //返回用户收藏列表
     @GetMapping("/my_sc")
-    public ResultData mysc(@RequestParam("uid") String uid){
-        List<s_usc> scs = usc.mysc(uid);
+    public ResultData mysc(){
+        List<s_usc> scs = usc.mysc("***");
         return new ResultData("200","OK!",scs);
     }
 
@@ -47,6 +48,18 @@ public class user_sc {
             return new ResultData("200","OK!","删除成功！");
         }
         else return new ResultData("600","OK!","请检查您的参数或者其他内容！");
+    }
+
+    //判断是都收藏过
+    @GetMapping("/issc")
+    public ResultData issc(@RequestParam("usc_sid") String usc_sid)
+    {
+        s_usc uscs = usc.issc(usc_sid);
+        if (uscs != null){
+            return new ResultData("200","已经收藏!",uscs);
+        }else {
+            return new ResultData("201","没有收藏!","");
+        }
     }
 
 }

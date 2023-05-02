@@ -31,12 +31,11 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
             return 0;
         }
     }
-
+    //返回所有的帖子
     @Override
     public List<School_talk> search_all() {
         try {
             return studyTalkAbout.search_all();
-
         }
         catch (Exception e){
             return null;
@@ -67,11 +66,14 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         return list;
     }
 
+
     //返回用户发的帖子
     @Override
     public List<School_talk> mytalk(String uid) {
         try{
-            return studyTalkAbout.mytalk(uid);
+            //拿取token
+            String userId = SecurityUtil.getUser().getUserId();
+            return studyTalkAbout.mytalk(userId);
         }catch (Exception e)
         {
             return null;

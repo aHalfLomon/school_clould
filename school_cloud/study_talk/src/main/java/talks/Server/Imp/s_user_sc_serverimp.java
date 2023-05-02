@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import talks.Pojo.S_user_like;
 import talks.Pojo.s_usc;
 import talks.Server.s_user_sc_server;
 import talks.config.SecurityUtil;
@@ -67,6 +68,15 @@ public class s_user_sc_serverimp implements s_user_sc_server {
     public List<s_usc> mysc(String usc_uid) {
         String userId = SecurityUtil.getUser().getUserId();
         return sc.mysc(userId);
+    }
+
+    @Override
+    public s_usc issc(String usc_sid) {
+        String userId = SecurityUtil.getUser().getUserId();
+        LambdaQueryWrapper<s_usc> queryWrapper=new LambdaQueryWrapper<s_usc>()
+                .eq(s_usc::getUsc_sid,usc_sid)
+                .eq(s_usc::getUsc_uid,userId);
+        return susersc.selectOne(queryWrapper);
     }
 
 

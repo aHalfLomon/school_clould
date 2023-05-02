@@ -1,6 +1,7 @@
 package talks.Server;
 
 import org.springframework.stereotype.Service;
+import talks.Pojo.S_user_like;
 import talks.Pojo.s_usc;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface s_user_sc_server {
     //返回用户收藏的帖子
     List<s_usc> mysc(String usc_uid);
 
+    s_usc issc(String usc_sid);
 }

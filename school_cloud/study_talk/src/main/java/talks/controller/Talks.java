@@ -1,5 +1,8 @@
 package talks.controller;
 
+import com.lt.feign.clients.UserClient;
+import com.lt.feign.pojo.UserUn;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +33,13 @@ public class Talks {
     private Testmapper tests;
     @Resource
     private Study_talk_about_server talkAboutServer;
-
+    @Autowired
+    UserClient userClient;
+//
     @GetMapping("/lists")
     public List<Talk_talks> findalllist(){
+//        UserUn userUn = userClient.findUserUn("04c4fcbd8f5dd1a9a7aa53e8141a017d");
+//        System.out.println("=========================================="+userUn);
         List<Talk_talks> list =tests.findalltk();
         return list;
     }
@@ -97,8 +104,9 @@ public class Talks {
         ResultData resultData1 = new ResultData("200","OK!",schoolTalk);
         return resultData1;
     }
+    //----------------------------------------------------------------------
     //帖子的点赞数
-    @GetMapping("/search_talk_like")
+    @GetMapping("/open/search_talk_like")
     public ResultData search_talk_like(@RequestParam("t_id") String t_id){
         School_talk f = talkAboutServer.talk_like_cont(t_id);
         if(f != null){
@@ -109,7 +117,7 @@ public class Talks {
         }
     }
     //返回帖子的收藏数
-    @GetMapping("/search_talk_sc")
+    @GetMapping("/open/search_talk_sc")
     public ResultData search_talk_sc(@RequestParam("t_id") String t_id){
         School_talk f = talkAboutServer.talk_usersc_cont(t_id);
         if(f != null){
@@ -121,7 +129,7 @@ public class Talks {
     }
 
     //来展示所有的帖子
-    @GetMapping("/all_studyTalk")
+    @GetMapping("/open/all_studyTalk")
     public ResultData all_studyTalk(){
         List<School_talk> talks = talkAboutServer.search_all();
         return new ResultData("200","OK!",talks);
@@ -129,9 +137,14 @@ public class Talks {
 
     //展示用户发布的帖子 --------------------------------------------------------------------------------------
     @GetMapping("/mytalks")
-    public ResultData allmytalk(@RequestParam("uid") String uid){
-        List<School_talk> mytalks = talkAboutServer.mytalk(uid);
-        return new ResultData("200","OK!",mytalks);
+    public ResultData allmytalk(){
+        List<School_talk> mytalks = talkAboutServer.mytalk("***");
+        if (mytalks != null){
+            return new ResultData("200","OK!",mytalks);
+        }else
+        {
+            return new ResultData("200","OK!","似乎你还没有发过帖子");
+        }
     }
 
 }

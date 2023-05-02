@@ -15,7 +15,7 @@ public interface s_user_like {
     //用户收藏帖子  ---还需要帖子的点赞数减一！！！！
     Integer user_like(S_user_like like);
 
-    List<S_user_like> mylike(String t_like_tid);
+    List<S_user_like> mylike(String t_like_uid);
     //用户取消点赞该帖子 ----还需要帖子的点赞数减一！！！！
     Integer userdislinke(String t_like_tid);
 

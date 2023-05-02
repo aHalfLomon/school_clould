@@ -36,7 +36,34 @@ public class User_likes {
     @PostMapping("/addlike")
     public ResultData addlike(@RequestBody S_user_like Suserlike){
         Integer f = likeServer.user_like(Suserlike);
-        return new ResultData("200","OK!",f);
+        if (f == 200){
+            return new ResultData("200","OK!","喜欢成功！");
+        }else {
+            return new ResultData("600","ERROR!","请检查您的参数！");
+        }
     }
 
+    @GetMapping("/dislike")
+    public ResultData dislike(@RequestParam("like_tid") String tid)
+    {
+        Integer f = likeServer.userdislinke(tid);
+        if (f == 200){
+            return new ResultData("200","OK!","取消喜欢成功！");
+        }else {
+            return new ResultData("600","ERROR!","请检查您的参数！");
+        }
+
+    }
+
+    //判断用户是否收藏过
+    @GetMapping("/islike")
+    public ResultData islike(@RequestParam("like_tid") String tid)
+    {
+        S_user_like sUserLike = likeServer.islike(tid);
+        if (sUserLike != null){
+            return new ResultData("200","已经点赞!",sUserLike);
+        }else {
+            return new ResultData("201","没有点赞!","");
+        }
+    }
 }

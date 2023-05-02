@@ -33,8 +33,9 @@ public class Talk_talks_about {
             return new ResultData("200","OK","添加成功!");
         }else
             return new ResultData("600","error!","请检查您的参数或者其他内容");
-
     }
+
+
     @GetMapping("/deltalk")
     public ResultData deltalk(@RequestParam("tk_id") String tk_id){
         int f = talkTalkServer.del_talk_talk(tk_id);
@@ -44,6 +45,8 @@ public class Talk_talks_about {
             return new ResultData("600","error!","请检查您的参数或者其他内容");
     }
 
+
+    //---------------------------------------------以下是评论的点赞相关
     @PostMapping("/like_talk")
     public ResultData like_talk(@RequestBody Talk_Talk_likes talkLikes){
         int f = talkLikeserver.addTalkTalk_like(talkLikes);
