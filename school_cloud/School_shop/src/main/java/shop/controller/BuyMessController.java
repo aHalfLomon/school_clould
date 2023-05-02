@@ -42,5 +42,11 @@ public class BuyMessController {
         return new ResultData("200","ok",null);
     }
 
+    //删除购物车的一个商品,传入订单号
+    @DeleteMapping("/deletShop/{sid}")
+    public ResultData deshop(@PathVariable("sid") String sid){
+        buyMessService.deleShop(sid);
+        return new ResultData("200","ok",null);
+    }
 
 }

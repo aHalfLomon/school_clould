@@ -82,4 +82,11 @@ public class BuyMessServiceImpl implements BuyMessService {
         buyMessDao.updateById(buyMess);
     }
 
+    @Override
+    public void deleShop(String shopId) {
+        LambdaQueryWrapper<BuyMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(BuyMess::getBuyShopId,shopId);
+        buyMessDao.delete(queryWrapper);
+    }
+
 }

@@ -16,7 +16,6 @@ import java.util.List;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@CrossOrigin
 @RequestMapping("/talk/sc")
 public class user_sc {
     //用户收藏相关

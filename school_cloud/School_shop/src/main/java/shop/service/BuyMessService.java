@@ -21,4 +21,6 @@ public interface BuyMessService {
 
     //在购物车中购买
     void buyShopinCar(String shopid);
+
+    void deleShop(String shopId);
 }
