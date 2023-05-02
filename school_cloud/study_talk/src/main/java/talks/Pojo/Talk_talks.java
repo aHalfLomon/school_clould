@@ -1,5 +1,6 @@
 package talks.Pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,10 @@ import java.util.Date;
  * @author makejava
  * @since 2023-04-05 16:47:26
  */
-@SuppressWarnings("serial")
+
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("s_tk")
 public class Talk_talks extends Model<Talk_talks> {
     //评论的ID
     private String tk_id;

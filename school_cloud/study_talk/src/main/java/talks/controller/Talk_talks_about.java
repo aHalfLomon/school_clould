@@ -1,5 +1,6 @@
 package talks.controller;
 
+import jdk.internal.dynalink.linker.LinkerServices;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import talks.Pojo.Talk_talks;
 import talks.Server.Talk_talk_likeserver;
 import talks.Server.Talk_talk_server;
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -30,21 +32,28 @@ public class Talk_talks_about {
     public ResultData addtalks(@RequestBody Talk_talks talk){
         int f = talkTalkServer.addtalk_talk(talk);
         if(f != -1){
-            return new ResultData("200","OK","添加成功!");
+            return new ResultData("200","OK","评论成功!");
         }else
             return new ResultData("600","error!","请检查您的参数或者其他内容");
     }
-
 
     @GetMapping("/deltalk")
     public ResultData deltalk(@RequestParam("tk_id") String tk_id){
         int f = talkTalkServer.del_talk_talk(tk_id);
-        if(f != -1){
-            return new ResultData("200","OK","删除成功!");
+        if(f != -100){
+            return new ResultData("200","OK","删除评论成功!");
         }else
-            return new ResultData("600","error!","请检查您的参数或者其他内容");
+            return new ResultData("600","error!","请检查您的参数或者该用户没有删除权限！");
     }
 
+    @GetMapping("/open/takl_talks")
+    public ResultData takl_talks(@RequestParam("tk_id") String tk_id){
+        List<Talk_talks> f = talkTalkServer.Talks_talks(tk_id);
+        if(f != null){
+            return new ResultData("200","OK",f);
+        }else
+            return new ResultData("600","error!","请检查您的参数!");
+    }
 
     //---------------------------------------------以下是评论的点赞相关
     @PostMapping("/like_talk")
@@ -55,7 +64,6 @@ public class Talk_talks_about {
         }else{
             return new ResultData("600","error!","请检查您的参数或者其他内容");
         }
-
     }
 
     @GetMapping("/dislike_talk")

@@ -1,5 +1,8 @@
 package talks.controller;
 
+import com.lt.feign.clients.UserClient;
+import com.lt.feign.pojo.UserUn;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +25,16 @@ public class user_sc {
     //用户收藏相关
     @Resource
     private s_user_sc_server usc;
+    @Autowired
+    UserClient userClient;
 
     //返回用户收藏列表
     @GetMapping("/my_sc")
     public ResultData mysc(){
         List<s_usc> scs = usc.mysc("***");
+        UserUn userUn = userClient.findUserUn("04c4fcbd8f5dd1a9a7aa53e8141a017d");
+
+//        System.out.println("=========================================="+userUn);
         return new ResultData("200","OK!",scs);
     }
 
