@@ -16,4 +16,7 @@ public interface s_user_sc_server {
     List<s_usc> mysc(String usc_uid);
 
     s_usc issc(String usc_sid);
+
+    //根据tid查帖子主人id
+    String getTuid(String tid);
 }

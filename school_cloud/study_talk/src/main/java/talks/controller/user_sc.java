@@ -2,6 +2,7 @@ package talks.controller;
 
 import com.lt.feign.clients.UserClient;
 import com.lt.feign.pojo.UserUn;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import talks.Pojo.ResultData;
 import talks.Pojo.S_user_like;
+import talks.Pojo.SuserDto;
 import talks.Pojo.s_usc;
 import talks.Server.s_user_sc_server;
 import talks.config.SecurityUtil;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -25,17 +28,36 @@ public class user_sc {
     //用户收藏相关
     @Resource
     private s_user_sc_server usc;
-    @Autowired
+    @Resource
     UserClient userClient;
+    @Resource
+    s_user_sc_server s_user_sc_server;
 
     //返回用户收藏列表
     @GetMapping("/my_sc")
     public ResultData mysc(){
-        List<s_usc> scs = usc.mysc("***");
-        UserUn userUn = userClient.findUserUn("04c4fcbd8f5dd1a9a7aa53e8141a017d");
+        List<s_usc> scs = usc.mysc("***");//tid
+        //tid查uid
 
+            List<SuserDto> suserDtoList=new ArrayList<>();
+            for (s_usc usc1:scs){
+                SuserDto suserDto=new SuserDto();
+                BeanUtils.copyProperties(usc1,suserDto);
+                suserDtoList.add(suserDto);
+
+                //用户
+                //tid查到uid
+                String tuid = s_user_sc_server.getTuid(usc1.getUsc_sid());
+
+                //
+                UserUn userUn = userClient.findUserUn(tuid);
+
+                suserDto.setUser_avatar(userUn.getUserAvatar());
+                suserDto.setUser_name(userUn.getUserName());
+
+            }
 //        System.out.println("=========================================="+userUn);
-        return new ResultData("200","OK!",scs);
+        return new ResultData("200","OK!",suserDtoList);
     }
 
     //用户收藏帖子

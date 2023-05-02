@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.S_user_like;
+import talks.Pojo.School_talk;
 import talks.Pojo.s_usc;
 import talks.Server.s_user_sc_server;
 import talks.config.SecurityUtil;
+import talks.mapper.S_talk;
 import talks.mapper.Study_talk_about;
 import talks.mapper.s_user_sc;
 import talks.mapper.susersc;
@@ -23,6 +25,9 @@ public class s_user_sc_serverimp implements s_user_sc_server {
     private s_user_sc sc;
     @Resource
     private Study_talk_about studyTalkAbout;
+
+    @Resource
+    S_talk s_talk;
 
     @Autowired
     susersc susersc;
@@ -77,6 +82,17 @@ public class s_user_sc_serverimp implements s_user_sc_server {
                 .eq(s_usc::getUsc_sid,usc_sid)
                 .eq(s_usc::getUsc_uid,userId);
         return susersc.selectOne(queryWrapper);
+    }
+
+    //根据tid查帖子主人id
+    @Override
+    public String getTuid(String tid) {
+        LambdaQueryWrapper<School_talk> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(School_talk::getT_id,tid);
+
+        School_talk school_talk = s_talk.selectOne(queryWrapper);
+
+        return school_talk.getT_uid();
     }
 
 

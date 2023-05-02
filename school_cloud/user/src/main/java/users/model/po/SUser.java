@@ -33,7 +33,7 @@ public class SUser extends Model<SUser> {
     //用户头像；255字符 图床的url
     @TableField(fill = FieldFill.INSERT)
     private String userAvatar;
-    //用户邮箱
+    //用户邮箱DD
     private String userEmail;
     //用户手机
     private String userPhone;
