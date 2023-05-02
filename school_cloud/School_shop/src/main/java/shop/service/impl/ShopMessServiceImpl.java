@@ -5,6 +5,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lt.feign.clients.UserClient;
 import com.lt.feign.pojo.UserUn;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import shop.config.SecurityUtil;
 import shop.entity.dto.GetShop;
@@ -27,6 +31,7 @@ import java.util.UUID;
  * @Date 2023/4/16 16:49
  **/
 @Service
+@CacheConfig(cacheNames = "shop.service.impl.ShopMessServiceImpl")
 public class ShopMessServiceImpl implements ShopMessService {
 
     @Autowired
@@ -41,10 +46,22 @@ public class ShopMessServiceImpl implements ShopMessService {
     @Autowired
     UserClient userClient;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     //查询所有商品，分页
+    @Cacheable(key = "'GetShop'")
     @Override
     public List<GetShop> getAllShop(int p) {
-        //分页
+        //查询是否有第p页的缓存
+        String rp=String.valueOf(p);
+        Boolean aBoolean = redisTemplate.hasKey("shop" + p);
+
+        if (aBoolean){//有缓存
+
+        }
+
+        //无缓存
         Page<ShopMess> page= new Page<>(p,8);
         page=shopMessDao.selectPage(page,null);
         LambdaQueryWrapper<ShopMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
@@ -65,6 +82,9 @@ public class ShopMessServiceImpl implements ShopMessService {
             getShop.setUrlList(imageService.getList(shopMess.getShopId()));
             getShops.add(getShop);
         }
+        //缓存入redis
+
+
         return getShops;
     }
 

@@ -4,6 +4,8 @@ import com.lt.feign.clients.UserClient;
 import com.lt.feign.config.DefaultFeignConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -16,6 +18,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(clients = UserClient.class,defaultConfiguration = DefaultFeignConfiguration.class)
+@EnableCaching
 public class ShopApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShopApplication.class,args);
