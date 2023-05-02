@@ -23,7 +23,7 @@ public class HelpSove extends Model<HelpSove> {
     private Date hSTime;
     //解决人
     private String hSoveperson;
-    //解决状态;0待解决 1解决
+    //解决状态;0解决不了 1解决
     private String hState;
     //解决方案
     private String hSFa;

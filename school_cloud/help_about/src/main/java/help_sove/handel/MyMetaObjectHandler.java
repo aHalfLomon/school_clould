@@ -16,12 +16,11 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         this.setFieldValByName("hData", new Date(), metaObject);
         this.setFieldValByName("hSTime", new Date(), metaObject);
         this.setFieldValByName("hImg", 0, metaObject);
-        this.setFieldValByName("hState", 0, metaObject);
+        this.setFieldValByName("hState", "0", metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        //log.info("start update fill ....");
-        this.setFieldValByName("userUpdateTime", new Date(), metaObject);
+
     }
 }

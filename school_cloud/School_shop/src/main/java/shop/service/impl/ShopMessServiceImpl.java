@@ -31,7 +31,6 @@ import java.util.UUID;
  * @Date 2023/4/16 16:49
  **/
 @Service
-@CacheConfig(cacheNames = "shop.service.impl.ShopMessServiceImpl")
 public class ShopMessServiceImpl implements ShopMessService {
 
     @Autowired
@@ -50,16 +49,15 @@ public class ShopMessServiceImpl implements ShopMessService {
     RedisTemplate redisTemplate;
 
     //查询所有商品，分页
-    @Cacheable(key = "'GetShop'")
     @Override
     public List<GetShop> getAllShop(int p) {
-        //查询是否有第p页的缓存
-        String rp=String.valueOf(p);
-        Boolean aBoolean = redisTemplate.hasKey("shop" + p);
-
-        if (aBoolean){//有缓存
-
-        }
+//        //查询是否有第p页的缓存
+//        String rp=String.valueOf(p);
+//        Boolean aBoolean = redisTemplate.hasKey("shop" + p);
+//
+//        if (aBoolean){//有缓存
+//
+//        }
 
         //无缓存
         Page<ShopMess> page= new Page<>(p,8);
