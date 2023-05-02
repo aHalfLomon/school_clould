@@ -19,4 +19,9 @@ public interface s_user_sc {
     //返回用户收藏的帖子
     List<s_usc> mysc(String usc_uid);
 
+
+
+
+
+
 }

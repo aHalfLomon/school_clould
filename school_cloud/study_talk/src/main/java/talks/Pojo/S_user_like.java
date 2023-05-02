@@ -9,7 +9,7 @@ import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class s_user_like extends Model<School_talk> {
+public class S_user_like extends Model<School_talk> {
     //用户的点赞信息
     //点赞帖子ID
     private String t_like_tid;

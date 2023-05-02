@@ -3,12 +3,12 @@
 <mapper namespace="talks.mapper.s_user_like">
 
 
-    <insert id="user_like" parameterType="talks.Pojo.s_user_like">
+    <insert id="user_like" parameterType="talks.Pojo.S_user_like">
         insert into s_user_like(t_like_tid,t_like_uid,t_like_title,t_like_date)
         values (#{t_like_tid},#{t_like_uid},#{t_like_title},#{t_like_date})
     </insert>
 
-    <select id="mylike" parameterType="talks.Pojo.s_user_like" resultType="talks.Pojo.s_user_like">
+    <select id="mylike" parameterType="talks.Pojo.S_user_like" resultType="talks.Pojo.S_user_like">
         SELECT * FROM s_user_like where t_like_uid = #{t_like_uid};
     </select>
 

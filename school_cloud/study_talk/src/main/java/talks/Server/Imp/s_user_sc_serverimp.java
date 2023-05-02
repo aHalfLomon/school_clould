@@ -65,7 +65,8 @@ public class s_user_sc_serverimp implements s_user_sc_server {
     //我的收藏
     @Override
     public List<s_usc> mysc(String usc_uid) {
-        return sc.mysc(usc_uid);
+        String userId = SecurityUtil.getUser().getUserId();
+        return sc.mysc(userId);
     }
 
 
