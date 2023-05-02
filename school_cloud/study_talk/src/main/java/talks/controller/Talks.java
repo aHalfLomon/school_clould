@@ -65,33 +65,33 @@ public class Talks {
             return resultData;
         }
     }
-    //删除帖子按照帖子ID删除
+    //用户删除帖子按照帖子ID删除
     @GetMapping("/deltalk")
     public ResultData deltalk(@RequestParam("t_id") String tid){
-        int f = talkAboutServer.deltalk(tid);
-        if (f == 1){
+        Integer f = talkAboutServer.deltalk(tid);
+        if (f == 200){
             ResultData resultData1 = new ResultData("200","OK!","succeeful!");
             return resultData1;
         }else {
             ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容！");
             return resultData2;
         }
-
     }
     //更新用户信息
     @PostMapping("/Uptalk")
     public ResultData uptalk(@RequestBody School_talk schoolTalk){
-        int f = talkAboutServer.uptalk(schoolTalk);
-        if(f == 1){
+        Integer f = talkAboutServer.uptalk(schoolTalk);
+        if(f == 200){
             ResultData resultData1 = new ResultData("200","OK!","修改成功!");
             return resultData1;
-        }else{
-            ResultData resultData2 = new ResultData("600","error!","请检查您的参数或者其他内容！");
-            return resultData2;
         }
+        if (f == -100)  new ResultData("201","拒绝修改","非发帖人员没有权限修改帖子！");
+        return new ResultData("600","error!","请检查您的参数或者其他内容！");
     }
+
+
     //按照帖子内容去查询帖子（支持模糊匹配）
-    @GetMapping("/search_source")
+    @GetMapping("/open/search_source")
     private ResultData search_source(@RequestParam("source") String source){
          List<School_talk> schoolTalk = talkAboutServer.search_talk_source(source);
 //         if (schoolTalk != null){

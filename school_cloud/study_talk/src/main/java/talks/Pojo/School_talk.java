@@ -1,16 +1,20 @@
 package talks.Pojo;
 
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-@SuppressWarnings("serial")
+
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("s_t")
 public class School_talk extends Model<School_talk> {
+
     //帖子编号；由系统生成（主键）
     private String t_id;
     //发帖人id ；记录发帖人的ID，以展示发帖人的部分信息

@@ -1,5 +1,6 @@
 package talks.Server.Imp;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@TableName("s_t")
 public class s_user_like_serverimp implements s_user_like_server {
 
     @Resource
@@ -52,6 +54,7 @@ public class s_user_like_serverimp implements s_user_like_server {
     }
 
     //用户取消点赞
+
     @Override
     public Integer userdislinke(String t_like_tid) {
         try{

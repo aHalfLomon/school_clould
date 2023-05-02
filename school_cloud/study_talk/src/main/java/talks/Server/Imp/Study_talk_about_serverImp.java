@@ -1,12 +1,15 @@
 package talks.Server.Imp;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import talks.Pojo.S_user_like;
 import talks.Pojo.School_talk;
 import talks.Pojo.Talk_Talk_likes;
 import talks.Server.Study_talk_about_server;
 import talks.config.SecurityUtil;
 import talks.mapper.Study_talk_about;
+import talks.mapper.Talkabout;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,14 +25,30 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
 
     @Resource
     private Study_talk_about studyTalkAbout;
+    @Resource
+    private Talkabout talkabout;
+
+    //用户删除自己发的帖子
     @Override
     public Integer deltalk(String t_id) {
-        try {
-            studyTalkAbout.deltalk(t_id);
-            return 1;
-        }catch (Exception e){
-            return 0;
-        }
+//        try {
+//            String userId = SecurityUtil.getUser().getUserId();
+//            LambdaQueryWrapper<School_talk> queryWrapper = new LambdaQueryWrapper<School_talk>()
+//                    .eq(School_talk::getT_id,t_id)
+//                    .eq(School_talk::getT_uid,userId);
+//            talkabout.delete(queryWrapper);
+//            //studyTalkAbout.deltalk(t_id);
+//            return 200;
+//        }catch (Exception e){
+//            return -1;
+//        }
+        String userId = SecurityUtil.getUser().getUserId();
+        LambdaQueryWrapper<School_talk> queryWrapper = new LambdaQueryWrapper<School_talk>()
+                .eq(School_talk::getT_id,t_id)
+                .eq(School_talk::getT_uid,userId);
+        talkabout.delete(queryWrapper);
+        //studyTalkAbout.deltalk(t_id);
+        return 200;
     }
     //返回所有的帖子
     @Override
@@ -42,11 +61,14 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         }
     }
 
-    //user
+    //user 增加帖子
     @Override
     public Integer addtalk(School_talk schoolTalk) {
         try {
             schoolTalk.setT_uid(SecurityUtil.getUser().getUserId());
+            schoolTalk.setT_status("正常");
+            schoolTalk.setT_like_count(0);
+            schoolTalk.setT_usc_count(0);
             studyTalkAbout.addtalk(schoolTalk);
             return 1;
         }
@@ -78,7 +100,6 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         {
             return null;
         }
-
     }
 
 
@@ -104,15 +125,19 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         return studyTalkAbout.talk_usersc_cont(t_id);
     }
 
+    //用户更新帖子
     @Override
     public Integer uptalk(School_talk schoolTalk){
         try{
-            studyTalkAbout.uptalk(schoolTalk);
-            return 1;
+            String userId = SecurityUtil.getUser().getUserId();
+            if(userId.equals(schoolTalk.getT_uid())){
+                schoolTalk.setT_uid(userId);
+                studyTalkAbout.uptalk(schoolTalk);
+                return 200;
+            }else return -100;
         }catch (Exception e){
-            return 0;
+            return -1;
         }
-
     }
 
 //---------------------一下用于对帖子主表的点赞数个收藏数进行增加--------------------------------------

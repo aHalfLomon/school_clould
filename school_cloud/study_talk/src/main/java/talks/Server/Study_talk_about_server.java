@@ -1,5 +1,6 @@
 package talks.Server;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import org.springframework.stereotype.Service;
 import talks.Pojo.School_talk;
 
@@ -11,6 +12,8 @@ import java.util.List;
  * @Date 2023/4/6 16:07
  * @Created by wang
  */
+
+
 @Service
 public interface Study_talk_about_server {
 
