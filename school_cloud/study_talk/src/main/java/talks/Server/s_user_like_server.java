@@ -15,6 +15,6 @@ public interface s_user_like_server {
     //返回用户点赞的帖子
     List<S_user_like> mylike(String t_like_tid);
 
-    Integer userdislinke(String t_like_tid,String t_like_uid);
+    Integer userdislinke(String t_like_tid);
 
 }

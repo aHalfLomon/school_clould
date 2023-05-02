@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.S_user_like;
+import talks.Server.s_user_like_server;
 import talks.config.SecurityUtil;
 import talks.mapper.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class s_user_like_serverimp implements s_user_like{
+public class s_user_like_serverimp implements s_user_like_server {
 
     @Resource
     private s_user_like likes;
@@ -39,9 +40,6 @@ public class s_user_like_serverimp implements s_user_like{
         String userId = SecurityUtil.getUser().getUserId();
         return likes.mylike(userId);
     }
-
-
-
 
     //用户取消点赞
     @Override
