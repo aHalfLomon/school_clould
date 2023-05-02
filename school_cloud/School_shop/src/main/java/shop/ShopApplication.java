@@ -18,7 +18,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(clients = UserClient.class,defaultConfiguration = DefaultFeignConfiguration.class)
-@EnableCaching
 public class ShopApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShopApplication.class,args);

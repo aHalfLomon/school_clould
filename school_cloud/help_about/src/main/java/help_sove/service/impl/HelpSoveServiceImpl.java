@@ -29,12 +29,10 @@ public class HelpSoveServiceImpl implements HelpSoveService {
 
     @Override
     public boolean Solve(HelpSove helpSove) {
-        helpSove.sethUid(SecurityUtil.getUser().getUserId());
+        HelpMess helpMess = helpMessMapper.selectById(helpSove.getHId());
+        helpMess.setHState(helpSove.getHState());
+        helpSove.sethUid(helpMess.getHUid());
         helpSoveMapper.insert(helpSove);
-        LambdaQueryWrapper<HelpMess> queryWrapper=new LambdaQueryWrapper<>();
-
-            HelpMess helpMess = helpMessMapper.selectById(helpSove.getHId());
-            helpMess.setHState("1");
         helpMessMapper.updateById(helpMess);
         return true;
     }

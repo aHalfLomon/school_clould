@@ -47,6 +47,64 @@
             </TableInfoDTO>
           </value>
         </entry>
+        <entry key="schools.help_mess">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="求助，反馈ID" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hId" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="求助，反馈人;展示发起人的部分基本信息" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hUid" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="求助，反馈内容" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hSource" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="反馈的地点&#13;&#10;" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hLocation" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="解决状态:0待解决 1解决" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hState" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="求助、反馈时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="hData" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="HelpMess" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="help_about" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./school_cloud/help_about/src/main/java/help_sove/pojo/po" />
+              <option name="templateGroupName" value="MybatisPlus" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="schools.shop_mess">
           <value>
             <TableInfoDTO>
@@ -112,9 +170,9 @@
               </option>
               <option name="name" value="ShopMess" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="School_shop" />
+              <option name="saveModelName" value="help_about" />
               <option name="savePackageName" value="" />
-              <option name="savePath" value="./school_cloud/School_shop/src/main/java/shop/entity" />
+              <option name="savePath" value="./school_cloud/help_about/src/main/java/help_sove/pojo/po" />
               <option name="templateGroupName" value="MybatisPlus" />
             </TableInfoDTO>
           </value>

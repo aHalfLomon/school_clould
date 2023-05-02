@@ -25,8 +25,13 @@ public class HelpSoveController {
     private HelpSoveService helpSoveService;
 
     //解决
-    @PostMapping("/solve")
+    @PostMapping("/open/solve")
     public R<String> Solve(@RequestBody HelpSove helpSove){
+        System.out.println("==========================");
+        System.out.println(helpSove.getHState());
+        System.out.println(helpSove.getHId());
+        System.out.println(helpSove.getHSoveperson());
+        System.out.println(helpSove.getHSFa());
         helpSoveService.Solve(helpSove);
         return R.success("ok");
     }
@@ -39,7 +44,7 @@ public class HelpSoveController {
     }
 
     //查询所有的解决方案
-    @GetMapping("/getAllSolve")
+    @GetMapping("/open/getAllSolve")
     public R<List<HelpSove>> getAllSolve(){
         List<HelpSove> allSolve = helpSoveService.getAllSolve();
         return R.success(allSolve);

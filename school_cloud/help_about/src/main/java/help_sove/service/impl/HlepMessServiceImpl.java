@@ -29,7 +29,7 @@ public class HlepMessServiceImpl implements HlepMessService {
     @Autowired
     HelpImgService helpImgService;
 
-    @Resource
+    @Autowired
     UserClient userClient;
 
     @Override
@@ -41,6 +41,9 @@ public class HlepMessServiceImpl implements HlepMessService {
         helpMess.setHLocation(helpMessVo.getHLocation());
         helpMess.setHState("0");
         helpMessMapper.insert(helpMess);
+        System.out.println("==========================================");
+        System.out.println(helpMessVo);
+
         for (String u:helpMessVo.getUrl()){
             helpImgService.addImg(u,helpMess.getHId());
         }

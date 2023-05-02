@@ -24,6 +24,8 @@ public class HlepMessController {
     //增加一条反馈的帖子
     @PostMapping("/addHelp")
     public R<String> addHelp(@RequestBody HelpMessVo helpMessVo){
+        System.out.println("===========================");
+        System.out.println(helpMessVo);
         hlepMessService.addHelp(helpMessVo);
         return R.success("ok");
     }
@@ -36,21 +38,21 @@ public class HlepMessController {
     }
 
     //修改我的反馈
-    @PostMapping("/upMyHelp/{id}")
+    @PostMapping("/upMyHelp")
     public R<String> upMyHelp(@RequestBody UpHelpMessVo upHelpMessVo){
         hlepMessService.upMyHelp(upHelpMessVo);
         return R.success("ok");
     }
 
     //查询我反馈的帖子
-    @PostMapping("/getMyHelp")
+    @GetMapping("/getMyHelp")
     public R<List<HelpMessDto>> getMyHelp(){
         List<HelpMessDto> myHelp = hlepMessService.getMyHelp();
         return R.success(myHelp);
     }
 
     //查询所有反馈的帖子
-    @PostMapping("/getAllHelp")
+    @GetMapping("/open/getAllHelp")
     public R<List<HelpMessDto>> getAllHelp(){
         List<HelpMessDto> allHelp = hlepMessService.getAllHelp();
         return R.success(allHelp);
