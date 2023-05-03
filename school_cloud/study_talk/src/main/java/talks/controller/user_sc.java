@@ -44,17 +44,13 @@ public class user_sc {
                 SuserDto suserDto=new SuserDto();
                 BeanUtils.copyProperties(usc1,suserDto);
                 suserDtoList.add(suserDto);
-
                 //用户
                 //tid查到uid
                 String tuid = s_user_sc_server.getTuid(usc1.getUsc_sid());
-
                 //
                 UserUn userUn = userClient.findUserUn(tuid);
-
                 suserDto.setUser_avatar(userUn.getUserAvatar());
                 suserDto.setUser_name(userUn.getUserName());
-
             }
 //        System.out.println("=========================================="+userUn);
         return new ResultData("200","OK!",suserDtoList);

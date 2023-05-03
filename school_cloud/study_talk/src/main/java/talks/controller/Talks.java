@@ -2,18 +2,21 @@ package talks.controller;
 
 import com.lt.feign.clients.UserClient;
 import com.lt.feign.pojo.UserUn;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import talks.Pojo.ResultData;
+import talks.Pojo.SchoolTalks;
 import talks.Pojo.Talk_talks;
 import talks.Pojo.School_talk;
 import talks.Server.Study_talk_about_server;
 import talks.mapper.Testmapper;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +36,7 @@ public class Talks {
     private Testmapper tests;
     @Resource
     private Study_talk_about_server talkAboutServer;
-    @Autowired
+    @Resource
     UserClient userClient;
 //
     @GetMapping("/lists")
@@ -132,7 +135,17 @@ public class Talks {
     @GetMapping("/open/all_studyTalk")
     public ResultData all_studyTalk(){
         List<School_talk> talks = talkAboutServer.search_all();
-        return new ResultData("200","OK!",talks);
+        List<SchoolTalks> talks1 = new ArrayList<>();
+        for(School_talk talks2 :talks){
+            SchoolTalks schoolTalks = new SchoolTalks();
+            BeanUtils.copyProperties(talks2,schoolTalks);
+            talks1.add(schoolTalks);
+            String uuid = talks2.getT_uid();
+            UserUn user = userClient.findUserUn(uuid);
+            schoolTalks.setUser_avatar(user.getUserAvatar());
+            schoolTalks.setUser_name(user.getUserName());
+        }
+        return new ResultData("200","OK!",talks1);
     }
 
     //展示用户发布的帖子 --------------------------------------------------------------------------------------
