@@ -13,4 +13,5 @@ public class NewDto {
     private String evnTitle;
     private String evnImg;
     private String evnTest;
+    private String evnClass;
 }

@@ -40,4 +40,10 @@ public class EvnMessController {
         return new ResultData("200","ok",allNews);
     }
 
+    @GetMapping("/getbClass/{bclass}")
+    public ResultData getbclass(@PathVariable("bclass") String bclass){
+        List<EvnMess> bclass1 = evnMessService.getBclass(bclass);
+        return new ResultData("200","ok",bclass1);
+    }
+
 }

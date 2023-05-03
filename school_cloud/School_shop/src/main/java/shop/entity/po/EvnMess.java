@@ -28,6 +28,8 @@ public class EvnMess extends Model<EvnMess> {
 
     private String evnTest;
 
+    private String evnClass;
+
 
     public String getEvnId() {
         return evnId;
@@ -67,6 +69,14 @@ public class EvnMess extends Model<EvnMess> {
 
     public void setEvnTest(String evnTest) {
         this.evnTest = evnTest;
+    }
+
+    public String getEvnClass() {
+        return evnClass;
+    }
+
+    public void setEvnClass(String evnClass) {
+        this.evnClass = evnClass;
     }
 
     /**

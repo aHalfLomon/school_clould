@@ -30,6 +30,7 @@ public class EvnMessServiceImpl implements EvnMessService {
         evnMess.setEvnImg(newDto.getEvnImg());
         evnMess.setEvnTest(newDto.getEvnTest());
         evnMess.setEvnTitle(newDto.getEvnTitle());
+        evnMess.setEvnClass(newDto.getEvnClass());
         evnMessDao.insert(evnMess);
     }
 
@@ -45,5 +46,13 @@ public class EvnMessServiceImpl implements EvnMessService {
         page=evnMessDao.selectPage(page,null);
         List<EvnMess> list=page.getRecords();
         return list;
+    }
+
+    @Override
+    public List<EvnMess> getBclass(String bclass) {
+        LambdaQueryWrapper<EvnMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(EvnMess::getEvnClass,bclass);
+        List<EvnMess> evnMesses = evnMessDao.selectList(lambdaQueryWrapper);
+        return evnMesses;
     }
 }

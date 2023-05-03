@@ -15,4 +15,6 @@ public interface EvnMessService {
 
     //查询新闻
     List<EvnMess> getAllNews(int p);
+
+    List<EvnMess> getBclass(String bclass);
 }
