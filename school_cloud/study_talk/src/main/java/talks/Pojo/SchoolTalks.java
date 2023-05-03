@@ -36,5 +36,8 @@ public class SchoolTalks {
     //用户名
     private String user_name;
 
-    //private List<>
+    private List<String> comment;
+    private boolean liked;
+    private boolean collent;
+
 }

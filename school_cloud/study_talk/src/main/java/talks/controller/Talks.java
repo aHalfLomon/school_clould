@@ -142,6 +142,9 @@ public class Talks {
             talks1.add(schoolTalks);
             String uuid = talks2.getT_uid();
             UserUn user = userClient.findUserUn(uuid);
+            schoolTalks.setLiked(false);
+            schoolTalks.setCollent(false);
+            schoolTalks.setComment(null);
             schoolTalks.setUser_avatar(user.getUserAvatar());
             schoolTalks.setUser_name(user.getUserName());
         }
