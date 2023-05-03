@@ -3,6 +3,7 @@ package talks.Pojo;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Classname SchoolTalks
@@ -34,4 +35,6 @@ public class SchoolTalks {
     private String user_avatar;
     //用户名
     private String user_name;
+
+    //private List<>
 }
