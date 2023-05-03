@@ -55,4 +55,36 @@ public class EvnMessServiceImpl implements EvnMessService {
         List<EvnMess> evnMesses = evnMessDao.selectList(lambdaQueryWrapper);
         return evnMesses;
     }
+
+    @Override
+    public List<EvnMess> getRealNews() {
+        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(EvnMess::getEvnClass,"1");
+        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+        return evnMesses;
+    }
+
+    @Override
+    public List<EvnMess> getHotNews() {
+        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(EvnMess::getEvnClass,"2");
+        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+        return evnMesses;
+    }
+
+    @Override
+    public List<EvnMess> getAllNews() {
+        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(EvnMess::getEvnClass,"3");
+        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+        return evnMesses;
+    }
+
+    @Override
+    public List<EvnMess> getDiscuss() {
+        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(EvnMess::getEvnClass,"4");
+        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+        return evnMesses;
+    }
 }

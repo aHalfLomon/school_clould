@@ -195,12 +195,10 @@ public class ShopMessServiceImpl implements ShopMessService {
     }
 
     @Override
-    public List<GetShop> classShop(String className,int p) {
+    public List<GetShop> classShop(String className) {
         LambdaQueryWrapper<ShopMess> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.eq(ShopMess::getShopClass,className);
-        Page<ShopMess> page= new Page<>(p,8);
-        page=shopMessDao.selectPage(page,queryWrapper);
-        List<ShopMess> list=page.getRecords();
+        List<ShopMess> list=shopMessDao.selectList(queryWrapper);
         List<GetShop> getShops=new ArrayList<>();
         for (ShopMess shopMess:list){
             GetShop getShop=new GetShop();

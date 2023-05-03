@@ -80,9 +80,9 @@ public class ShopMessController {
     }
 
     //查询分类商品
-    @GetMapping("/open/class/{className}/{p}")
-    public ResultData classShop(@PathVariable("className") String className,@PathVariable("p") int p){
-        List<GetShop> getShops = shopMessService.classShop(className, p);
+    @GetMapping("/open/class/{className}")
+    public ResultData classShop(@PathVariable("className") String className){
+        List<GetShop> getShops = shopMessService.classShop(className);
         return new ResultData("200","ok",getShops);
     }
 }

@@ -39,5 +39,5 @@ public interface ShopMessService {
     void incar(String shopid);
 
     ////查询分类商品
-    List<GetShop> classShop(String className,int p);
+    List<GetShop> classShop(String className);
 }
