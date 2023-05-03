@@ -63,7 +63,6 @@ public class Talk_talk_serverImp implements Talk_talk_server {
 
     @Override
     public List<Talk_talks> Talks_talks(String tk_tid) {
-
         LambdaQueryWrapper<Talk_talks> queryWrapper3=new LambdaQueryWrapper<Talk_talks>()
                 .eq(Talk_talks::getTk_tid,tk_tid);
         List<Talk_talks> talks =talksplus.selectList(queryWrapper3);
