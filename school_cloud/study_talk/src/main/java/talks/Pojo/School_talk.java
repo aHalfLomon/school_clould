@@ -2,6 +2,8 @@ package talks.Pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.models.auth.In;
@@ -26,6 +28,7 @@ public class School_talk extends Model<School_talk> {
     //发帖内容
     private String t_source;
     //发帖日期
+    @TableField(fill = FieldFill.INSERT)
     private Date t_date;
     //帖子收藏数量
     private Integer t_usc_count;

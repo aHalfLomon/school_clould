@@ -1,6 +1,8 @@
 package talks.Pojo;
 
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,7 @@ public class S_user_like extends Model<School_talk> {
     //点赞帖子的标题
     private String t_like_title;
     //点赞的时间
+    @TableField(fill = FieldFill.INSERT)
     private Date t_like_date;
 
 

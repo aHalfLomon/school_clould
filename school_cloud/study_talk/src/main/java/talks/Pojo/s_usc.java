@@ -1,6 +1,8 @@
 package talks.Pojo;
 
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -17,6 +19,7 @@ public class s_usc extends Model<School_talk> {
     //收藏的用户ID
     private String usc_uid;
     //收藏的时间
+    @TableField(fill = FieldFill.INSERT)
     private Date usc_data;
     //帖子的标题
     private String tk_title;

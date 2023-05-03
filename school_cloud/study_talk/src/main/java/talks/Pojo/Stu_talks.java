@@ -1,5 +1,7 @@
 package talks.Pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,6 +16,7 @@ public class Stu_talks {
     //评论内容
     private String tk_source;
     //发表评论的时间
+    @TableField(fill = FieldFill.INSERT)
     private Date tk_data;
 
     private String user_avatar;

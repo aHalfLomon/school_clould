@@ -1,6 +1,8 @@
 package talks.Pojo;
 
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,7 @@ public class Talk_Talk_likes extends Model<Talk_talks> {
     //点赞用户ID
     private String like_uid;
     //点赞时间;可用来按时间排序，来展示用户的点赞帖子
+    @TableField(fill = FieldFill.INSERT)
     private Date like_data;
 
     public String getLike_sid() {

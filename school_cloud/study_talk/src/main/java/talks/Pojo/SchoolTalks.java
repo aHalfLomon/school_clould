@@ -1,5 +1,7 @@
 package talks.Pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.util.Date;
@@ -24,6 +26,7 @@ public class SchoolTalks {
     //发帖内容
     private String t_source;
     //发帖日期
+    @TableField(fill = FieldFill.INSERT)
     private Date t_date;
     //帖子收藏数量
     private Integer t_usc_count;

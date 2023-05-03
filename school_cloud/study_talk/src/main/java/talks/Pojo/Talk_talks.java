@@ -1,5 +1,7 @@
 package talks.Pojo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
@@ -28,6 +30,7 @@ public class Talk_talks extends Model<Talk_talks> {
     //评论内容
     private String tk_source;
     //发表评论的时间
+    @TableField(fill = FieldFill.INSERT)
     private Date tk_data;
 
     public String getTk_id() {
