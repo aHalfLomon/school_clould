@@ -12,8 +12,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        #server-addr: 119.3.172.171:7000
-        server-addr: 127.0.0.1:8848
+        server-addr: 119.3.172.171:7000
+        #server-addr: 127.0.0.1:8848
         group: school-project
         namespace: school
   jackson:
