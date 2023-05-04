@@ -162,5 +162,95 @@ public class Talks {
             return new ResultData("200","OK!","似乎你还没有发过帖子");
         }
     }
-
+    //分类++++++++++++++++++++++++++++++++++++++++++++++++++++
+    @GetMapping("/open/Tlife")
+    public ResultData Tlife(){
+        List<School_talk> talks = talkAboutServer.Life();
+        List<SchoolTalks> talks1 = new ArrayList<>();
+        for(School_talk talks2 :talks){
+            SchoolTalks schoolTalks = new SchoolTalks();
+            BeanUtils.copyProperties(talks2,schoolTalks);
+            talks1.add(schoolTalks);
+            String uuid = talks2.getT_uid();
+            UserUn user = userClient.findUserUn(uuid);
+            schoolTalks.setLiked(false);
+            schoolTalks.setCollent(false);
+            schoolTalks.setComment(null);
+            schoolTalks.setUser_avatar(user.getUserAvatar());
+            schoolTalks.setUser_name(user.getUserName());
+        }
+        return new ResultData("200","OK!",talks1);
+    }
+    @GetMapping("/open/Tfood")
+    public ResultData Tfood(){
+        List<School_talk> talks = talkAboutServer.Food();
+        List<SchoolTalks> talks1 = new ArrayList<>();
+        for(School_talk talks2 :talks){
+            SchoolTalks schoolTalks = new SchoolTalks();
+            BeanUtils.copyProperties(talks2,schoolTalks);
+            talks1.add(schoolTalks);
+            String uuid = talks2.getT_uid();
+            UserUn user = userClient.findUserUn(uuid);
+            schoolTalks.setLiked(false);
+            schoolTalks.setCollent(false);
+            schoolTalks.setComment(null);
+            schoolTalks.setUser_avatar(user.getUserAvatar());
+            schoolTalks.setUser_name(user.getUserName());
+        }
+        return new ResultData("200","OK!",talks1);
+    }
+    @GetMapping("/open/TFun")
+    public ResultData TFun(){
+        List<School_talk> talks = talkAboutServer.Fun();
+        List<SchoolTalks> talks1 = new ArrayList<>();
+        for(School_talk talks2 :talks){
+            SchoolTalks schoolTalks = new SchoolTalks();
+            BeanUtils.copyProperties(talks2,schoolTalks);
+            talks1.add(schoolTalks);
+            String uuid = talks2.getT_uid();
+            UserUn user = userClient.findUserUn(uuid);
+            schoolTalks.setLiked(false);
+            schoolTalks.setCollent(false);
+            schoolTalks.setComment(null);
+            schoolTalks.setUser_avatar(user.getUserAvatar());
+            schoolTalks.setUser_name(user.getUserName());
+        }
+        return new ResultData("200","OK!",talks1);
+    }
+    @GetMapping("/open/Tstudy")
+    public ResultData Tstudy(){
+        List<School_talk> talks = talkAboutServer.Study();
+        List<SchoolTalks> talks1 = new ArrayList<>();
+        for(School_talk talks2 :talks){
+            SchoolTalks schoolTalks = new SchoolTalks();
+            BeanUtils.copyProperties(talks2,schoolTalks);
+            talks1.add(schoolTalks);
+            String uuid = talks2.getT_uid();
+            UserUn user = userClient.findUserUn(uuid);
+            schoolTalks.setLiked(false);
+            schoolTalks.setCollent(false);
+            schoolTalks.setComment(null);
+            schoolTalks.setUser_avatar(user.getUserAvatar());
+            schoolTalks.setUser_name(user.getUserName());
+        }
+        return new ResultData("200","OK!",talks1);
+    }
+    @GetMapping("/open/Tother")
+    public ResultData Tother(){
+        List<School_talk> talks = talkAboutServer.Others();
+        List<SchoolTalks> talks1 = new ArrayList<>();
+        for(School_talk talks2 :talks){
+            SchoolTalks schoolTalks = new SchoolTalks();
+            BeanUtils.copyProperties(talks2,schoolTalks);
+            talks1.add(schoolTalks);
+            String uuid = talks2.getT_uid();
+            UserUn user = userClient.findUserUn(uuid);
+            schoolTalks.setLiked(false);
+            schoolTalks.setCollent(false);
+            schoolTalks.setComment(null);
+            schoolTalks.setUser_avatar(user.getUserAvatar());
+            schoolTalks.setUser_name(user.getUserName());
+        }
+        return new ResultData("200","OK!",talks1);
+    }
 }

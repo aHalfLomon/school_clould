@@ -142,27 +142,27 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
     //生活
     @Override
     public List<School_talk> Life() {
-        return null;
+        return studyTalkAbout.Life();
     }
     ///学习
     @Override
     public List<School_talk> Study() {
-        return null;
+        return studyTalkAbout.Study();
     }
     //美食
     @Override
     public List<School_talk> Food() {
-        return null;
+        return studyTalkAbout.Food();
     }
     //娱乐
     @Override
     public List<School_talk> Fun() {
-        return null;
+        return studyTalkAbout.Fun();
     }
     //其他
     @Override
     public List<School_talk> Others() {
-        return null;
+        return studyTalkAbout.Others();
     }
 
 //---------------------一下用于对帖子主表的点赞数个收藏数进行增加--------------------------------------
