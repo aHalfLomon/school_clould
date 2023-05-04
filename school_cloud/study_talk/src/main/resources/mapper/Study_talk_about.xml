@@ -76,4 +76,21 @@
         update s_t set t_like_count = (t_like_count - 1) where t_id = #{t_id};
     </update>
 
+
+    <!--    分类相关-->
+    <select id="Life" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
+        SELECT * FROM s_t WHERE t_titile like CONCAT("%","#生活","%");
+    </select>
+    <select id="Study" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
+        SELECT * FROM s_t WHERE t_titile like CONCAT("%","#学习","%");
+    </select>
+    <select id="Food" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
+        SELECT * FROM s_t WHERE t_titile like CONCAT("%","#美食","%");
+    </select>
+    <select id="Fun" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
+        SELECT * FROM s_t WHERE t_titile like CONCAT("%","#娱乐","%");
+    </select>
+    <select id="Others" parameterType="java.lang.String" resultType="talks.Pojo.School_talk">
+        SELECT * FROM s_t WHERE t_titile like CONCAT("%","#其他","%");
+    </select>
 </mapper>

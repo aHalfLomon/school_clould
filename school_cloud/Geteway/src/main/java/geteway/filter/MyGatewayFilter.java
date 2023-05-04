@@ -31,7 +31,7 @@ public class MyGatewayFilter implements GlobalFilter {
         String aus = exchange.getRequest().getHeaders().getFirst("Authorization");
         if(aus!=null){
             String authorization=aus.substring(7);
-            Boolean aBoolean = redisTemplate.hasKey("guoqi:" + authorization);
+            Boolean aBoolean = redisTemplate.   hasKey("guoqi:" + authorization);
             if (aBoolean){
                 exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
                 return exchange.getResponse().setComplete();

@@ -35,6 +35,12 @@ public interface Study_talk_about {
     List<School_talk> mytalk(String uid);
 
     Integer linkit(String t_id);
+    //分类相关
+    List<School_talk> Life();
+    List<School_talk> Study();
+    List<School_talk> Food();
+    List<School_talk> Fun();
+    List<School_talk> Others();
 
     //用于对主表中的点赞和收藏数进行操作
     Integer addcount(String t_id);

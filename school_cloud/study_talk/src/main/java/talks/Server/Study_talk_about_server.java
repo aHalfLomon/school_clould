@@ -30,6 +30,13 @@ public interface Study_talk_about_server {
     School_talk talk_usersc_cont(String t_id);
     List<School_talk> search_talk_source(String source);
     List<School_talk> mytalk(String uid);
+    //一下用于分类操作
+    List<School_talk> Life();
+    List<School_talk> Study();
+    List<School_talk> Food();
+    List<School_talk> Fun();
+    List<School_talk> Others();
+
 
     //用于对主表中的点赞和收藏数进行操作
     Integer addcount(String t_id);

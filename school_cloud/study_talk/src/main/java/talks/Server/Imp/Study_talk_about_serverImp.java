@@ -102,7 +102,6 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         }
     }
 
-
     @Override
     public School_talk talk_like_cont(String t_id) {
 //        try {
@@ -138,6 +137,32 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
         }catch (Exception e){
             return -1;
         }
+    }
+    //================================================================
+    //生活
+    @Override
+    public List<School_talk> Life() {
+        return null;
+    }
+    ///学习
+    @Override
+    public List<School_talk> Study() {
+        return null;
+    }
+    //美食
+    @Override
+    public List<School_talk> Food() {
+        return null;
+    }
+    //娱乐
+    @Override
+    public List<School_talk> Fun() {
+        return null;
+    }
+    //其他
+    @Override
+    public List<School_talk> Others() {
+        return null;
     }
 
 //---------------------一下用于对帖子主表的点赞数个收藏数进行增加--------------------------------------
