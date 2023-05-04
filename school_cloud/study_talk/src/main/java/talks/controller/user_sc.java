@@ -76,18 +76,18 @@ public class user_sc {
     //判断是都收藏过
     @PostMapping("/issc")
     public ResultData issc(@RequestBody IsUsersc isUsersc0)
-    {
-        IsUsersc isUsersc1 = new IsUsersc();
-        if (isUsersc0.getT1()!= null)
+    {IsUsersc isUsersc1 = new IsUsersc();
+        if (!isUsersc0.getT1().equals("null"))
         {
             s_usc uscs = usc.issc(isUsersc0.getT1());
             if(uscs!= null)
-            isUsersc1.setT1("已收藏");
+                isUsersc1.setT1("已收藏");
             else {
                 isUsersc1.setT1("未收藏");
             }
         }else isUsersc1.setT1("null");
-        if (isUsersc0.getT2()!= null)
+
+        if (!isUsersc0.getT2().equals("null"))
         {
             s_usc uscs2 = usc.issc(isUsersc0.getT2());
             if(uscs2!= null)
@@ -96,7 +96,8 @@ public class user_sc {
                 isUsersc1.setT2("未收藏");
             }
         }else isUsersc1.setT2("null");
-        if (isUsersc0.getT3()!= null)
+
+        if (!isUsersc0.getT3().equals("null"))
         {
             s_usc uscs3 = usc.issc(isUsersc0.getT3());
             if(uscs3!= null)
@@ -105,7 +106,8 @@ public class user_sc {
                 isUsersc1.setT3("未收藏");
             }
         }else isUsersc1.setT3("null");
-        if (isUsersc0.getT4()!= null)
+
+        if (!isUsersc0.getT4().equals("null"))
         {
             s_usc uscs4 = usc.issc(isUsersc0.getT4());
             if(uscs4!= null)
@@ -114,7 +116,8 @@ public class user_sc {
                 isUsersc1.setT4("未收藏");
             }
         }else isUsersc1.setT4("null");
-        if (isUsersc0.getT5()!= null)
+
+        if (!isUsersc0.getT5().equals("null"))
         {
             s_usc uscs5 = usc.issc(isUsersc0.getT5());
             if(uscs5!= null)
@@ -123,7 +126,8 @@ public class user_sc {
                 isUsersc1.setT5("未收藏");
             }
         }else isUsersc1.setT5("null");
-        if (isUsersc0.getT6()!= null)
+
+        if (!isUsersc0.getT6().equals("null"))
         {
             s_usc uscs6 = usc.issc(isUsersc0.getT6());
             if(uscs6!= null)
@@ -132,7 +136,8 @@ public class user_sc {
                 isUsersc1.setT6("未收藏");
             }
         }else isUsersc1.setT6("null");
-        if (isUsersc0.getT7()!= null)
+
+        if (!isUsersc0.getT7().equals("null"))
         {
             s_usc uscs7 = usc.issc(isUsersc0.getT7());
             if(uscs7!= null)
@@ -141,7 +146,8 @@ public class user_sc {
                 isUsersc1.setT7("未收藏");
             }
         }else isUsersc1.setT7("null");
-        if (isUsersc0.getT8()!= null)
+
+        if (!isUsersc0.getT8().equals("null"))
         {
             s_usc uscs8 = usc.issc(isUsersc0.getT8());
             if(uscs8!= null)
@@ -152,6 +158,7 @@ public class user_sc {
         }else isUsersc1.setT8("null");
 
         return new ResultData("200","ok!",isUsersc1);
+
     }
 
 }
