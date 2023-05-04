@@ -132,9 +132,9 @@ public class Talks {
     }
 
     //来展示所有的帖子
-    @GetMapping("/open/all_studyTalk")
-    public ResultData all_studyTalk(){
-        List<School_talk> talks = talkAboutServer.search_all();
+    @GetMapping("/open/all_studyTalk/{p}")
+    public ResultData all_studyTalk(@PathVariable("p") int p){
+        List<School_talk> talks = talkAboutServer.search_all(p);
         List<SchoolTalks> talks1 = new ArrayList<>();
         for(School_talk talks2 :talks){
             SchoolTalks schoolTalks = new SchoolTalks();

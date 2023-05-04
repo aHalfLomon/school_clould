@@ -8,10 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import talks.Pojo.ResultData;
-import talks.Pojo.S_user_like;
-import talks.Pojo.SuserDto;
-import talks.Pojo.s_usc;
+import talks.Pojo.*;
 import talks.Server.s_user_sc_server;
 import talks.config.SecurityUtil;
 
@@ -77,15 +74,84 @@ public class user_sc {
     }
 
     //判断是都收藏过
-    @GetMapping("/issc")
-    public ResultData issc(@RequestParam("usc_sid") String usc_sid)
+    @PostMapping("/issc")
+    public ResultData issc(@RequestBody IsUsersc isUsersc0)
     {
-        s_usc uscs = usc.issc(usc_sid);
-        if (uscs != null){
-            return new ResultData("200","已经收藏!",uscs);
-        }else {
-            return new ResultData("201","没有收藏!","");
-        }
+        IsUsersc isUsersc1 = new IsUsersc();
+        if (isUsersc0.getT1()!= null)
+        {
+            s_usc uscs = usc.issc(isUsersc0.getT1());
+            if(uscs!= null)
+            isUsersc1.setT1("已收藏");
+            else {
+                isUsersc1.setT1("未收藏");
+            }
+        }else isUsersc1.setT1("null");
+        if (isUsersc0.getT2()!= null)
+        {
+            s_usc uscs2 = usc.issc(isUsersc0.getT2());
+            if(uscs2!= null)
+                isUsersc1.setT2("已收藏");
+            else {
+                isUsersc1.setT2("未收藏");
+            }
+        }else isUsersc1.setT2("null");
+        if (isUsersc0.getT3()!= null)
+        {
+            s_usc uscs3 = usc.issc(isUsersc0.getT3());
+            if(uscs3!= null)
+                isUsersc1.setT3("已收藏");
+            else {
+                isUsersc1.setT3("未收藏");
+            }
+        }else isUsersc1.setT3("null");
+        if (isUsersc0.getT4()!= null)
+        {
+            s_usc uscs4 = usc.issc(isUsersc0.getT4());
+            if(uscs4!= null)
+                isUsersc1.setT4("已收藏");
+            else {
+                isUsersc1.setT4("未收藏");
+            }
+        }else isUsersc1.setT4("null");
+        if (isUsersc0.getT5()!= null)
+        {
+            s_usc uscs5 = usc.issc(isUsersc0.getT5());
+            if(uscs5!= null)
+                isUsersc1.setT5("已收藏");
+            else {
+                isUsersc1.setT5("未收藏");
+            }
+        }else isUsersc1.setT5("null");
+        if (isUsersc0.getT6()!= null)
+        {
+            s_usc uscs6 = usc.issc(isUsersc0.getT6());
+            if(uscs6!= null)
+                isUsersc1.setT6("已收藏");
+            else {
+                isUsersc1.setT6("未收藏");
+            }
+        }else isUsersc1.setT6("null");
+        if (isUsersc0.getT7()!= null)
+        {
+            s_usc uscs7 = usc.issc(isUsersc0.getT7());
+            if(uscs7!= null)
+                isUsersc1.setT7("已收藏");
+            else {
+                isUsersc1.setT7("未收藏");
+            }
+        }else isUsersc1.setT7("null");
+        if (isUsersc0.getT8()!= null)
+        {
+            s_usc uscs8 = usc.issc(isUsersc0.getT8());
+            if(uscs8!= null)
+                isUsersc1.setT8("已收藏");
+            else {
+                isUsersc1.setT8("未收藏");
+            }
+        }else isUsersc1.setT8("null");
+
+        return new ResultData("200","ok!",isUsersc1);
     }
 
 }

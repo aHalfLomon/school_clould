@@ -1,6 +1,7 @@
 package talks.Server.Imp;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import talks.Pojo.S_user_like;
@@ -8,6 +9,7 @@ import talks.Pojo.School_talk;
 import talks.Pojo.Talk_Talk_likes;
 import talks.Server.Study_talk_about_server;
 import talks.config.SecurityUtil;
+import talks.mapper.S_talk;
 import talks.mapper.Study_talk_about;
 import talks.mapper.Talkabout;
 
@@ -27,6 +29,9 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
     private Study_talk_about studyTalkAbout;
     @Resource
     private Talkabout talkabout;
+
+    @Resource
+    private S_talk sTalk;
 
     //用户删除自己发的帖子
     @Override
@@ -52,9 +57,12 @@ public class Study_talk_about_serverImp implements Study_talk_about_server {
     }
     //返回所有的帖子
     @Override
-    public List<School_talk> search_all() {
+    public List<School_talk> search_all(int p) {
         try {
-            return studyTalkAbout.search_all();
+            Page<School_talk> page=new Page<>(p,8);
+            page = sTalk.selectPage(page, null);
+            List<School_talk> records = page.getRecords();
+            return records;
         }
         catch (Exception e){
             return null;

@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public interface Study_talk_about_server {
 
-    List<School_talk> search_all();
+    List<School_talk> search_all(int p);
     Integer addtalk(School_talk schoolTalk);
     //删除帖子
     Integer deltalk(String t_id);
