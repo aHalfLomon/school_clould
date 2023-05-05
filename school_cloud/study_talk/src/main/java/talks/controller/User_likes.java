@@ -34,7 +34,8 @@ public class User_likes {
     }
 
 
-    //添加一个    @PostMapping("/addlike")
+    //添加一个
+    @PostMapping("/addlike")
     public ResultData addlike(@RequestBody S_user_like Suserlike){
         Integer f = likeServer.user_like(Suserlike);
         if (f == 200){

@@ -17,8 +17,8 @@ spring:
         min-idle: 0 # 连接池中的最小空闲连接
   cloud:
     nacos:
-      #server-addr: 119.3.172.171:7000
-      server-addr: 127.0.0.1:8848
+      server-addr: 119.3.172.171:7000
+      #server-addr: 127.0.0.1:8848
       discovery:
         namespace: school
         group: school-project
