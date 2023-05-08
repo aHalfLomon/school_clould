@@ -51,84 +51,108 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean LogonUser(LogonUserDto logonUserDto) {
-        LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
-        queryWrapper.eq(SUser::getUserPhone,logonUserDto.getUserPhone());
-        SUser phuser=suserMapper.selectOne(queryWrapper);
-        if (phuser!=null){
-            return false;
-        }
+        try {
+            LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
+            queryWrapper.eq(SUser::getUserPhone,logonUserDto.getUserPhone());
+            SUser phuser=suserMapper.selectOne(queryWrapper);
+            if (phuser!=null){
+                return false;
+            }
 
 //        前端传过来的验证码
-        String qSms=logonUserDto.getSms();
+            String qSms=logonUserDto.getSms();
 //        redis保存的验证码
-        ValueOperations redis = redisTemplate.opsForValue();
-        String hSms= (String) redis.get(logonUserDto.getUserPhone());
+            ValueOperations redis = redisTemplate.opsForValue();
+            String hSms= (String) redis.get(logonUserDto.getUserPhone());
 
-        if (!qSms.equals(hSms)){
-            //验证码错误
+            if (!qSms.equals(hSms)){
+                //验证码错误
+                return false;
+            }
+            SUser sUser=new SUser();
+            String password = passwordEncoder.encode(logonUserDto.getUserPassward());
+            sUser.setUserPhone(logonUserDto.getUserPhone());
+            sUser.setUserPassward(password);
+            sUser.setUserName(logonUserDto.getUserName());
+            suserMapper.insert(sUser);
+            return true;
+        }catch (Exception e){
             return false;
         }
-        SUser sUser=new SUser();
-        String password = passwordEncoder.encode(logonUserDto.getUserPassward());
-        sUser.setUserPhone(logonUserDto.getUserPhone());
-        sUser.setUserPassward(password);
-        sUser.setUserName(logonUserDto.getUserName());
-        suserMapper.insert(sUser);
-        return true;
     }
 
     @Override
     public boolean SendSms(String phone) {
-        //判断手机号是否被注册
-        LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
-        queryWrapper.eq(SUser::getUserPhone,phone);
-        SUser phuser=suserMapper.selectOne(queryWrapper);
-        if (phuser!=null){
+        try {
+            //判断手机号是否被注册
+            LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
+            queryWrapper.eq(SUser::getUserPhone,phone);
+            SUser phuser=suserMapper.selectOne(queryWrapper);
+            if (phuser!=null){
+                return false;
+            }
+
+            //生产验证码，并存入redis
+            Random random=new Random();
+            String sms=String.valueOf(random.nextInt(9999-1000+1)+1000);
+            ValueOperations redis = redisTemplate.opsForValue();
+            redis.set(phone,sms,5, TimeUnit.MINUTES);//有效时间5分钟
+
+            //发送到手机
+            sendphoneSms(phone, sms);
+
+            return true;
+        }catch (Exception e){
             return false;
         }
-
-        //生产验证码，并存入redis
-        Random random=new Random();
-        String sms=String.valueOf(random.nextInt(9999-1000+1)+1000);
-        ValueOperations redis = redisTemplate.opsForValue();
-        redis.set(phone,sms,5, TimeUnit.MINUTES);//有效时间5分钟
-
-        //发送到手机
-        sendphoneSms(phone, sms);
-
-        return true;
     }
 
     @Override
     public boolean UpUser(UpUserDto upUserDto) {
-        SecurityUtil.XcUser user=SecurityUtil.getUser();
-        SUser userx = suserMapper.selectById(user.getUserId());
-        BeanUtils.copyProperties(upUserDto,userx);
-        suserMapper.updateById(userx);
-        return false;
+        try {
+            SecurityUtil.XcUser user=SecurityUtil.getUser();
+            SUser userx = suserMapper.selectById(user.getUserId());
+            BeanUtils.copyProperties(upUserDto,userx);
+            suserMapper.updateById(userx);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     @Override
     public SUser getUser() {
-        SecurityUtil.XcUser user=SecurityUtil.getUser();
-        SUser userx = suserMapper.selectById(user.getUserId());
-        userx.setUserPassward(null);
-        return userx;
+        try {
+            SecurityUtil.XcUser user=SecurityUtil.getUser();
+            SUser userx = suserMapper.selectById(user.getUserId());
+            userx.setUserPassward(null);
+            return userx;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
     public SUser getUserByid(String id) {
-        SUser sUser = suserMapper.selectById(id);
-        return sUser;
+        try {
+            SUser sUser = suserMapper.selectById(id);
+            return sUser;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
     public UserUn getUserUn(String id) {
-        SUser sUser = suserMapper.selectById(id);
-        UserUn userUn=new UserUn();
-        userUn.setUserAvatar(sUser.getUserAvatar());
-        userUn.setUserName(sUser.getUserName());
-        return userUn;
+        try {
+            SUser sUser = suserMapper.selectById(id);
+            UserUn userUn=new UserUn();
+            userUn.setUserAvatar(sUser.getUserAvatar());
+            userUn.setUserName(sUser.getUserName());
+            return userUn;
+        }catch (Exception e){
+            return null;
+        }
     }
 
 

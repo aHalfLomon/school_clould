@@ -22,8 +22,6 @@ public class SecurityUtil {
         try {
             //拿 到当前用户身份
             Object principalObj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            System.out.println("+===============================================================");
-            System.out.println(principalObj);
             if (principalObj instanceof String) {
                 //取出用户身份信息
                 String principal = principalObj.toString();

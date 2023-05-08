@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="talks.mapper.s_user_sc">
+
+
+    <insert id="user_sc" parameterType="talks.Pojo.s_usc">
+        insert into s_usc(usc_sid,usc_uid,usc_data,tk_title)
+        values (#{usc_sid},#{usc_uid},#{usc_data},#{tk_title})
+    </insert>
+
+    <select id="mysc" parameterType="talks.Pojo.s_usc" resultType="talks.Pojo.s_usc">
+        SELECT * FROM s_usc where usc_uid = #{usc_uid};
+    </select>
+
+
+
+</mapper>

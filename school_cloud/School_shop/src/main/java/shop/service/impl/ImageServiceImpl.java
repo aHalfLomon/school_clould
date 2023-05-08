@@ -24,23 +24,31 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public void addImg(String url, String shopId, int f) {
-        ShopImg shopImg=new ShopImg();
-        shopImg.setSImgUrl(url);
-        shopImg.setSImgSid(shopId);
-        shopImg.setSImg(f);
-        shopImgDao.insert(shopImg);
+        try {
+            ShopImg shopImg=new ShopImg();
+            shopImg.setSImgUrl(url);
+            shopImg.setSImgSid(shopId);
+            shopImg.setSImg(f);
+            shopImgDao.insert(shopImg);
+        }catch (Exception e){
+
+        }
     }
 
     @Override
     public List<String> getList(String shopId) {
-        LambdaQueryWrapper<ShopImg> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(ShopImg::getSImgSid,shopId);
-        queryWrapper.select(ShopImg::getSImgUrl);
-        List<ShopImg> shopImgs = shopImgDao.selectList(queryWrapper);
-        List<String> list=new ArrayList<>();
-        for (ShopImg shopImg:shopImgs){
-            list.add(shopImg.getSImgUrl());
+        try {
+            LambdaQueryWrapper<ShopImg> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(ShopImg::getSImgSid,shopId);
+            queryWrapper.select(ShopImg::getSImgUrl);
+            List<ShopImg> shopImgs = shopImgDao.selectList(queryWrapper);
+            List<String> list=new ArrayList<>();
+            for (ShopImg shopImg:shopImgs){
+                list.add(shopImg.getSImgUrl());
+            }
+            return list;
+        }catch (Exception e){
+            return null;
         }
-        return list;
     }
 }

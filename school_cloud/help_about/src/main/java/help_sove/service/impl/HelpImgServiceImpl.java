@@ -24,28 +24,42 @@ public class HelpImgServiceImpl implements HelpImgService {
 
     @Override
     public void addImg(String url, String hid) {
-        HlepImg hlepImg=new HlepImg();
-        hlepImg.setHImgUrl(url);
-        hlepImg.setHImgSid(hid);
-        hlepImgMapper.insert(hlepImg);
+        try {
+            HlepImg hlepImg=new HlepImg();
+            hlepImg.setHImgUrl(url);
+            hlepImg.setHImgSid(hid);
+            hlepImgMapper.insert(hlepImg);
+        }catch (Exception e){
+
+        }
     }
 
     @Override
     public List<String> getImg(String hid) {
-        LambdaQueryWrapper<HlepImg> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(HlepImg::getHImgSid,hid);
-        List<HlepImg> hlepImgs = hlepImgMapper.selectList(queryWrapper);
-        List<String> list=new ArrayList<>();
-        for (HlepImg hlepImg:hlepImgs){
-            list.add(hlepImg.getHImgUrl());
+        try {
+            LambdaQueryWrapper<HlepImg> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(HlepImg::getHImgSid,hid);
+            List<HlepImg> hlepImgs = hlepImgMapper.selectList(queryWrapper);
+            List<String> list=new ArrayList<>();
+            for (HlepImg hlepImg:hlepImgs){
+                list.add(hlepImg.getHImgUrl());
+            }
+            return list;
+        }catch (Exception e){
+
+            return null;
         }
-        return list;
+
     }
 
     @Override
     public void deImg(String hid) {
-        LambdaQueryWrapper<HlepImg> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(HlepImg::getHImgSid,hid);
-        hlepImgMapper.delete(queryWrapper);
+        try {
+            LambdaQueryWrapper<HlepImg> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(HlepImg::getHImgSid,hid);
+            hlepImgMapper.delete(queryWrapper);
+        }catch (Exception e){
+
+        }
     }
 }

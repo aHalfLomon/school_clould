@@ -26,65 +26,97 @@ public class EvnMessServiceImpl implements EvnMessService {
 
     @Override
     public void addNews(NewDto newDto) {
-        EvnMess evnMess=new EvnMess();
-        evnMess.setEvnImg(newDto.getEvnImg());
-        evnMess.setEvnTest(newDto.getEvnTest());
-        evnMess.setEvnTitle(newDto.getEvnTitle());
-        evnMess.setEvnClass(newDto.getEvnClass());
-        evnMessDao.insert(evnMess);
+        try {
+            EvnMess evnMess=new EvnMess();
+            evnMess.setEvnImg(newDto.getEvnImg());
+            evnMess.setEvnTest(newDto.getEvnTest());
+            evnMess.setEvnTitle(newDto.getEvnTitle());
+            evnMess.setEvnClass(newDto.getEvnClass());
+            evnMessDao.insert(evnMess);
+        }catch (Exception e){
+
+        }
     }
 
     @Override
     public void delete(String newId) {
-        evnMessDao.deleteById(newId);
+        try {
+            evnMessDao.deleteById(newId);
+        }catch (Exception e){
+
+        }
     }
 
     @Override
     public List<EvnMess> getAllNews(int p) {
-        LambdaQueryWrapper<EvnMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
-        Page<EvnMess> page= new Page<>(p,6);
-        page=evnMessDao.selectPage(page,null);
-        List<EvnMess> list=page.getRecords();
-        return list;
+        try {
+            LambdaQueryWrapper<EvnMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+            Page<EvnMess> page= new Page<>(p,6);
+            page=evnMessDao.selectPage(page,null);
+            List<EvnMess> list=page.getRecords();
+            return list;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
     public List<EvnMess> getBclass(String bclass) {
-        LambdaQueryWrapper<EvnMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.eq(EvnMess::getEvnClass,bclass);
-        List<EvnMess> evnMesses = evnMessDao.selectList(lambdaQueryWrapper);
-        return evnMesses;
+        try {
+            LambdaQueryWrapper<EvnMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
+            lambdaQueryWrapper.eq(EvnMess::getEvnClass,bclass);
+            List<EvnMess> evnMesses = evnMessDao.selectList(lambdaQueryWrapper);
+            return evnMesses;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
     public List<EvnMess> getRealNews() {
-        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(EvnMess::getEvnClass,"1");
-        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
-        return evnMesses;
+        try {
+            LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(EvnMess::getEvnClass,"1");
+            List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+            return evnMesses;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
     public List<EvnMess> getHotNews() {
-        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(EvnMess::getEvnClass,"2");
-        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
-        return evnMesses;
+        try {
+            LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(EvnMess::getEvnClass,"2");
+            List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+            return evnMesses;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
     public List<EvnMess> getAllNews() {
-        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(EvnMess::getEvnClass,"3");
-        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
-        return evnMesses;
+        try {
+            LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(EvnMess::getEvnClass,"3");
+            List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+            return evnMesses;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
     public List<EvnMess> getDiscuss() {
-        LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(EvnMess::getEvnClass,"4");
-        List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
-        return evnMesses;
+        try {
+            LambdaQueryWrapper<EvnMess> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(EvnMess::getEvnClass,"4");
+            List<EvnMess> evnMesses = evnMessDao.selectList(queryWrapper);
+            return evnMesses;
+        }catch (Exception e){
+            return null;
+        }
     }
 }

@@ -30,32 +30,47 @@ public class HelpSoveServiceImpl implements HelpSoveService {
 
     @Override
     public boolean Solve(HelpSoveDto helpSoveDto) {
-        HelpMess helpMess = helpMessMapper.selectById(helpSoveDto.getHid());
-        helpMess.setHState(helpSoveDto.getHstate());
-        HelpSove helpSove=new HelpSove();
-        helpSove.setHId(helpSoveDto.getHid());
-        helpSove.sethUid(helpMess.getHUid());
-        helpSove.setHSoveperson(helpSoveDto.getHsoveperson());
-        helpSove.setHSFa(helpSoveDto.getHsfa());
-        helpSove.setHState(helpSoveDto.getHstate());
-        helpSoveMapper.insert(helpSove);
-        helpMessMapper.updateById(helpMess);
-        return true;
+        try {
+            HelpMess helpMess = helpMessMapper.selectById(helpSoveDto.getHid());
+            helpMess.setHState(helpSoveDto.getHstate());
+            HelpSove helpSove=new HelpSove();
+            helpSove.setHId(helpSoveDto.getHid());
+            helpSove.sethUid(helpMess.getHUid());
+            helpSove.setHSoveperson(helpSoveDto.getHsoveperson());
+            helpSove.setHSFa(helpSoveDto.getHsfa());
+            helpSove.setHState(helpSoveDto.getHstate());
+            helpSoveMapper.insert(helpSove);
+            helpMessMapper.updateById(helpMess);
+            return true;
+        }catch (Exception e){
+
+            return false;
+        }
     }
 
     @Override
     public List<HelpSove> getMySolve() {
-        String uid= SecurityUtil.getUser().getUserId();
-        LambdaQueryWrapper<HelpSove> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(HelpSove::gethUid,uid);
-        List<HelpSove> helpSoves = helpSoveMapper.selectList(queryWrapper);
-        return helpSoves;
+        try {
+            String uid= SecurityUtil.getUser().getUserId();
+            LambdaQueryWrapper<HelpSove> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(HelpSove::gethUid,uid);
+            List<HelpSove> helpSoves = helpSoveMapper.selectList(queryWrapper);
+            return helpSoves;
+        }catch (Exception e){
+
+            return null;
+        }
     }
 
     @Override
     public List<HelpSove> getAllSolve() {
-        LambdaQueryWrapper<HelpSove> queryWrapper=new LambdaQueryWrapper<>();
-        List<HelpSove> helpSoves = helpSoveMapper.selectList(queryWrapper);
-        return helpSoves;
+        try {
+            LambdaQueryWrapper<HelpSove> queryWrapper=new LambdaQueryWrapper<>();
+            List<HelpSove> helpSoves = helpSoveMapper.selectList(queryWrapper);
+            return helpSoves;
+        }catch (Exception e){
+
+            return null;
+        }
     }
 }
