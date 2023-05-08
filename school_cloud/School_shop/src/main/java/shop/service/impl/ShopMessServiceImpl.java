@@ -60,7 +60,7 @@ public class ShopMessServiceImpl implements ShopMessService {
 //        }
 
         //无缓存
-        Page<ShopMess> page= new Page<>(p,8);
+        Page<ShopMess> page= new Page<>(p,9);
         page=shopMessDao.selectPage(page,null);
         LambdaQueryWrapper<ShopMess> lambdaQueryWrapper=new LambdaQueryWrapper<>();
         List<ShopMess> list=page.getRecords();
@@ -80,7 +80,9 @@ public class ShopMessServiceImpl implements ShopMessService {
             getShop.setUrlList(imageService.getList(shopMess.getShopId()));
             getShops.add(getShop);
         }
-        //缓存入redis
+        if(p==1){
+            getShops.remove(0);
+        }
 
 
         return getShops;
