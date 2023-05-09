@@ -1,5 +1,6 @@
 package users.controller;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -75,6 +76,7 @@ public class UserController {
     //redis测试
     @GetMapping("/redis")
     public ResultData test(){
+
         ValueOperations<String,String> redis=redisTemplate.opsForValue();
         redis.set("longtao","666");
         return new ResultData("200","ok","redis");

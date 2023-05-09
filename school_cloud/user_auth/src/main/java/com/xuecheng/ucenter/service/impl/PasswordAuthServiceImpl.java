@@ -9,6 +9,7 @@ import com.xuecheng.ucenter.model.dto.LoginUserDto;
 import com.xuecheng.ucenter.model.po.SUser;
 import com.xuecheng.ucenter.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
