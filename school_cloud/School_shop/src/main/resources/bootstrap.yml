@@ -9,10 +9,14 @@ spring:
   application:
     name: school-shop
   cloud:
+    gateway:
+      httpclient:
+        pool:
+          max-idle-time: 10000
     nacos:
       discovery:
-#        server-addr: 8.130.115.231:7000
-        server-addr: 127.0.0.1:8848
+        server-addr: 8.130.115.231:7000
+        #        server-addr: 127.0.0.1:8848
         namespace: school
         group: school-project
 
