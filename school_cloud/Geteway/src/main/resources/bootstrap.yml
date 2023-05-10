@@ -30,10 +30,6 @@ spring:
           uri: http://localhost:8086
           predicates:
             - Path=/user/**
-        - id: school-user-2
-          uri: http://localhost:8086
-          predicates:
-            - Path=/druid/**
         - id: school-talk
           uri: http://localhost:8085
           predicates:
