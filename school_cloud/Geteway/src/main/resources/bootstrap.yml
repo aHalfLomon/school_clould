@@ -23,27 +23,21 @@ spring:
             allowCredentials: true
       routes:
         - id: auth-service
-          uri: lb://auth-service
           predicates:
             - Path=/auth/**
         - id: school-user
-          uri: lb://school-user
           predicates:
             - Path=/user/**
         - id: school-user-2
-          uri: lb://school-user
           predicates:
             - Path=/druid/**
         - id: school-talk
-          uri: lb://school-talk
           predicates:
             - Path=/talk/**
         - id: school-help
-          uri: lb://school-help
           predicates:
             - Path=/help/**
         - id: school-shop
-          uri: lb://school-shop
           predicates:
             - Path=/shop/**
 
