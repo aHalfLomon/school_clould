@@ -29,7 +29,7 @@ import java.util.List;
 @EnableDiscoveryClient
 @EnableWebMvc
 @RestController
-@RequestMapping("/talk/study_talk")
+@RequestMapping("/talk/study_talk") //test
 public class Talks {
     //帖子相关
     @Resource

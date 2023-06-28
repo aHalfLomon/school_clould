@@ -58,7 +58,6 @@ public class UserServiceImpl implements UserService {
             if (phuser!=null){
                 return false;
             }
-
 //        前端传过来的验证码
             String qSms=logonUserDto.getSms();
 //        redis保存的验证码
