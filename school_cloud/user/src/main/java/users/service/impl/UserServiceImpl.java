@@ -8,6 +8,7 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.google.gson.Gson;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,53 @@ public class UserServiceImpl implements UserService {
     @Resource
     PasswordEncoder passwordEncoder;
 
+    //更新数据库的密码(重置密码)
+    @Override
+    public String uppass(LogonUserDto logonUserDto) {
+        //来判断有没有这个用户
+        LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
+        queryWrapper.eq(SUser::getUserPhone,logonUserDto.getUserPhone());
+        SUser phuser=suserMapper.selectOne(queryWrapper);
+        if (phuser==null){
+            return "用户不存在！";
+        }
+        //前段下发验证码
+        //前端传过来的验证码
+        String qSms=logonUserDto.getSms();
+        //redis保存的验证码
+        ValueOperations redis = redisTemplate.opsForValue();
+        String hSms= (String) redis.get(logonUserDto.getUserPhone());
+        //从redis中拿取验证码
+        if(!qSms.equals(hSms)){
+            return "验证码错误，请稍后重试！";
+        }
+        //对密码进行编码加密，存储到数据库中
+        LambdaUpdateWrapper<SUser> queryWrapper2=new LambdaUpdateWrapper<SUser>();
+        String Epassword = passwordEncoder.encode(logonUserDto.getUserPassward());
+        queryWrapper2.eq(SUser::getUserPhone,logonUserDto.getUserPhone())
+                .set(SUser::getUserPassward,Epassword);
+        //更新密码
+        suserMapper.update(null,queryWrapper2);
+        return "重置密码成功";
+    }
+
+    @Override
+    public boolean SendSmsSet(String phone) {
+        try {
+            //直接随机产生验证码，并存入redis
+            Random random=new Random();
+            String sms=String.valueOf(random.nextInt(9999-1000+1)+1000);
+            ValueOperations redis = redisTemplate.opsForValue();
+            redis.set(phone,sms,5, TimeUnit.MINUTES);//有效时间5分钟
+            //发送到手机
+            sendphoneSms(phone, sms);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    //注册用户
     @Override
     public boolean LogonUser(LogonUserDto logonUserDto) {
         try {
@@ -90,16 +138,13 @@ public class UserServiceImpl implements UserService {
             if (phuser!=null){
                 return false;
             }
-
             //生产验证码，并存入redis
             Random random=new Random();
             String sms=String.valueOf(random.nextInt(9999-1000+1)+1000);
             ValueOperations redis = redisTemplate.opsForValue();
             redis.set(phone,sms,5, TimeUnit.MINUTES);//有效时间5分钟
-
             //发送到手机
             sendphoneSms(phone, sms);
-
             return true;
         }catch (Exception e){
             return false;
@@ -153,7 +198,6 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
-
 
     //发送短信
     private static void sendphoneSms(String phone, String sms) {

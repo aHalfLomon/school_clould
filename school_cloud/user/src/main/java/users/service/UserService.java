@@ -26,4 +26,7 @@ public interface UserService {
 
     //根据id查用户name和头像
     UserUn getUserUn(String id);
+
+    String uppass(LogonUserDto logonUserDto);
+    boolean SendSmsSet(String phone);
 }

@@ -59,6 +59,26 @@ public class UserController {
 
     }
 
+    @GetMapping("/send/{Phone}")
+    public ResultData sendcode(@PathVariable("Phone") String Phone){
+        try {
+            boolean b = userService.SendSmsSet(Phone);
+            if(b){
+                return new ResultData("200","ok","验证码发送成功");
+            }
+            return new ResultData("400","error","验证码发送失败");
+        }catch (Exception e){
+            return new ResultData("400","error","验证码发送失败");
+        }
+    }
+
+    //修改密码
+    @PostMapping ("/setpass")
+    public ResultData setpass(@RequestBody LogonUserDto logonUserDto){
+        String datas = userService.uppass(logonUserDto);
+        return new ResultData("200","请求成功！",datas);
+    }
+
     //根据id查用户
     @GetMapping("/getUserbyId/{id}")
     public ResultData getUserbyId(@PathVariable("id") String id){
