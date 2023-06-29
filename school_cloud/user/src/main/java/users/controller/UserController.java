@@ -66,7 +66,7 @@ public class UserController {
             if(b){
                 return new ResultData("200","ok","验证码发送成功");
             }
-            return new ResultData("400","error","验证码发送失败");
+            return new ResultData("400","error","该用户没有注册！");
         }catch (Exception e){
             return new ResultData("400","error","验证码发送失败");
         }

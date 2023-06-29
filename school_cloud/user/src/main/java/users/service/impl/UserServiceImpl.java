@@ -66,6 +66,7 @@ public class UserServiceImpl implements UserService {
         //redis保存的验证码
         ValueOperations redis = redisTemplate.opsForValue();
         String hSms= (String) redis.get(logonUserDto.getUserPhone());
+        //redis.set(logonUserDto.getUserPhone(),logonUserDto.getSms(),5, TimeUnit.MINUTES);//有效时间5分钟
         //从redis中拿取验证码
         if(!qSms.equals(hSms)){
             return "验证码错误，请稍后重试！";
@@ -83,6 +84,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean SendSmsSet(String phone) {
         try {
+            //来判断有没有这个用户
+            LambdaQueryWrapper<SUser> queryWrapper=new LambdaQueryWrapper<SUser>();
+            queryWrapper.eq(SUser::getUserPhone,phone);
+            SUser phuser2=suserMapper.selectOne(queryWrapper);
+            if (phuser2 == null){
+                return false;
+            }
             //直接随机产生验证码，并存入redis
             Random random=new Random();
             String sms=String.valueOf(random.nextInt(9999-1000+1)+1000);
@@ -206,7 +214,7 @@ public class UserServiceImpl implements UserService {
         SendSmsRequest request = new SendSmsRequest();
         request.setSignName("Hi同学科技");
         request.setPhoneNumbers(phone);
-        request.setTemplateCode("SMS_252635072");
+        request.setTemplateCode("SMS_254291278");
         request.setTemplateParam("{\"code\":\""+ sms +"\"}");
         try {
             SendSmsResponse response = client.getAcsResponse(request);
