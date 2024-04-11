@@ -209,7 +209,7 @@ public class UserServiceImpl implements UserService {
 
     //发送短信
     private static void sendphoneSms(String phone, String sms) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
+        DefaultProfile profile = DefaultProfile.getProfile();
         IAcsClient client = new DefaultAcsClient(profile);
         SendSmsRequest request = new SendSmsRequest();
         request.setSignName("Hi同学科技");
